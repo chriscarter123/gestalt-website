@@ -125,3 +125,6 @@ bash deploy.sh && firebase deploy --only hosting
 ### Session 1 — 2026-03-25
 - Created PROJECT.md
 - Website deployed as part of unified Firebase Hosting setup with path-based routing (root `/`)
+
+### Session 2 — 2026-03-31
+- Updated the logo to the new 4-petal design with Playfair Display typography across all header and footer areas in all pages.

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Gestalt</title>
+  <meta name="description" content="Learn more about Gestalt and our mission to bridge the physical and digital divide in fine art.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M15 15 L15 3 A12 12 0 0 0 3 15 Z' fill='%231A1E24'/%3E%3Cpath d='M17 15 L29 15 A12 12 0 0 0 17 3 Z' fill='%2314B860'/%3E%3Cpath d='M17 17 L17 29 A12 12 0 0 0 29 17 Z' fill='%231A1E24'/%3E%3Cpath d='M15 17 L3 17 A12 12 0 0 0 15 29 Z' fill='%2314B860'/%3E%3C/svg%3E">
+  <style>
+    /* Additional styles for internal pages */
+    .internal-hero {
+      padding: 12rem 0 6rem;
+      text-align: center;
+    }
+    .internal-hero .section-subtext {
+      margin: 0 auto;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    .team-member {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(17, 24, 39, 0.06);
+      padding: var(--space-4);
+      text-align: center;
+      transition: all var(--duration-base) var(--ease-spring);
+    }
+    .team-member:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(17, 24, 39, 0.05);
+      border-color: rgba(212, 175, 55, 0.25);
+    }
+    .team-member .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--light-grey);
+      margin: 0 auto var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--charcoal);
+      font-size: 2rem;
+      font-weight: 700;
+      border: 2px solid rgba(212, 175, 55, 0.2);
+    }
+    .team-member h4 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--off-black);
+      margin-bottom: 0.25rem;
+    }
+    .team-member p {
+      color: var(--brand-green);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Ambience & Grid -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="grid-pattern" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <div class="nav-wrapper">
+    <nav class="nav" id="navbar">
+      <a href="index.html" class="nav-logo" aria-label="Gestalt Home">
+        <svg viewBox="0 0 200 200" width="28" height="28" aria-hidden="true">
+          <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111111"/>
+          <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
+          <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
+          <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111111"/></g>
+        </svg>
+        Gestalt
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#visitor">Visitor Experience</a></li>
+        <li><a href="index.html#curator">Curator Tools</a></li>
+      </ul>
+      <a href="index.html#cta" class="btn-primary desktop-only">
+        Request Demo
+        <span class="btn-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M4 12L12 4M12 4H6M12 4v6" />
+          </svg>
+        </span>
+      </a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#visitor">Visitor Experience</a>
+    <a href="index.html#curator">Curator Tools</a>
+    <a href="index.html#cta">Request Demo</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="internal-hero">
+    <div class="container reveal">
+      <span class="section-label">About Us</span>
+      <h1 class="section-heading">Context is everything.</h1>
+      <p class="section-subtext">
+        At Gestalt, we believe art is meant to be understood, not just observed. We are building the intelligence interface for the world's great collections, connecting physical galleries with infinite digital knowledge.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENT Section -->
+  <section class="features-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="bento-grid reveal-stagger">
+        <!-- Mission (Wide) -->
+        <div class="bento-card card-wide">
+          <div class="bento-content">
+            <h3>Our Mission</h3>
+            <p>We are a team of AI researchers, designers, and art historians dedicated to removing the friction between curiosity and understanding. By leveraging state-of-the-art computer vision and generative AI like Gemini, we allow museums to offer instantly accessible, deeply contextual, and multi-lingual narratives—with no apps to download and minimal hardware required.</p>
+          </div>
+        </div>
+
+        <!-- Vision (Square) -->
+        <div class="bento-card">
+          <div class="bento-content">
+            <h3>The Vision</h3>
+            <p>A world where every physical object can instantly share its origins, meaning, and significance in the blink of an eye. The ultimate augmented reality for human curiosity.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-header reveal" style="margin-top: var(--space-12); margin-bottom: var(--space-4);">
+        <h2 class="section-heading" style="font-size: 2.5rem;">The Team</h2>
+      </div>
+
+      <div class="team-grid reveal-stagger">
+        <div class="team-member">
+          <div class="avatar">EJ</div>
+          <h4>Eleanor Jenkins</h4>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="team-member">
+          <div class="avatar">MC</div>
+          <h4>Marcus Chen</h4>
+          <p>Head of AI Research</p>
+        </div>
+        <div class="team-member">
+          <div class="avatar">LB</div>
+          <h4>Laila Brooks</h4>
+          <p>Lead Product Designer</p>
+        </div>
+        <div class="team-member">
+          <div class="avatar">SR</div>
+          <h4>Sam Rossi</h4>
+          <p>Curatorial Director</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand" aria-label="Gestalt Home">
+            <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
+              <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111111"/>
+              <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
+              <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
+              <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111111"/></g>
+            </svg>
+            Gestalt
+          </a>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul>
+            <li><a href="index.html#visitor">Visitor Experience</a></li>
+            <li><a href="index.html#curator">Curator Tools</a></li>
+            <li><a href="#">AR Engine</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Gestalt Technologies, Inc.</span>
+        <span>Built with TensorFlow.js, Gemini, and Firebase.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
