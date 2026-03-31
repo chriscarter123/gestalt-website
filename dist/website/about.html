@@ -80,10 +80,10 @@
     <nav class="nav" id="navbar">
       <a href="index.html" class="nav-logo" aria-label="Gestalt Home">
         <svg viewBox="0 0 200 200" width="28" height="28" aria-hidden="true">
-          <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111111"/>
-          <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
-          <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
-          <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111111"/></g>
+          <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
+          <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+          <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+          <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827"/></g>
         </svg>
         Gestalt
       </a>
@@ -118,7 +118,7 @@
       <span class="section-label">About Us</span>
       <h1 class="section-heading">Context is everything.</h1>
       <p class="section-subtext">
-        At Gestalt, we believe art is meant to be understood, not just observed. We are building the intelligence interface for the world's great collections, connecting physical galleries with infinite digital knowledge.
+        At Gestalt, we believe art is meant to be understood, not just observed. We're building the first accessibility platform with zero marginal cost per venue — connecting physical galleries with AI-powered audio descriptions, contributor-sourced data, and ADA-compliant experiences that require no hardware installation.
       </p>
     </div>
   </section>
@@ -131,7 +131,7 @@
         <div class="bento-card card-wide">
           <div class="bento-content">
             <h3>Our Mission</h3>
-            <p>We are a team of AI researchers, designers, and art historians dedicated to removing the friction between curiosity and understanding. By leveraging state-of-the-art computer vision and generative AI like Gemini, we allow museums to offer instantly accessible, deeply contextual, and multi-lingual narratives—with no apps to download and minimal hardware required.</p>
+            <p>We're dedicated to removing the friction between curiosity and understanding. By running CLIP visual recognition directly on visitors' phones, we allow museums to offer instantly accessible, deeply contextual audio descriptions — with no QR codes, no beacons, and no hardware contracts. Accessibility is not a fallback. It's the primary interface.</p>
           </div>
         </div>
 
@@ -139,35 +139,26 @@
         <div class="bento-card">
           <div class="bento-content">
             <h3>The Vision</h3>
-            <p>A world where every physical object can instantly share its origins, meaning, and significance in the blink of an eye. The ultimate augmented reality for human curiosity.</p>
+            <p>A world where every physical object can instantly share its origins, meaning, and significance. Where 50,000+ public murals are indexed and accessible. Where blind and low-vision visitors experience art as richly as anyone else.</p>
           </div>
         </div>
       </div>
 
-      <div class="features-header reveal" style="margin-top: var(--space-12); margin-bottom: var(--space-4);">
-        <h2 class="section-heading" style="font-size: 2.5rem;">The Team</h2>
-      </div>
+      <div class="bento-grid reveal-stagger" style="margin-top: var(--space-8);">
+        <!-- Contributor Network -->
+        <div class="bento-card card-wide">
+          <div class="bento-content">
+            <h3>The Contributor Network</h3>
+            <p>Every visitor who captures and describes an artwork enriches the index for the next person. CLIP matching and algorithmic trust scoring filter contributions automatically — quality scales without a moderation team. 1,700+ artworks indexed with no licensing fees and no data acquisition budget.</p>
+          </div>
+        </div>
 
-      <div class="team-grid reveal-stagger">
-        <div class="team-member">
-          <div class="avatar">EJ</div>
-          <h4>Eleanor Jenkins</h4>
-          <p>Founder & CEO</p>
-        </div>
-        <div class="team-member">
-          <div class="avatar">MC</div>
-          <h4>Marcus Chen</h4>
-          <p>Head of AI Research</p>
-        </div>
-        <div class="team-member">
-          <div class="avatar">LB</div>
-          <h4>Laila Brooks</h4>
-          <p>Lead Product Designer</p>
-        </div>
-        <div class="team-member">
-          <div class="avatar">SR</div>
-          <h4>Sam Rossi</h4>
-          <p>Curatorial Director</p>
+        <!-- Zero Infrastructure -->
+        <div class="bento-card">
+          <div class="bento-content">
+            <h3>Zero Infrastructure</h3>
+            <p>CLIP ViT-B/32 runs on the visitor's phone via ONNX WASM. No server round-trips, no images leaving the device. The entire recognition system has zero marginal cost per venue — a structural advantage no hardware-dependent competitor can match.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -180,10 +171,10 @@
         <div>
           <a href="index.html" class="footer-brand" aria-label="Gestalt Home">
             <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
-              <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111111"/>
-              <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
-              <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
-              <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111111"/></g>
+              <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
+              <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+              <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+              <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827"/></g>
             </svg>
             Gestalt
           </a>
@@ -217,7 +208,7 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Gestalt Technologies, Inc.</span>
-        <span>Built with TensorFlow.js, Gemini, and Firebase.</span>
+        <span>Built with CLIP, Gemini, and Firebase.</span>
       </div>
     </div>
   </footer>

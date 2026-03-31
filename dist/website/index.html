@@ -8,123 +8,140 @@
   <link rel="icon" type="image/svg+xml" href="images/gestalt-icon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Noise Overlay — fixed, pointer-events-none -->
-  <div class="noise-overlay" aria-hidden="true"></div>
+  <!-- Background Ambience & Grid -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="grid-pattern" aria-hidden="true"></div>
 
   <!-- ============================================
        NAVIGATION — Floating Glass Pill
        ============================================ -->
-  <nav class="nav" id="nav">
-    <div class="nav-pill">
-      <a href="#" class="nav-logo" aria-label="Gestalt Home">
-        <svg viewBox="0 0 200 200" width="28" height="28" aria-hidden="true">
-          <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111111"/>
-          <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
-          <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
-          <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111111"/></g>
+  <div class="nav-wrapper">
+    <nav class="nav" id="navbar">
+      <a href="#" class="nav-brand" aria-label="Gestalt Home">
+        <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
+          <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
+          <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+          <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+          <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827"/></g>
         </svg>
-        Gestalt
+        <span>Gestalt</span>
       </a>
 
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#how-it-works">How it Works</a></li>
-        <li><a href="#technology">Technology</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
 
-      <a href="#download" class="nav-cta">
+      <a href="#download" class="btn-primary desktop-only">
         Get the App
-        <span class="nav-cta-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+        <span class="btn-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12L12 4M12 4H6M12 4v6"/>
           </svg>
         </span>
       </a>
 
-      <button class="hamburger" aria-label="Toggle menu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
       </button>
-    </div>
-  </nav>
+    </nav>
+  </div>
 
   <!-- Mobile Menu Overlay -->
   <div class="mobile-menu" id="mobile-menu">
     <a href="#features">Features</a>
     <a href="#how-it-works">How it Works</a>
-    <a href="#technology">Technology</a>
+    <a href="about.html">About</a>
     <a href="#download">Get the App</a>
   </div>
 
   <!-- ============================================
-       HERO — Asymmetric Split Screen
+       HERO — The Gestalt Lens AR Scene
        ============================================ -->
-  <section class="hero container" id="hero">
-    <div class="hero-content">
-      <div class="eyebrow reveal">
-        <span class="eyebrow-dot"></span>
-        AI-Powered Art Discovery
-      </div>
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="section-label reveal">AI-Powered Art Discovery</span>
 
-      <h1 class="hero-title reveal reveal-delay-1">
-        See art
-        <span class="hero-title-accent">differently.</span>
-      </h1>
+        <h1 class="hero-title reveal">
+          Bridge the <span class="accent">gallery</span><br>and the digital.
+        </h1>
 
-      <p class="hero-description reveal reveal-delay-2">
-        Point your camera at any artwork and Gestalt instantly identifies it, tells its story, and guides you through a rich audio experience. In the museum or on the street.
-      </p>
+        <p class="hero-description reveal">
+          Point your camera at any artwork. Gestalt identifies it, tells its story, and guides you through a rich, narrated audio experience. No app required. Just look, and learn.
+        </p>
 
-      <div class="hero-actions reveal reveal-delay-3">
-        <a href="#download" class="btn-primary">
-          Start exploring
-          <span class="btn-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
-            </svg>
-          </span>
-        </a>
-        <a href="#how-it-works" class="btn-secondary">
-          See how it works
-        </a>
-      </div>
-
-      <div class="hero-stats reveal reveal-delay-4">
-        <div class="stat">
-          <div class="stat-value">1024</div>
-          <div class="stat-label">Embedding dimensions</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">0.70</div>
-          <div class="stat-label">Match threshold</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">15m</div>
-          <div class="stat-label">GPS detection radius</div>
+        <div class="hero-actions reveal">
+          <a href="#download" class="btn-primary">
+            Explore the Platform
+            <span class="btn-icon">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </span>
+          </a>
+          <a href="#features" class="btn-ghost">
+            See the features
+          </a>
         </div>
       </div>
-    </div>
 
-    <div class="hero-visual reveal reveal-delay-2">
-      <div class="hero-image-shell">
-        <div class="hero-image-core">
-          <img src="images/hero.png" alt="A museum visitor using Gestalt to identify and learn about an abstract painting through augmented reality" width="560" height="700" loading="eager">
-        </div>
+      <div class="hero-visual">
+        <div class="gestalt-lens-scene">
+          <!-- Background: Physical World -->
+          <div class="physical-world" style="background-image: url('mural.jpg');"></div>
 
-        <div class="hero-badge">
-          <div class="hero-badge-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="hero-badge-text">Artwork Identified</div>
-            <div class="hero-badge-sub">98.4% confidence</div>
+          <!-- AR Overlay -->
+          <div class="ar-interface">
+            <div class="vignette"></div>
+
+            <!-- Tracking Anchors -->
+            <div class="anchor anchor-tl"></div>
+            <div class="anchor anchor-tr"></div>
+            <div class="anchor anchor-bl"></div>
+            <div class="anchor anchor-br"></div>
+
+            <!-- Focus Reticle -->
+            <div class="focus-reticle"></div>
+
+            <!-- Glass Context Pane -->
+            <div class="lens-glass">
+              <div class="lens-header">
+                <div class="status-group">
+                  <span class="pulsing-dot green"></span>
+                  <span class="lens-status">ARTWORK IDENTIFIED</span>
+                </div>
+                <span class="lens-time">0:00 / 2:45</span>
+              </div>
+
+              <h3 class="lens-title">The Street Canvas</h3>
+              <p class="lens-artist">Anonymous, Contemporary</p>
+
+              <div class="lens-audio-player">
+                <button class="lens-play-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                </button>
+                <div class="lens-waveform">
+                  <span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+
+              <p class="lens-context">This mural explores the chaotic logic of urban texture. The artist challenges the boundaries of public space through aggressive color blocking and staggered geometries.</p>
+
+              <div class="lens-footer">
+                <span class="ai-badge">✧ Context by Gemini AI</span>
+                <span class="audio-badge">▶ Neural Narration</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -141,33 +158,30 @@
       <span class="marquee-item"><span class="marquee-dot"></span>QR Scanning</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Audio Guides</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Multi-Museum</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Capacitor iOS</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>ADA Compliant</span>
       <span class="marquee-item"><span class="marquee-dot"></span>AI Descriptions</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Text-to-Speech</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Contributor Network</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Visual Recognition</span>
       <span class="marquee-item"><span class="marquee-dot"></span>GPS Proximity</span>
       <span class="marquee-item"><span class="marquee-dot"></span>QR Scanning</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Audio Guides</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Multi-Museum</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Capacitor iOS</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>ADA Compliant</span>
       <span class="marquee-item"><span class="marquee-dot"></span>AI Descriptions</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Text-to-Speech</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Contributor Network</span>
     </div>
   </section>
 
   <!-- ============================================
-       FEATURES — Asymmetric Bento Grid
+       FEATURES — Bento Grid
        ============================================ -->
   <section class="features container" id="features">
     <div class="section-header">
-      <div class="eyebrow reveal">
-        <span class="eyebrow-dot"></span>
-        Capabilities
-      </div>
-      <h2 class="section-title reveal reveal-delay-1">
+      <span class="section-label reveal">Capabilities</span>
+      <h2 class="section-title reveal">
         Every tool to bridge<br>you and the art.
       </h2>
-      <p class="section-description reveal reveal-delay-2">
+      <p class="section-description reveal">
         Five integrated detection systems work together so you never miss a piece, whether behind glass or across the street.
       </p>
     </div>
@@ -184,7 +198,7 @@
           </div>
           <h3 class="bento-card-title">AI Visual Recognition</h3>
           <p class="bento-card-text">
-            MobileNet v1 computes 1024-dimensional embeddings from the live camera feed, then runs cosine similarity matching against indexed artwork images. Two-tier detection with keyword fallback ensures recognition works even while embeddings are still being computed.
+            CLIP ViT-B/32 runs entirely on your phone via ONNX WASM — no server round-trips, no images leaving your device. The model computes 512-dimensional visual embeddings from the live camera feed and matches against our indexed artwork database in real time.
           </p>
           <div class="bento-feature-image">
             <img src="images/feature.png" alt="Overhead view of a smartphone displaying Gestalt's AR art recognition interface alongside museum artifacts" width="600" height="260" loading="lazy">
@@ -193,7 +207,7 @@
       </div>
 
       <!-- Card 2: GPS Proximity -->
-      <div class="bento-card-shell reveal reveal-delay-1">
+      <div class="bento-card-shell reveal">
         <div class="bento-card">
           <div class="bento-card-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -207,13 +221,13 @@
           </p>
           <div style="margin-top: auto; padding-top: 1.5rem;">
             <span class="status-dot"></span>
-            <span style="font-size: 0.8125rem; font-weight: 600; color: var(--color-dark);">Tracking active</span>
+            <span style="font-size: 0.8125rem; font-weight: 600; color: var(--off-black);">Tracking active</span>
           </div>
         </div>
       </div>
 
       <!-- Card 3: QR Scanning -->
-      <div class="bento-card-shell reveal reveal-delay-2">
+      <div class="bento-card-shell reveal">
         <div class="bento-card">
           <div class="bento-card-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -229,7 +243,7 @@
       </div>
 
       <!-- Card 4: Wide — Audio Guides -->
-      <div class="bento-card-shell wide reveal reveal-delay-1">
+      <div class="bento-card-shell wide reveal">
         <div class="bento-card">
           <div class="bento-card-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -238,13 +252,13 @@
           </div>
           <h3 class="bento-card-title">AI-Generated Audio Guides</h3>
           <p class="bento-card-text">
-            Gemini 2.5 Flash writes rich, museum-quality descriptions from the artwork image alone. Google Cloud TTS converts them to natural-sounding neural voice MP3s ready to play in your ear.
+            Gemini 2.5 Flash writes rich, museum-quality descriptions from the artwork image alone. Google Neural2-F TTS delivers them as natural speech — with haptic confirmation so blind and low-vision visitors never need to look at the screen.
           </p>
         </div>
       </div>
 
-      <!-- Card 5: Multi-Museum -->
-      <div class="bento-card-shell reveal reveal-delay-2">
+      <!-- Card 5: Multi-Venue -->
+      <div class="bento-card-shell reveal">
         <div class="bento-card">
           <div class="bento-card-icon micro-float">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -257,6 +271,21 @@
           </p>
         </div>
       </div>
+
+      <!-- Card 6: ADA Compliant -->
+      <div class="bento-card-shell reveal">
+        <div class="bento-card">
+          <div class="bento-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zM12 4.5v3m0 0l-3.75 7.5m3.75-7.5l3.75 7.5M6 19.5h12"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title">ADA Compliant</h3>
+          <p class="bento-card-text">
+            Built for the DOJ's 2024 digital accessibility mandate. Zero infrastructure cost per venue. Haptic feedback, audio-first design, and automatic compliance scoring help institutions meet enforceable timelines.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -266,14 +295,11 @@
   <section class="how-it-works" id="how-it-works">
     <div class="container">
       <div class="section-header">
-        <div class="eyebrow reveal">
-          <span class="eyebrow-dot"></span>
-          Three Steps
-        </div>
-        <h2 class="section-title reveal reveal-delay-1">
+        <span class="section-label reveal">Three Steps</span>
+        <h2 class="section-title reveal">
           Point. Discover. Listen.
         </h2>
-        <p class="section-description reveal reveal-delay-2">
+        <p class="section-description reveal">
           No accounts, no downloads required for the web version. Just open the link and your camera does the rest.
         </p>
       </div>
@@ -284,86 +310,30 @@
             <div class="step-number">01</div>
             <h3 class="step-title">Point your camera</h3>
             <p class="step-text">
-              Open Gestalt on your phone. The camera activates, MobileNet loads in the background, and GPS begins tracking your position relative to nearby outdoor artworks.
+              Open Gestalt on your phone. The camera activates, CLIP loads on-device, and GPS begins tracking your position relative to nearby outdoor artworks. No app download required for the web version.
             </p>
           </div>
         </div>
 
-        <div class="step-shell reveal reveal-delay-1">
+        <div class="step-shell reveal">
           <div class="step-card">
             <div class="step-number">02</div>
             <h3 class="step-title">Discover the artwork</h3>
             <p class="step-text">
-              Tap "Start Scan" and the AI matches your camera frame against indexed artwork embeddings in real time. Indoors, scan a QR label. Outdoors, simply walk closer and GPS handles it.
+              Tap "Scan" and CLIP matches your camera frame against our artwork index in under a second. No QR code needed, no beacon, no staff intervention. Outdoors, simply walk closer and GPS handles it.
             </p>
           </div>
         </div>
 
-        <div class="step-shell reveal reveal-delay-2">
+        <div class="step-shell reveal">
           <div class="step-card">
             <div class="step-number">03</div>
             <h3 class="step-title">Listen to the story</h3>
             <p class="step-text">
-              The artwork info card slides up with the title, artist, year, and a rich AI-generated description. Tap the audio button for a neural-voice guide that brings the piece to life.
+              The artwork info card slides up with the title, artist, year, and an AI-generated description. Audio fires immediately with haptic confirmation — the experience works for blind visitors without ever looking at the screen.
             </p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       TECHNOLOGY — Editorial Split
-       ============================================ -->
-  <section class="tech-section container" id="technology">
-    <div class="section-header">
-      <div class="eyebrow reveal">
-        <span class="eyebrow-dot"></span>
-        Under the Hood
-      </div>
-      <h2 class="section-title reveal reveal-delay-1">
-        Built on proven<br>infrastructure.
-      </h2>
-    </div>
-
-    <div class="tech-grid">
-      <div class="tech-list reveal">
-        <div class="tech-item">
-          <span class="tech-item-name">TensorFlow.js + MobileNet</span>
-          <span class="tech-item-label">AI / Vision</span>
-        </div>
-        <div class="tech-item">
-          <span class="tech-item-name">Google Gemini 2.5 Flash</span>
-          <span class="tech-item-label">AI / Generation</span>
-        </div>
-        <div class="tech-item">
-          <span class="tech-item-name">Google Cloud TTS</span>
-          <span class="tech-item-label">Audio</span>
-        </div>
-        <div class="tech-item">
-          <span class="tech-item-name">Firebase</span>
-          <span class="tech-item-label">Backend</span>
-        </div>
-        <div class="tech-item">
-          <span class="tech-item-name">React 19</span>
-          <span class="tech-item-label">Framework</span>
-        </div>
-        <div class="tech-item">
-          <span class="tech-item-name">Capacitor 8</span>
-          <span class="tech-item-label">Native iOS</span>
-        </div>
-      </div>
-
-      <div class="tech-description reveal reveal-delay-2">
-        <h3 class="tech-description-title">
-          On-device intelligence,<br>cloud-grade content.
-        </h3>
-        <p class="tech-description-text">
-          Visual recognition runs entirely in the browser using TensorFlow.js. No images ever leave your device for matching. MobileNet extracts 1024-dimensional feature embeddings and compares them via cosine similarity, fast enough for real-time video frames.
-        </p>
-        <p class="tech-description-text">
-          When Gestalt finds a match, Gemini 2.5 Flash generates a rich audio-guide-quality description. Google Cloud TTS (Neural2-F voice) converts it to natural speech. Firebase handles storage, authentication, and real-time data sync, with a REST API bypass for smooth performance inside iOS WKWebView.
-        </p>
       </div>
     </div>
   </section>
@@ -374,25 +344,22 @@
   <section class="cta-section" id="download">
     <div class="container">
       <div class="cta-content">
-        <div class="cta-eyebrow reveal">
-          <span class="eyebrow-dot"></span>
-          Available Now
-        </div>
+        <span class="cta-eyebrow reveal">Available Now</span>
 
-        <h2 class="cta-title reveal reveal-delay-1">
+        <h2 class="cta-title reveal">
           Ready to see<br>what you've been<br>walking past?
         </h2>
 
-        <p class="cta-description reveal reveal-delay-2">
-          Open the web app on any phone browser, or download the native iOS app for push notifications when you walk near outdoor artwork.
+        <p class="cta-description reveal">
+          Open the web app on any phone browser, or download the native iOS app for push notifications when you walk near outdoor artwork. For museums: Gestalt Institution Management provides ADA compliance scoring, audio description CMS, and visitor analytics in one portal.
         </p>
 
-        <div class="cta-actions reveal reveal-delay-3">
+        <div class="cta-actions reveal">
           <a href="#" class="btn-accent">
             Open Web App
             <span class="btn-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
               </svg>
             </span>
           </a>
@@ -410,47 +377,45 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <a href="#" class="footer-brand" aria-label="Gestalt Home">
-          <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
-            <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111111"/>
-            <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
-            <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#3ECF6A"/></g>
-            <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111111"/></g>
-          </svg>
-          Gestalt
-        </a>
-
-        <div class="footer-links">
-          <div class="footer-col">
-            <div class="footer-col-title">Product</div>
-            <ul>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#how-it-works">How it Works</a></li>
-              <li><a href="#technology">Technology</a></li>
-              <li><a href="#download">Download</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Resources</div>
-            <ul>
-              <li><a href="#">Documentation</a></li>
-              <li><a href="#">Admin Panel</a></li>
-              <li><a href="#">API Reference</a></li>
-            </ul>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Legal</div>
-            <ul>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Terms</a></li>
-            </ul>
-          </div>
+        <div>
+          <a href="#" class="footer-brand" aria-label="Gestalt Home">
+            <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
+              <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
+              <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+              <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+              <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827"/></g>
+            </svg>
+            Gestalt
+          </a>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how-it-works">How it Works</a></li>
+            <li><a href="#download">Download</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>2026 Gestalt. All rights reserved.</span>
-        <span>Built with TensorFlow.js, Gemini, and Firebase.</span>
+        <span>&copy; 2026 Gestalt. All rights reserved.</span>
+        <span>Built with CLIP, Gemini, and Firebase.</span>
       </div>
     </div>
   </footer>
