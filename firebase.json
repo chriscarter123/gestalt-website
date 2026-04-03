@@ -6,6 +6,38 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects": [
+      {
+        "source": "/institutions",
+        "destination": "/institution/",
+        "type": 301
+      },
+      {
+        "source": "/institutions/**",
+        "destination": "/institution/:splat",
+        "type": 301
+      },
+      {
+        "source": "/website",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/website/**",
+        "destination": "/:splat",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/admin/**",
+        "destination": "/admin/index.html"
+      },
+      {
+        "source": "/institution/**",
+        "destination": "/institution/index.html"
+      }
+    ],
     "headers": [
       {
         "source": "**/*.@(jpg|jpeg|gif|png|webp|svg)",

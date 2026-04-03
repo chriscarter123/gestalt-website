@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Institutions | Gestalt</title>
+  <meta name="description" content="Gestalt generates ADA-compliant audio descriptions for your entire collection in days — not years. Built for museums, galleries, and public art programs.">
+  <link rel="icon" type="image/svg+xml" href="images/gestalt-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&family=Newsreader:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --gestalt-gold: #D4AF37;
+      --gestalt-green: #14B860;
+      --gestalt-charcoal: #111827;
+      --gestalt-white: #FCFCFC;
+      --font-classical: 'Newsreader', 'Playfair Display', Georgia, serif;
+      --font-technical: 'Outfit', 'Inter', system-ui, sans-serif;
+      --gestalt-duration: 0.35s;
+      --gestalt-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 8rem 2rem 6rem;
+    }
+
+    .page-hero {
+      margin-bottom: 5rem;
+      animation: fadeUp 0.6s var(--gestalt-easing) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gestalt-green);
+      margin-bottom: 1rem;
+    }
+
+    main h1 {
+      font-family: var(--font-classical);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--gestalt-charcoal);
+    }
+
+    main h1 em { font-style: italic; color: var(--gestalt-gold); }
+
+    .hero-body {
+      font-size: 1.15rem;
+      color: rgba(17,24,39,0.75);
+      max-width: 700px;
+    }
+
+    .page-section {
+      margin-bottom: 5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s var(--gestalt-easing) both;
+    }
+
+    .page-section:nth-child(2) { animation-delay: 0.10s; }
+    .page-section:nth-child(3) { animation-delay: 0.15s; }
+    .page-section:nth-child(4) { animation-delay: 0.20s; }
+    .page-section:nth-child(5) { animation-delay: 0.25s; }
+    .page-section:nth-child(6) { animation-delay: 0.30s; }
+    .page-section:nth-child(7) { animation-delay: 0.35s; }
+    .page-section:nth-child(8) { animation-delay: 0.40s; }
+
+    main h2 {
+      font-family: var(--font-classical);
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      color: var(--gestalt-charcoal);
+    }
+
+    main h2 em { font-style: italic; color: var(--gestalt-gold); }
+
+    main p {
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      color: rgba(17,24,39,0.8);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: rgba(17,24,39,0.03);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-classical);
+      font-size: 3rem;
+      font-weight: 500;
+      color: var(--gestalt-green);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(17,24,39,0.55);
+    }
+
+    /* Process Steps */
+    .process-steps { margin-top: 2rem; }
+
+    .process-step {
+      background: rgba(17,24,39,0.02);
+      border-left: 3px solid var(--gestalt-green);
+      padding: 1.5rem 1.75rem;
+      margin: 1rem 0;
+      border-radius: 0 10px 10px 0;
+      position: relative;
+    }
+
+    .process-step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: -3px;
+      top: 1.5rem;
+      width: 28px;
+      height: 28px;
+      background: var(--gestalt-green);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+
+    .process-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(17,24,39,0.4);
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+    .process-step p {
+      margin-bottom: 0;
+      padding-left: 0.5rem;
+    }
+
+    /* Feature Grid */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .feature-card {
+      background: rgba(252,252,252,0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(17,24,39,0.06);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: transform var(--gestalt-duration) var(--gestalt-easing),
+                  box-shadow var(--gestalt-duration) var(--gestalt-easing);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(17,24,39,0.08);
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--gestalt-charcoal);
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+      color: rgba(17,24,39,0.65);
+    }
+
+    /* Highlight Block */
+    .highlight-block {
+      background: rgba(17,24,39,0.02);
+      border-left: 3px solid var(--gestalt-gold);
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .highlight-block p { margin-bottom: 0; }
+
+    /* Pricing Grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .pricing-card {
+      background: rgba(252,252,252,0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(17,24,39,0.08);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform var(--gestalt-duration) var(--gestalt-easing),
+                  box-shadow var(--gestalt-duration) var(--gestalt-easing);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(17,24,39,0.08);
+    }
+
+    .pricing-card h3 {
+      font-family: var(--font-classical);
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: var(--gestalt-charcoal);
+    }
+
+    .pricing-card p {
+      font-size: 0.95rem;
+      margin-bottom: 0;
+      color: rgba(17,24,39,0.65);
+    }
+
+    .pricing-card.featured { background: var(--gestalt-charcoal); border-color: var(--gestalt-charcoal); }
+    .pricing-card.featured h3 { color: white; }
+    .pricing-card.featured p  { color: rgba(255,255,255,0.7); }
+
+    /* CTA Block */
+    .inner-cta {
+      background: var(--gestalt-charcoal);
+      color: white;
+      padding: 3rem;
+      border-radius: 16px;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .inner-cta h2 { color: white; margin-bottom: 0.75rem; }
+    .inner-cta p  { color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+
+    .inner-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gestalt-green);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform var(--gestalt-duration) var(--gestalt-easing), background var(--gestalt-duration);
+    }
+
+    .inner-cta-btn:hover { transform: scale(1.02); background: #12a554; }
+    .inner-cta-btn svg  { width: 18px; height: 18px; }
+
+    /* Dashboard Preview */
+    .dashboard-preview {
+      margin: 3rem 0 5rem;
+      animation: fadeUp 0.6s var(--gestalt-easing) 0.05s both;
+    }
+
+    .dashboard-frame {
+      background: var(--gestalt-charcoal);
+      border-radius: 12px;
+      padding: 10px 10px 0;
+      box-shadow: 0 32px 80px rgba(17,24,39,0.18), 0 8px 24px rgba(17,24,39,0.1);
+    }
+
+    .dashboard-frame-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 4px 10px;
+    }
+
+    .dashboard-frame-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: block;
+    }
+
+    .dashboard-frame img {
+      display: block;
+      width: 100%;
+      border-radius: 6px 6px 0 0;
+    }
+
+    .dashboard-caption {
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(17,24,39,0.4);
+      margin-top: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 640px) {
+      main { padding: 6rem 1.25rem 4rem; }
+      .inner-cta { padding: 2rem 1.5rem; }
+      .process-step::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="grid-pattern" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <div class="nav-wrapper">
+    <nav class="nav" id="navbar">
+      <a href="index.html" class="nav-brand" aria-label="Gestalt Home">
+        <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
+          <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
+          <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+          <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+          <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827"/></g>
+        </svg>
+        <span>Gestalt</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="for-visitors.html">For Visitors</a></li>
+        <li><a href="for-institutions.html" aria-current="page">For Institutions</a></li>
+      </ul>
+
+      <a href="index.html#download" class="btn-primary desktop-only">
+        Get the App
+        <span class="btn-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12L12 4M12 4H6M12 4v6"/>
+          </svg>
+        </span>
+      </a>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="for-visitors.html">For Visitors</a>
+    <a href="for-institutions.html">For Institutions</a>
+    <a href="index.html#download">Get the App</a>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <div class="eyebrow">For Institutions</div>
+      <h1>Accessibility that <em>scales</em></h1>
+      <p class="hero-body">Writing audio descriptions for an entire collection would take years and cost hundreds of thousands of dollars. Gestalt does it in days. Our AI generates vivid, accurate descriptions at scale — then your team reviews, edits, and publishes through a dashboard built for curators.</p>
+    </section>
+
+    <div class="dashboard-preview">
+      <div class="dashboard-frame">
+        <div class="dashboard-frame-bar">
+          <span></span><span></span><span></span>
+        </div>
+        <img src="images/dashboard-screenshot.png" alt="Gestalt institution dashboard showing ADA accessibility scorecard with 73% audio description coverage, gallery breakdown by floor, and language demand analytics" width="880" height="495">
+      </div>
+      <p class="dashboard-caption">The Gestalt curator dashboard — ADA scorecard, gallery coverage, and visitor analytics in one place.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>Why audio description hasn't <em>happened</em></h2>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">2-3%</div>
+          <div class="stat-label">of museum collections have audio descriptions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$50-150</div>
+          <div class="stat-label">cost per description when written by hand</div>
+        </div>
+      </div>
+
+      <p>It's not that museums don't care about accessibility — they do. It's that the traditional approach doesn't scale. Hiring specialists to write descriptions for 10,000 works, then recording professional voice actors, then maintaining the content as exhibitions change... it's a project that never ends and never finishes.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>AI-generated, <em>curator-refined</em></h2>
+
+      <div class="process-steps">
+        <div class="process-step" data-step="1">
+          <div class="process-label">Upload your collection</div>
+          <p>Connect your collection database or upload images directly. Gestalt ingests your existing metadata — titles, artists, dates, curatorial notes — and uses it to inform descriptions.</p>
+        </div>
+        <div class="process-step" data-step="2">
+          <div class="process-label">Generate descriptions</div>
+          <p>Our AI writes rich, vivid audio descriptions for every work. Not placeholder text — real descriptions that capture visual composition, artistic technique, and historical context.</p>
+        </div>
+        <div class="process-step" data-step="3">
+          <div class="process-label">Review and refine</div>
+          <p>Your curators review descriptions in a purpose-built CMS. Edit text, adjust emphasis, add institutional voice. Approve when ready.</p>
+        </div>
+        <div class="process-step" data-step="4">
+          <div class="process-label">Publish and track</div>
+          <p>One click deploys descriptions to visitors. Analytics show which works are most listened to, where visitors spend time, and how your accessibility coverage grows.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <h2>ADA-ready, <em>grant-ready</em></h2>
+
+      <p>Gestalt generates ADA compliance scorecards for your collection — showing exactly what percentage of works have descriptions, which galleries are fully covered, and where gaps remain. Export PDF reports for grant applications, board presentations, and regulatory documentation.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Real-time coverage tracking</h3>
+          <p>Dashboard shows description status for every work: complete, in review, pending, or missing.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Exportable reports</h3>
+          <p>One-click PDF generation for compliance documentation, funder reports, and accessibility audits.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <h2>Works on visitors' <em>own phones</em></h2>
+
+      <div class="highlight-block">
+        <p>Forget beacon installations, device rentals, and charging stations. Gestalt runs on the smartphone visitors already have. No capital expenditure, no maintenance burden, no staff training required.</p>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <h2>Street art. Sculpture trails. <em>Anywhere.</em></h2>
+
+      <p>Gestalt isn't limited to museums. Public art commissions, outdoor sculpture gardens, mural districts, walking tours — any art that exists in physical space can be indexed and described. We're building the first comprehensive audio layer for public art.</p>
+    </div>
+
+    <div class="page-section">
+      <h2>Built for institutions of <em>every size</em></h2>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Gallery Lite</h3>
+          <p>For small galleries and emerging spaces. Up to 100 works, basic analytics, self-service onboarding.</p>
+        </div>
+        <div class="pricing-card">
+          <h3>Institution</h3>
+          <p>For mid-size museums. Unlimited works, curatorial CMS, compliance reporting, dedicated onboarding.</p>
+        </div>
+        <div class="pricing-card">
+          <h3>Enterprise</h3>
+          <p>For major museums and city-wide programs. Multi-venue support, API access, custom integrations, white-label options.</p>
+        </div>
+        <div class="pricing-card featured">
+          <h3>Talk to us</h3>
+          <p>Every institution is different. Let's figure out what works for yours.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="inner-cta">
+      <h2>See Gestalt in action</h2>
+      <p>Schedule a demo and watch us generate audio descriptions for your collection in real time.</p>
+      <a href="contact.html" class="inner-cta-btn">
+        Schedule a Demo
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand" aria-label="Gestalt Home">
+            <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
+              <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
+              <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+              <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+              <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827"/></g>
+            </svg>
+            Gestalt
+          </a>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="for-visitors.html">For Visitors</a></li>
+            <li><a href="for-institutions.html">For Institutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Gestalt. All rights reserved.</span>
+        <span>Built with CLIP, Gemini, and Firebase.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

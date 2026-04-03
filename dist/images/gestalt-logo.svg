@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 22 300 348" width="300" height="348">
+  <!--
+    Gestalt logo mark — 4-petal icon + wordmark
+    Each petal is 95×95 with r=28 on 3 outer corners; inner corner (facing centre) is sharp.
+    Layout: TL=dark  TR=green
+             BL=green BR=dark
+    Gap between petals: 10px
+  -->
+
+  <!-- Icon mark, centred in the 300-wide canvas -->
+  <g transform="translate(50, 30)">
+
+    <!-- Top-left petal (dark) — sharp corner at bottom-right (centre) -->
+    <path
+      d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z"
+      fill="#111111"
+    />
+
+    <!-- Top-right petal (green) — sharp corner at bottom-left (centre) -->
+    <g transform="translate(105, 0)">
+      <path
+        d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z"
+        fill="#3ECF6A"
+      />
+    </g>
+
+    <!-- Bottom-left petal (green) — sharp corner at top-right (centre) -->
+    <g transform="translate(0, 105)">
+      <path
+        d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z"
+        fill="#3ECF6A"
+      />
+    </g>
+
+    <!-- Bottom-right petal (dark) — sharp corner at top-left (centre) -->
+    <g transform="translate(105, 105)">
+      <path
+        d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z"
+        fill="#111111"
+      />
+    </g>
+
+  </g>
+
+  <!-- Wordmark -->
+  <text
+    x="150"
+    y="322"
+    text-anchor="middle"
+    font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif"
+    font-weight="900"
+    font-size="66"
+    letter-spacing="-1"
+    fill="#111111"
+  >gestalt</text>
+</svg>

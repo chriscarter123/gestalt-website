@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestalt — AI-Powered Art Discovery</title>
+  <meta name="description" content="Gestalt uses AI visual recognition, GPS proximity, and QR scanning to transform how you experience art in museums and city streets.">
+  <link rel="icon" type="image/svg+xml" href="images/gestalt-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Ambience & Grid -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="grid-pattern" aria-hidden="true"></div>
+
+  <!-- ============================================
+       NAVIGATION — Floating Glass Pill
+       ============================================ -->
+  <div class="nav-wrapper">
+    <nav class="nav" id="navbar">
+      <a href="#" class="nav-brand" aria-label="Gestalt Home">
+        <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
+          <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
+          <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+          <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+          <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827"/></g>
+        </svg>
+        <span>Gestalt</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="for-visitors.html">For Visitors</a></li>
+        <li><a href="for-institutions.html">For Institutions</a></li>
+      </ul>
+
+      <a href="#download" class="btn-primary desktop-only">
+        Get the App
+        <span class="btn-icon">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12L12 4M12 4H6M12 4v6"/>
+          </svg>
+        </span>
+      </a>
+
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="for-visitors.html">For Visitors</a>
+    <a href="for-institutions.html">For Institutions</a>
+    <a href="#download">Get the App</a>
+  </div>
+
+  <!-- ============================================
+       HERO — The Gestalt Lens AR Scene
+       ============================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="section-label reveal">AI-Powered Art Discovery</span>
+
+
+  <h1 class="hero-title reveal">
+          Art belongs to <span class="accent">everyone.</span><br> Now it's finally accessible.
+  </h1>
+<!--
+        <h1 class="hero-title reveal">
+          Bridge the <span class="accent">gallery</span><br>and the digital.
+        </h1>
+      -->
+        <p class="hero-description reveal">
+          Gestalt brings art to life through vivid, visually descriptive audio — making museums, street art, and public sculpture accessible to visitors with vision loss, and richer for everyone.
+        </p>
+
+        <div class="hero-actions reveal">
+          <a href="#download" class="btn-primary">
+            Explore the Platform
+            <span class="btn-icon">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </span>
+          </a>
+          <a href="#features" class="btn-ghost">
+            See the features
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="gestalt-lens-scene">
+          <!-- Background: Physical World -->
+          <div class="physical-world" style="background-image: url('mural.jpg');"></div>
+
+          <!-- AR Overlay -->
+          <div class="ar-interface">
+            <div class="vignette"></div>
+
+            <!-- Tracking Anchors -->
+            <div class="anchor anchor-tl"></div>
+            <div class="anchor anchor-tr"></div>
+            <div class="anchor anchor-bl"></div>
+            <div class="anchor anchor-br"></div>
+
+            <!-- Focus Reticle -->
+            <div class="focus-reticle"></div>
+
+            <!-- Glass Context Pane -->
+            <div class="lens-glass">
+              <div class="lens-header">
+                <div class="status-group">
+                  <span class="pulsing-dot green"></span>
+                  <span class="lens-status">ARTWORK IDENTIFIED</span>
+                </div>
+                <span class="lens-time">0:00 / 2:45</span>
+              </div>
+
+              <h3 class="lens-title">The Street Canvas</h3>
+              <p class="lens-artist">Anonymous, Contemporary</p>
+
+              <div class="lens-audio-player">
+                <button class="lens-play-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+                </button>
+                <div class="lens-waveform">
+                  <span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+
+              <p class="lens-context">This mural explores the chaotic logic of urban texture. The artist challenges the boundaries of public space through aggressive color blocking and staggered geometries.</p>
+
+              <div class="lens-footer">
+                <span class="ai-badge">✧ Context by Gemini AI</span>
+                <span class="audio-badge">▶ Neural Narration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       MARQUEE — Kinetic Text Band
+       ============================================ -->
+  <section class="marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-dot"></span>Visual Recognition</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>GPS Proximity</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>QR Scanning</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Audio Guides</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Multi-Museum</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>ADA Compliant</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>AI Descriptions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Contributor Network</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Visual Recognition</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>GPS Proximity</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>QR Scanning</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Audio Guides</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Multi-Museum</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>ADA Compliant</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>AI Descriptions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Contributor Network</span>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURES — Bento Grid
+       ============================================ -->
+  <section class="features container" id="features">
+    <div class="section-header">
+      <span class="section-label reveal">Capabilities</span>
+      <h2 class="section-title reveal">
+        A suite of technology that <br>elevates the experience of consuming and hosting visual art. 
+      </h2>
+      <p class="section-description reveal">
+        An innovative product utilizing the latest in AI and accesibility to increase discoverability  and comprehension of visual art all over the world. 
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- Card 1: Large — AI Visual Recognition -->
+      <div class="bento-card-shell large reveal">
+        <div class="bento-card">
+          <div class="bento-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title">Proprietary Visual Model</h3>
+          <p class="bento-card-text">
+            We've created a visual image model that is designed to work as well in the MOMA as it is on the street.
+          </p>
+          <div class="bento-feature-image">
+            <img src="images/feature.png" alt="Overhead view of a smartphone displaying Gestalt's AR art recognition interface alongside museum artifacts" width="600" height="260" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: GPS Proximity -->
+      <div class="bento-card-shell reveal">
+        <div class="bento-card">
+          <div class="bento-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title">GPS Proximity</h3>
+          <p class="bento-card-text">
+            Install the application and go about your day. As you explore Gestalt-enabled cities and insitituions, the world around you comes alive with a curated artistic experience. 
+          </p>
+          <div style="margin-top: auto; padding-top: 1.5rem;">
+            <span class="status-dot"></span>
+            <span style="font-size: 0.8125rem; font-weight: 600; color: var(--off-black);">Artwork Found 12m away!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: QR Scanning -->
+      <div class="bento-card-shell reveal">
+        <div class="bento-card">
+          <div class="bento-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75h-.75v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75H16.5v-.75z"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title">Graceful Fallbacks</h3>
+          <p class="bento-card-text">
+            For art with unique form, there are a series of fallbacks that can be implmented by institutions and artists to ensure coverage. QR Codes, Offline mode, and much more. 
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 4: Wide — Audio Guides -->
+      <div class="bento-card-shell wide reveal">
+        <div class="bento-card">
+          <div class="bento-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title">Automated Audio Guides</h3>
+          <p class="bento-card-text">
+            Our accessibility model writes rich, museum-quality descriptions from the artwork image alone. We then deliver them as natural speech — with haptic confirmation so blind and low-vision visitors never need to look at the screen.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 5: Multi-Venue -->
+      <div class="bento-card-shell reveal">
+        <div class="bento-card">
+          <div class="bento-card-icon micro-float">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title">Multi-Venue</h3>
+          <p class="bento-card-text">
+            Museums, galleries, public spaces, and street art all share one unified platform with separate location management, floor plans, and accessibility metadata.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 6: ADA Compliant -->
+      <div class="bento-card-shell reveal">
+        <div class="bento-card">
+          <div class="bento-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zM12 4.5v3m0 0l-3.75 7.5m3.75-7.5l3.75 7.5M6 19.5h12"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title">ADA Compliant</h3>
+          <p class="bento-card-text">
+            Built for the DOJ's 2024 digital accessibility mandate. Zero infrastructure cost per venue. Haptic feedback, audio-first design, and automatic compliance scoring help institutions meet enforceable timelines.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       HOW IT WORKS
+       ============================================ -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label reveal">Three Steps</span>
+        <h2 class="section-title reveal">
+          Point. Discover. Listen.
+        </h2>
+        <p class="section-description reveal">
+          No accounts, no downloads required for the web version. Just open the link and your camera does the rest.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-shell reveal">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3 class="step-title">Instal Gestalt</h3>
+            <p class="step-text">
+              Open Gestalt on your phone. The camera activates, CLIP loads on-device, and GPS begins tracking your position relative to nearby outdoor artworks. 
+            </p>
+          </div>
+        </div>
+
+        <div class="step-shell reveal">
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3 class="step-title">Discover the artwork</h3>
+            <p class="step-text">
+              Tap "Scan" and  our model matches your camera frame against our artwork index in under a second. It's magic. No QR code needed, no beacon, no staff intervention. Outdoors, simply walk closer and GPS handles it.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-shell reveal">
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3 class="step-title">Listen to the story</h3>
+            <p class="step-text">
+              The artwork info populates with the title, artist, year, and a dynamic visual description. Audio fires immediately with haptic confirmation — the experience works for blind visitors without ever looking at the screen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA — Download Section
+       ============================================ -->
+  <section class="cta-section" id="download">
+    <div class="container">
+      <div class="cta-content">
+        <span class="cta-eyebrow reveal">Available Now</span>
+
+        <h2 class="cta-title reveal">
+          Ready to see<br>what you've been<br>walking past?
+        </h2>
+
+        <p class="cta-description reveal">
+          Open the web app on any phone browser, or download the native iOS app for push notifications when you walk near outdoor artwork. For museums: Gestalt Institution Management provides ADA compliance scoring, audio description CMS, and visitor analytics in one portal.
+        </p>
+
+        <div class="cta-actions reveal">
+          <a href="#" class="btn-accent">
+            Open Web App
+            <span class="btn-icon">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4"/>
+              </svg>
+            </span>
+          </a>
+          <a href="#" class="btn-ghost">
+            Download for iOS
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="footer-brand" aria-label="Gestalt Home">
+            <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
+              <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
+              <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+              <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
+              <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827"/></g>
+            </svg>
+            Gestalt
+          </a>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="for-visitors.html">For Visitors</a></li>
+            <li><a href="for-institutions.html">For Institutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Gestalt. All rights reserved.</span>
+        <span>Built with CLIP, Gemini, and Firebase.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
