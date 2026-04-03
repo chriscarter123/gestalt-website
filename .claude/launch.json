@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gestalt-website",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "3002"],
+      "port": 3002,
+      "cwd": "/Users/christophercarter/Desktop/gestalt-website"
+    }
+  ]
+}
