@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Careers — Gestalt</title>
-  <meta name="description" content="Join our team at Gestalt and help us build the intelligence interface for the world's great collections.">
+  <title>API Reference — Gestalt</title>
+  <meta name="description" content="Authenticate, query artworks, stream audio descriptions, and manage venues programmatically with the Gestalt REST API.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M15 15 L15 3 A12 12 0 0 0 3 15 Z' fill='%231A1E24'/%3E%3Cpath d='M17 15 L29 15 A12 12 0 0 0 17 3 Z' fill='%2314B860'/%3E%3Cpath d='M17 17 L17 29 A12 12 0 0 0 29 17 Z' fill='%231A1E24'/%3E%3Cpath d='M15 17 L3 17 A12 12 0 0 0 15 29 Z' fill='%2314B860'/%3E%3C/svg%3E">
   <style>
-    /* Additional styles for internal pages */
     .internal-hero {
       padding: 12rem 0 6rem;
       text-align: center;
@@ -18,15 +17,15 @@
     .internal-hero .section-subtext {
       margin: 0 auto;
     }
-    .job-list {
+    .endpoint-list {
       display: flex;
       flex-direction: column;
-      gap: var(--space-3);
+      gap: var(--space-2);
     }
-    .job-card {
+    .endpoint-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: var(--space-4);
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -35,42 +34,64 @@
       padding: var(--space-4);
       transition: all var(--duration-base) var(--ease-spring);
     }
-    .job-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(17, 24, 39, 0.05);
-      border-color: rgba(20, 184, 96, 0.4);
+    .endpoint-row:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(17, 24, 39, 0.05);
+      border-color: rgba(20, 184, 96, 0.3);
     }
-    .job-info h3 {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
+    .method-badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-family: var(--font-mono, monospace);
+      letter-spacing: 0.04em;
+      min-width: 52px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .method-badge.get {
+      background: rgba(20, 184, 96, 0.12);
+      color: #0e9e55;
+      border: 1px solid rgba(20, 184, 96, 0.3);
+    }
+    .method-badge.post {
+      background: rgba(20, 184, 145, 0.1);
+      color: #0e9e8a;
+      border: 1px solid rgba(20, 184, 145, 0.3);
+    }
+    .endpoint-path {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.95rem;
       color: var(--off-black);
-      margin-bottom: 0.25rem;
+      font-weight: 500;
+      min-width: 260px;
+      flex-shrink: 0;
     }
-    .job-meta {
-      display: flex;
-      gap: var(--space-3);
+    .endpoint-desc {
       color: var(--charcoal);
       font-size: 0.9rem;
-    }
-    .job-meta span {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    .job-meta span::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--brand-green);
+      line-height: 1.5;
     }
     @media (max-width: 768px) {
-      .job-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-3);
+      .endpoint-row {
+        flex-wrap: wrap;
+        gap: var(--space-2);
       }
+      .endpoint-path {
+        min-width: unset;
+      }
+    }
+    .api-note {
+      margin-top: var(--space-8);
+      background: rgba(20, 184, 96, 0.05);
+      border: 1px solid rgba(20, 184, 96, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      color: var(--charcoal);
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -123,85 +144,53 @@
   <!-- HERO -->
   <section class="internal-hero">
     <div class="container reveal">
-      <span class="section-label">Careers</span>
-      <h1 class="section-heading">Build the <span class="accent">future</span> of museums.</h1>
+      <span class="section-label">Developers</span>
+      <h1 class="section-heading">The Gestalt <span class="accent">REST API</span>.</h1>
       <p class="section-subtext">
-        We're looking for passionate engineers, designers, and creatives who want to make art accessible, legible, and highly engaging for everyone. Join us.
+        Authenticate, query artworks, stream audio descriptions, and manage venues programmatically.
       </p>
     </div>
   </section>
 
-  <!-- CONTENT Section -->
+  <!-- CONTENT -->
   <section class="features-section" style="padding-top: 0; padding-bottom: var(--space-16);">
     <div class="container maxWidth-md">
-      <div class="job-list reveal-stagger">
-        
-        <div class="job-card">
-          <div class="job-info">
-            <h3>Machine Learning Engineer, Generative AI</h3>
-            <div class="job-meta">
-              <span>Philadelphia (Hybrid)</span>
-              <span>Full-time</span>
-            </div>
-          </div>
-          <a href="#" class="btn-ghost">Apply Now</a>
+      <div class="endpoint-list reveal-stagger">
+
+        <div class="endpoint-row">
+          <span class="method-badge get">GET</span>
+          <span class="endpoint-path">/artworks</span>
+          <span class="endpoint-desc">List all artworks associated with a venue, with optional filtering by collection or status.</span>
         </div>
 
-        <div class="job-card">
-          <div class="job-info">
-            <h3>Senior Frontend Developer (WebGL)</h3>
-            <div class="job-meta">
-              <span>Remote (US)</span>
-              <span>Full-time</span>
-            </div>
-          </div>
-          <a href="#" class="btn-ghost">Apply Now</a>
+        <div class="endpoint-row">
+          <span class="method-badge get">GET</span>
+          <span class="endpoint-path">/artworks/:id</span>
+          <span class="endpoint-desc">Retrieve full metadata, description text, and audio asset URLs for a single artwork.</span>
         </div>
 
-        <div class="job-card">
-          <div class="job-info">
-            <h3>AR/UX Interaction Designer</h3>
-            <div class="job-meta">
-              <span>Philadelphia (Hybrid)</span>
-              <span>Full-time</span>
-            </div>
-          </div>
-          <a href="#" class="btn-ghost">Apply Now</a>
+        <div class="endpoint-row">
+          <span class="method-badge post">POST</span>
+          <span class="endpoint-path">/descriptions/generate</span>
+          <span class="endpoint-desc">Submit an artwork image and receive a three-movement audio description generated by the Gestalt AI pipeline.</span>
         </div>
 
-        <div class="job-card">
-          <div class="job-info">
-            <h3>Museum Delivery & Integration Specialist</h3>
-            <div class="job-meta">
-              <span>Philadelphia (Hybrid)</span>
-              <span>Contract</span>
-            </div>
-          </div>
-          <a href="#" class="btn-ghost">Apply Now</a>
+        <div class="endpoint-row">
+          <span class="method-badge get">GET</span>
+          <span class="endpoint-path">/venues</span>
+          <span class="endpoint-desc">List all venues (museums, galleries, murals) accessible to the authenticated institution account.</span>
+        </div>
+
+        <div class="endpoint-row">
+          <span class="method-badge post">POST</span>
+          <span class="endpoint-path">/venues/:id/audio</span>
+          <span class="endpoint-desc">Upload or regenerate the audio description bundle for a specific venue, triggering CDN distribution.</span>
         </div>
 
       </div>
-    </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="cta-section" id="cta">
-    <div class="container">
-      <div class="cta-content reveal">
-        <span class="section-label">Don't see your role?</span>
-        <h2 class="section-heading">Reach out anyway.</h2>
-        <p class="section-subtext" style="margin-bottom: var(--space-6);">We are always looking for exceptional talent to join our mission. Send us your portfolio and how you can contribute.</p>
-        <div class="cta-actions">
-          <a href="contact.html" class="btn-primary">
-            Get in touch
-            <span class="btn-icon">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
-            </span>
-          </a>
-        </div>
+      <div class="api-note">
+        Full interactive API docs with authentication and live testing coming soon.
       </div>
     </div>
   </section>

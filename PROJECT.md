@@ -39,9 +39,20 @@ A static marketing website for Gestalt Technologies, Inc. — an AI-powered art 
 ```
 gestalt-website/
 ├── index.html           # Landing page — hero, visitor features, curator tools, CTA
-├── about.html           # Company mission, vision, team bios
+├── about.html           # Company mission, vision
 ├── careers.html         # Open positions (4 roles)
-├── contact.html         # Contact form + company info
+├── contact.html         # Contact form + company info (wired to contactForm CF)
+├── how-it-works.html    # Three-step explainer page
+├── for-visitors.html    # Visitor-facing features page
+├── for-institutions.html# Institutional/curator features page
+├── ar-engine.html       # AR Engine technical overview
+├── security.html        # Security & compliance page
+├── documentation.html   # Documentation hub (placeholder)
+├── api-reference.html   # API Reference (placeholder)
+├── case-studies.html    # Case Studies (placeholder)
+├── blog.html            # Blog (placeholder)
+├── privacy.html         # Privacy Policy
+├── terms.html           # Terms of Use
 ├── style.css            # Pentagon Art Direction design system
 ├── script.js            # Interactions: scroll reveal, hamburger, nav-scroll, bento mouse tracking
 ├── images/              # SVG icons, hero/feature PNGs
@@ -49,7 +60,7 @@ gestalt-website/
 ├── hero.png             # Hero visual asset
 ├── firebase.json        # Hosting config (public: dist/)
 ├── .firebaserc          # Firebase project: gestalt-17ce0
-└── dist/website/        # Production build output
+└── dist/                # Production build output
 ```
 
 ---
@@ -74,7 +85,34 @@ gestalt-website/
 
 ### `contact.html` — Contact Form
 - Two-column layout: contact info (email, address) + form (name, email, institution, message)
-- Client-side submission handler
+- Submits via `fetch` POST to `contactForm` Cloud Function (Nodemailer → Namecheap SMTP → hello@gestalt.gallery)
+- Inline loading, success, and error states — no page reload
+
+### `how-it-works.html` — How It Works
+- Three-step explainer: Point, Discover, Listen
+
+### `for-visitors.html` — For Visitors
+- Visitor-facing feature breakdown with CTA to download/web app
+
+### `for-institutions.html` — For Institutions
+- Museum/gallery-focused features: ADA compliance, curator tools, analytics, pricing
+
+### `ar-engine.html` — AR Engine
+- Technical overview of CLIP ViT-B/32, ONNX WASM, on-device recognition
+
+### `security.html` — Security
+- Security and compliance details for institutional partners
+
+### `privacy.html` — Privacy Policy
+- Full privacy policy (Gestalt Technologies, subsidiary of Omi Labs, LLC)
+- Effective April 7, 2026
+
+### `terms.html` — Terms of Use
+- Full terms of use, governing law: Commonwealth of Pennsylvania
+- Effective April 7, 2026
+
+### Placeholder Pages
+- `documentation.html`, `api-reference.html`, `case-studies.html`, `blog.html` — styled shells, content TBD
 
 ---
 
@@ -112,14 +150,31 @@ gestalt-website/
 
 ---
 
+## Contact Form — Backend
+
+The contact form POSTs to a Firebase Cloud Function:
+
+| | |
+|---|---|
+| **Function** | `contactForm` (us-central1) |
+| **Repo** | `museum-ar-app/functions/src/contactForm.js` |
+| **Transport** | Nodemailer → Namecheap Private Email SMTP (`mail.privateemail.com:587`) |
+| **Secrets** | `SMTP_USER`, `SMTP_PASSWORD` (Firebase Secret Manager) |
+| **Destination** | `hello@gestalt.gallery` |
+
+---
+
 ## Deployment
 
-Part of the unified Firebase Hosting setup at `gestalt-17ce0.web.app`. The website serves at the root (`/`). See `gestalt/Property_Structure.md` for the full routing map.
+Deployed independently from `gestalt-website/` directory directly to Firebase Hosting root (`/`).
 
-To deploy (from the `museum-ar-app` repo):
 ```bash
-bash deploy.sh && firebase deploy --only hosting
+cd gestalt-website
+firebase deploy --only hosting
 ```
+
+Custom domain: **gestalt.gallery** (may have CDN propagation delay of a few hours after deploy).
+Instant preview always available at: **gestalt-17ce0.web.app**
 
 ---
 
@@ -141,3 +196,12 @@ bash deploy.sh && firebase deploy --only hosting
 - Bento cards: glassmorphic with gold hover glow + mouse tracking
 - Updated deploy.sh path from `Gestalt Website` to `gestalt-website`, added mural.jpg + images/ copy
 - Deployed to gestalt-17ce0.web.app
+
+### Session 4 — 2026-04-07
+- Built 6 new pages: `documentation.html`, `api-reference.html`, `case-studies.html`, `blog.html`, `ar-engine.html`, `security.html`
+- Built `privacy.html` (Privacy Policy) and `terms.html` (Terms of Use) for Gestalt Technologies / Omi Labs, LLC
+- Updated all page footers: added Platform (AR Engine, Security), Resources (Documentation, API Reference, Case Studies, Blog), and Company (About, Careers, Contact) link columns
+- Added Privacy · Terms links to footer-bottom on every page
+- Standardised nav across all pages: How It Works · For Visitors · For Institutions · Schedule Demo (→ contact.html)
+- Wired contact form to `contactForm` Firebase Cloud Function using Nodemailer + Namecheap Private Email SMTP
+- "Get the App" / "Request Demo" CTA replaced with "Schedule Demo" (→ contact.html) site-wide

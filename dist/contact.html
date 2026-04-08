@@ -149,11 +149,12 @@
         Gestalt
       </a>
       <ul class="nav-links">
-        <li><a href="index.html#visitor">Visitor Experience</a></li>
-        <li><a href="index.html#curator">Curator Tools</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="for-visitors.html">For Visitors</a></li>
+        <li><a href="for-institutions.html">For Institutions</a></li>
       </ul>
-      <a href="index.html#cta" class="btn-primary desktop-only">
-        Request Demo
+      <a href="contact.html" class="btn-primary desktop-only">
+        Schedule Demo
         <span class="btn-icon">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
@@ -168,9 +169,10 @@
   </div>
 
   <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html#visitor">Visitor Experience</a>
-    <a href="index.html#curator">Curator Tools</a>
-    <a href="index.html#cta">Request Demo</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="for-visitors.html">For Visitors</a>
+    <a href="for-institutions.html">For Institutions</a>
+    <a href="contact.html">Schedule Demo</a>
   </div>
 
   <!-- CONTACT LAYOUT -->
@@ -185,47 +187,41 @@
         
         <div class="contact-methods">
           <div class="contact-method">
-            <h4>General Inquiries</h4>
-            <p><a href="mailto:hello@gestalt-ar.com">hello@gestalt-ar.com</a></p>
-          </div>
-          <div class="contact-method">
-            <h4>Sales & Demos</h4>
-            <p><a href="mailto:partners@gestalt-ar.com">partners@gestalt-ar.com</a></p>
-          </div>
-          <div class="contact-method">
-            <h4>Headquarters</h4>
-            <p>1200 Market Street<br>Suite 400<br>San Francisco, CA 94102</p>
+            <h4>Get in Touch</h4>
+            <p><a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a></p>
           </div>
         </div>
       </div>
 
       <!-- Right: Form -->
       <div class="contact-form-card">
-        <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! We will be in touch shortly.');">
-          
+        <form id="contact-form">
+
           <div class="form-group">
             <label for="name">Full Name</label>
-            <input type="text" id="name" class="form-control" placeholder="Jane Doe" required>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Jane Doe" required>
           </div>
 
           <div class="form-group">
             <label for="email">Work Email</label>
-            <input type="email" id="email" class="form-control" placeholder="jane@museum.org" required>
+            <input type="email" id="email" name="email" class="form-control" placeholder="jane@museum.org" required>
           </div>
 
           <div class="form-group">
             <label for="institution">Institution (Optional)</label>
-            <input type="text" id="institution" class="form-control" placeholder="The National Gallery">
+            <input type="text" id="institution" name="institution" class="form-control" placeholder="The National Gallery">
           </div>
 
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" class="form-control" placeholder="How can Gestalt help you?" required></textarea>
+            <textarea id="message" name="message" class="form-control" placeholder="How can Gestalt help you?" required></textarea>
           </div>
 
-          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">
-            Submit Request
-            <span class="btn-icon">
+          <div id="form-error" style="display:none; margin-bottom: 1rem; padding: 0.75rem 1rem; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25); border-radius: var(--radius-md); color: #dc2626; font-size: 0.9rem;"></div>
+
+          <button type="submit" id="form-submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">
+            <span id="submit-label">Submit Request</span>
+            <span class="btn-icon" id="submit-icon">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 8h10M9 4l4 4-4 4" />
               </svg>
@@ -233,6 +229,15 @@
           </button>
 
         </form>
+
+        <!-- Success state -->
+        <div id="form-success" style="display:none; text-align:center; padding: var(--space-6) 0;">
+          <div style="width:56px;height:56px;background:rgba(20,184,96,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-3);">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#14B860" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 style="font-family:var(--font-serif);font-size:1.75rem;color:var(--off-black);margin-bottom:0.5rem;">Message sent.</h3>
+          <p style="color:var(--charcoal);font-size:1rem;max-width:30ch;margin:0 auto;">We'll be in touch within one business day.</p>
+        </div>
       </div>
 
     </div>
@@ -256,19 +261,20 @@
         <div class="footer-col">
           <h4>Platform</h4>
           <ul>
-            <li><a href="index.html#visitor">Visitor Experience</a></li>
-            <li><a href="index.html#curator">Curator Tools</a></li>
-            <li><a href="#">AR Engine</a></li>
-            <li><a href="#">Security</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="for-visitors.html">For Visitors</a></li>
+        <li><a href="for-institutions.html">For Institutions</a></li>
+            <li><a href="ar-engine.html">AR Engine</a></li>
+            <li><a href="security.html">Security</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Resources</h4>
           <ul>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">API Reference</a></li>
-            <li><a href="#">Case Studies</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="api-reference.html">API Reference</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="blog.html">Blog</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -283,11 +289,77 @@
       <div class="footer-bottom">
         <span>&copy; 2026 Gestalt Technologies, Inc.</span>
         <span>Built with CLIP, Gemini, and Firebase.</span>
+        <div style="display:flex; gap: var(--space-4);">
+          <a href="privacy.html" style="color: var(--charcoal);">Privacy</a>
+          <a href="terms.html" style="color: var(--charcoal);">Terms</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    (function () {
+      var CF_URL = 'https://us-central1-gestalt-17ce0.cloudfunctions.net/contactForm';
+
+      var form       = document.getElementById('contact-form');
+      var submitBtn  = document.getElementById('form-submit');
+      var submitLbl  = document.getElementById('submit-label');
+      var submitIcon = document.getElementById('submit-icon');
+      var errorBox   = document.getElementById('form-error');
+      var successBox = document.getElementById('form-success');
+
+      function setLoading(on) {
+        submitBtn.disabled = on;
+        submitLbl.textContent = on ? 'Sending…' : 'Submit Request';
+        submitIcon.style.opacity = on ? '0' : '1';
+      }
+
+      function showError(msg) {
+        errorBox.textContent = msg;
+        errorBox.style.display = 'block';
+      }
+
+      function hideError() {
+        errorBox.style.display = 'none';
+        errorBox.textContent = '';
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        hideError();
+
+        var payload = {
+          name:        document.getElementById('name').value.trim(),
+          email:       document.getElementById('email').value.trim(),
+          institution: document.getElementById('institution').value.trim(),
+          message:     document.getElementById('message').value.trim(),
+        };
+
+        setLoading(true);
+
+        fetch(CF_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data.success) {
+              form.style.display = 'none';
+              successBox.style.display = 'block';
+            } else {
+              showError(data.error || 'Something went wrong. Please try again.');
+              setLoading(false);
+            }
+          })
+          .catch(function () {
+            showError('Network error. Please check your connection and try again.');
+            setLoading(false);
+          });
+      });
+    })();
+  </script>
 </body>
 
 </html>
