@@ -676,14 +676,17 @@ body.loaded .hero-visual {
 .lens-waveform {
   display: flex;
   align-items: center;
-  gap: 3px;
+  justify-content: space-between;
+  gap: 6px;
   height: 24px;
   flex: 1;
   min-width: 0;
 }
 
 .lens-waveform span {
-  width: 2px;
+  flex: 1 1 0;
+  min-width: 2px;
+  max-width: 4px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 2px;
   animation: none;
