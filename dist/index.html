@@ -128,16 +128,22 @@
               <h3 class="lens-title">The Street Canvas</h3>
               <p class="lens-artist">Anonymous, Contemporary</p>
 
-              <div class="lens-audio-player">
-                <button class="lens-play-btn">
+              <div class="lens-audio-player" data-hero-audio-player>
+                <button class="lens-play-btn" type="button" data-audio-toggle aria-label="Play audio description">
                   <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
                 </button>
-                <div class="lens-waveform">
+                <div class="lens-waveform" aria-hidden="true">
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                 </div>
+                <button class="lens-stop-btn" type="button" data-audio-stop aria-label="Stop audio description">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>
+                </button>
+                <audio preload="metadata" data-hero-audio>
+                  <source src="audio/hero-visual-description.mp3" type="audio/mpeg">
+                </audio>
               </div>
 
               <p class="lens-context">This mural explores the chaotic logic of urban texture. The artist challenges the boundaries of public space through aggressive color blocking and staggered geometries.</p>
