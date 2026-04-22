@@ -4,21 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schedule a Museum Accessibility Demo | Gestalt</title>
-  <meta name="description" content="Talk with Gestalt about museum ADA compliance, accessibility audits, AI audio descriptions, and pilot programs for cultural institutions.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://gestalt.gallery/contact.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Schedule a Museum Accessibility Demo | Gestalt">
-  <meta property="og:description" content="Talk with Gestalt about museum ADA compliance, accessibility audits, AI audio descriptions, and pilot programs for cultural institutions.">
-  <meta property="og:url" content="https://gestalt.gallery/contact.html">
-  <meta property="og:site_name" content="Gestalt">
-  <meta property="og:image" content="https://gestalt.gallery/images/hero.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Schedule a Museum Accessibility Demo | Gestalt">
-  <meta name="twitter:description" content="Talk with Gestalt about museum ADA compliance, accessibility audits, AI audio descriptions, and pilot programs for cultural institutions.">
-  <meta name="twitter:image" content="https://gestalt.gallery/images/hero.png">
+  <title>Contact — Gestalt</title>
+  <meta name="description" content="Get in touch with the Gestalt team for demos, press inquiries, and support.">
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal,.reveal-stagger > *{opacity:1 !important;transform:none !important;}</style></noscript>
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M15 15 L15 3 A12 12 0 0 0 3 15 Z' fill='%231A1E24'/%3E%3Cpath d='M17 15 L29 15 A12 12 0 0 0 17 3 Z' fill='%2314B860'/%3E%3Cpath d='M17 17 L17 29 A12 12 0 0 0 29 17 Z' fill='%231A1E24'/%3E%3Cpath d='M15 17 L3 17 A12 12 0 0 0 15 29 Z' fill='%2314B860'/%3E%3C/svg%3E">
   <style>
@@ -110,7 +99,7 @@
       width: 100%;
       padding: 0.8rem 1rem;
       border-radius: var(--radius-md);
-      border: 1px solid var(--warm-grey);
+      border: 1px solid var(--dark-grey);
       background: rgba(255, 255, 255, 0.5);
       font-family: var(--font-family);
       font-size: 1rem;
@@ -118,10 +107,27 @@
     }
 
     .form-control:focus {
-      outline: none;
-      border-color: var(--brand-green);
-      box-shadow: 0 0 0 3px rgba(20, 184, 96, 0.15);
+      outline: 2px solid var(--brand-green-text);
+      outline-offset: 1px;
+      border-color: var(--brand-green-text);
+      box-shadow: 0 0 0 4px rgba(14, 138, 71, 0.2);
       background: #fff;
+    }
+
+    .form-hint {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--dark-grey);
+      margin-top: 0.35rem;
+      text-transform: none;
+      letter-spacing: normal;
+      font-weight: 400;
+    }
+
+    .required-star {
+      color: #B91C1C;
+      font-weight: 700;
+      margin-left: 2px;
     }
 
     textarea.form-control {
@@ -143,6 +149,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Background Ambience & Grid -->
   <div class="ambient-glow" aria-hidden="true"></div>
@@ -174,18 +181,19 @@
           </svg>
         </span>
       </a>
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </nav>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Main navigation" aria-hidden="true">
     <a href="how-it-works.html">How It Works</a>
     <a href="for-visitors.html">For Visitors</a>
     <a href="for-institutions.html">For Institutions</a>
     <a href="contact.html">Schedule a Demo</a>
   </div>
+  <main id="main" tabindex="-1">
 
   <!-- CONTACT LAYOUT -->
   <section class="container">
@@ -199,12 +207,8 @@
         
         <div class="contact-methods">
           <div class="contact-method">
-            <h4>General Inquiries</h4>
+            <h4>Get in Touch</h4>
             <p><a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a></p>
-          </div>
-          <div class="contact-method">
-            <h4>Sales & Demos</h4>
-            <p><a href="mailto:partners@gestalt-ar.com">partners@gestalt-ar.com</a></p>
           </div>
           <div class="contact-method">
             <h4>Headquarters</h4>
@@ -215,31 +219,48 @@
 
       <!-- Right: Form -->
       <div class="contact-form-card">
-        <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! We will be in touch shortly.');">
-          
+        <p style="font-size:0.85rem;color:var(--dark-grey);margin-bottom:var(--space-3);">Fields marked with <span class="required-star" aria-hidden="true">*</span> are required.</p>
+
+        <form id="contact-form" novalidate>
+
           <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" class="form-control" placeholder="Jane Doe" required>
+            <label for="name">Full Name<span class="required-star" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" class="form-control"
+                   autocomplete="name" required aria-required="true"
+                   aria-describedby="name-hint">
+            <span id="name-hint" class="form-hint">For example: Jane Doe</span>
           </div>
 
           <div class="form-group">
-            <label for="email">Work Email</label>
-            <input type="email" id="email" class="form-control" placeholder="jane@museum.org" required>
+            <label for="email">Work Email<span class="required-star" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" class="form-control"
+                   autocomplete="email" required aria-required="true"
+                   aria-describedby="email-hint">
+            <span id="email-hint" class="form-hint">For example: jane@museum.org</span>
           </div>
 
           <div class="form-group">
-            <label for="institution">Institution (Optional)</label>
-            <input type="text" id="institution" class="form-control" placeholder="The National Gallery">
+            <label for="institution">Institution <span style="font-weight:400;text-transform:none;letter-spacing:normal;color:var(--dark-grey);">(optional)</span></label>
+            <input type="text" id="institution" name="institution" class="form-control"
+                   autocomplete="organization"
+                   aria-describedby="institution-hint">
+            <span id="institution-hint" class="form-hint">For example: The National Gallery</span>
           </div>
 
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" class="form-control" placeholder="How can Gestalt help you?" required></textarea>
+            <label for="message">Message<span class="required-star" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" class="form-control"
+                      autocomplete="off" required aria-required="true"
+                      aria-describedby="message-hint"></textarea>
+            <span id="message-hint" class="form-hint">Tell us how Gestalt can help you.</span>
           </div>
 
-          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">
-            Submit Request
-            <span class="btn-icon">
+          <div id="form-error" role="alert" aria-live="assertive"
+               style="display:none; margin-bottom: 1rem; padding: 0.75rem 1rem; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.5); border-radius: var(--radius-md); color: #B91C1C; font-size: 0.9rem; font-weight: 500;"></div>
+
+          <button type="submit" id="form-submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">
+            <span id="submit-label">Submit Request</span>
+            <span class="btn-icon" id="submit-icon" aria-hidden="true">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 8h10M9 4l4 4-4 4" />
               </svg>
@@ -247,12 +268,23 @@
           </button>
 
         </form>
+
+        <!-- Success state -->
+        <div id="form-success" role="status" aria-live="polite" tabindex="-1"
+             style="display:none; text-align:center; padding: var(--space-6) 0; outline: none;">
+          <div aria-hidden="true" style="width:56px;height:56px;background:rgba(14,138,71,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-3);">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#0E8A47" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2 style="font-family:var(--font-serif);font-size:1.75rem;color:var(--off-black);margin-bottom:0.5rem;">Message sent.</h2>
+          <p style="color:var(--charcoal);font-size:1rem;max-width:30ch;margin:0 auto;">We'll be in touch within one business day.</p>
+        </div>
       </div>
 
     </div>
   </section>
 
   <!-- FOOTER -->
+  </main>
   <footer class="footer" style="margin-top: var(--space-8);">
     <div class="container">
       <div class="footer-grid">
@@ -301,6 +333,74 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    (function () {
+      var CF_URL = 'https://us-central1-gestalt-17ce0.cloudfunctions.net/contactForm';
+
+      var form       = document.getElementById('contact-form');
+      var submitBtn  = document.getElementById('form-submit');
+      var submitLbl  = document.getElementById('submit-label');
+      var submitIcon = document.getElementById('submit-icon');
+      var errorBox   = document.getElementById('form-error');
+      var successBox = document.getElementById('form-success');
+
+      function setLoading(on) {
+        submitBtn.disabled = on;
+        submitBtn.setAttribute('aria-busy', on ? 'true' : 'false');
+        submitLbl.textContent = on ? 'Sending…' : 'Submit Request';
+        submitIcon.style.opacity = on ? '0' : '1';
+      }
+
+      function showError(msg) {
+        errorBox.textContent = msg;
+        errorBox.style.display = 'block';
+      }
+
+      function hideError() {
+        errorBox.style.display = 'none';
+        errorBox.textContent = '';
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        hideError();
+
+        var payload = {
+          name:        document.getElementById('name').value.trim(),
+          email:       document.getElementById('email').value.trim(),
+          institution: document.getElementById('institution').value.trim(),
+          message:     document.getElementById('message').value.trim(),
+        };
+
+        setLoading(true);
+
+        fetch(CF_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data.success) {
+              form.style.display = 'none';
+              successBox.style.display = 'block';
+              // Move focus so screen readers announce the success heading
+              successBox.focus();
+            } else {
+              showError(data.error || 'Something went wrong. Please try again.');
+              setLoading(false);
+              // Return focus to the error so it's announced and actionable
+              errorBox.setAttribute('tabindex', '-1');
+              errorBox.focus();
+            }
+          })
+          .catch(function () {
+            showError('Network error. Please check your connection and try again.');
+            setLoading(false);
+          });
+      });
+    })();
+  </script>
 </body>
 
 </html>

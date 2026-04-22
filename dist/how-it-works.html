@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&family=Newsreader:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal,.reveal-stagger > *{opacity:1 !important;transform:none !important;}</style></noscript>
   <style>
     :root {
       --gestalt-gold: #D4AF37;
@@ -215,6 +216,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="grid-pattern" aria-hidden="true"></div>
@@ -236,7 +238,6 @@
         <li><a href="how-it-works.html" aria-current="page">How It Works</a></li>
         <li><a href="for-visitors.html">For Visitors</a></li>
         <li><a href="for-institutions.html">For Institutions</a></li>
-        <li><a href="for-institutions.html">For Institutions</a></li>
       </ul>
 
       <a href="contact.html" class="btn-primary desktop-only">
@@ -248,20 +249,20 @@
         </span>
       </a>
 
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </nav>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Main navigation" aria-hidden="true">
     <a href="how-it-works.html">How It Works</a>
     <a href="for-visitors.html">For Visitors</a>
     <a href="for-institutions.html">For Institutions</a>
     <a href="contact.html">Schedule a Demo</a>
   </div>
 
-  <main>
+  <main id="main" tabindex="-1">
     <section class="page-hero">
       <div class="eyebrow">The Technology</div>
       <h1>Point. <em>Recognize.</em> Listen.</h1>

@@ -4,21 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accessibility Technology Careers | Gestalt</title>
-  <meta name="description" content="Join Gestalt and help build ADA compliance software, AI audio description tools, and accessible museum technology for cultural institutions.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://gestalt.gallery/careers.html">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Accessibility Technology Careers | Gestalt">
-  <meta property="og:description" content="Join Gestalt and help build ADA compliance software, AI audio description tools, and accessible museum technology for cultural institutions.">
-  <meta property="og:url" content="https://gestalt.gallery/careers.html">
-  <meta property="og:site_name" content="Gestalt">
-  <meta property="og:image" content="https://gestalt.gallery/images/hero.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Accessibility Technology Careers | Gestalt">
-  <meta name="twitter:description" content="Join Gestalt and help build ADA compliance software, AI audio description tools, and accessible museum technology for cultural institutions.">
-  <meta name="twitter:image" content="https://gestalt.gallery/images/hero.png">
+  <title>Careers — Gestalt</title>
+  <meta name="description" content="Join our team at Gestalt and help us build the intelligence interface for the world's great collections.">
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal,.reveal-stagger > *{opacity:1 !important;transform:none !important;}</style></noscript>
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M15 15 L15 3 A12 12 0 0 0 3 15 Z' fill='%231A1E24'/%3E%3Cpath d='M17 15 L29 15 A12 12 0 0 0 17 3 Z' fill='%2314B860'/%3E%3Cpath d='M17 17 L17 29 A12 12 0 0 0 29 17 Z' fill='%231A1E24'/%3E%3Cpath d='M15 17 L3 17 A12 12 0 0 0 15 29 Z' fill='%2314B860'/%3E%3C/svg%3E">
   <style>
@@ -88,6 +77,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Background Ambience & Grid -->
   <div class="ambient-glow" aria-hidden="true"></div>
@@ -119,18 +109,19 @@
           </svg>
         </span>
       </a>
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </nav>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Main navigation" aria-hidden="true">
     <a href="how-it-works.html">How It Works</a>
     <a href="for-visitors.html">For Visitors</a>
     <a href="for-institutions.html">For Institutions</a>
     <a href="contact.html">Schedule a Demo</a>
   </div>
+  <main id="main" tabindex="-1">
 
   <!-- HERO -->
   <section class="internal-hero">
@@ -156,7 +147,7 @@
               <span>Full-time</span>
             </div>
           </div>
-          <a href="#" class="btn-ghost">Apply Now</a>
+          <a href="contact.html?subject=Application" class="btn-ghost">Apply Now</a>
         </div>
 
         <div class="job-card">
@@ -167,7 +158,7 @@
               <span>Full-time</span>
             </div>
           </div>
-          <a href="#" class="btn-ghost">Apply Now</a>
+          <a href="contact.html?subject=Application" class="btn-ghost">Apply Now</a>
         </div>
 
         <div class="job-card">
@@ -178,7 +169,7 @@
               <span>Full-time</span>
             </div>
           </div>
-          <a href="#" class="btn-ghost">Apply Now</a>
+          <a href="contact.html?subject=Application" class="btn-ghost">Apply Now</a>
         </div>
 
         <div class="job-card">
@@ -189,7 +180,7 @@
               <span>Contract</span>
             </div>
           </div>
-          <a href="#" class="btn-ghost">Apply Now</a>
+          <a href="contact.html?subject=Application" class="btn-ghost">Apply Now</a>
         </div>
 
       </div>
@@ -219,6 +210,7 @@
   </section>
 
   <!-- FOOTER -->
+  </main>
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">

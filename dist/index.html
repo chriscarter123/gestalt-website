@@ -10,8 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal,.reveal-stagger > *{opacity:1 !important;transform:none !important;}</style></noscript>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Background Ambience & Grid -->
   <div class="ambient-glow" aria-hidden="true"></div>
@@ -22,7 +24,7 @@
        ============================================ -->
   <div class="nav-wrapper">
     <nav class="nav" id="navbar">
-      <a href="#" class="nav-brand" aria-label="Gestalt Home">
+      <a href="index.html" class="nav-brand" aria-label="Gestalt Home">
         <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true">
           <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827"/>
           <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860"/></g>
@@ -47,19 +49,20 @@
         </span>
       </a>
 
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </nav>
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Main navigation" aria-hidden="true">
     <a href="how-it-works.html">How It Works</a>
     <a href="for-visitors.html">For Visitors</a>
     <a href="for-institutions.html">For Institutions</a>
     <a href="contact.html">Schedule a Demo</a>
   </div>
+  <main id="main" tabindex="-1">
 
   <!-- ============================================
        HERO — The Gestalt Lens AR Scene
@@ -97,13 +100,13 @@
         </div>
       </div>
 
-      <div class="hero-visual">
+      <div class="hero-visual" role="figure" aria-label="Gestalt Lens demo: recognising the artwork 'Persistence' by Jason Andrew Turner with AI-generated audio description">
         <div class="gestalt-lens-scene">
           <!-- Background: Physical World -->
-          <div class="physical-world" style="background-image: url('mural.jpg');"></div>
+          <div class="physical-world" style="background-image: url('mural.jpg');" aria-hidden="true"></div>
 
-          <!-- AR Overlay -->
-          <div class="ar-interface">
+          <!-- AR Overlay — everything visual here is decorative chrome for the demo -->
+          <div class="ar-interface" aria-hidden="true">
             <div class="vignette"></div>
 
             <!-- Tracking Anchors -->
@@ -115,7 +118,7 @@
             <!-- Focus Reticle -->
             <div class="focus-reticle"></div>
 
-            <!-- Glass Context Pane -->
+            <!-- Glass Context Pane (decorative; real interactive audio player follows) -->
             <div class="lens-glass">
               <div class="lens-header">
                 <div class="status-group">
@@ -125,25 +128,22 @@
                 <span class="lens-time">0:00 / 2:45</span>
               </div>
 
-              <h3 class="lens-title">Persistance</h3>
+              <p class="lens-title">Persistence</p>
               <p class="lens-artist">Jason Andrew Turner, Contemporary</p>
 
-              <div class="lens-audio-player" data-hero-audio-player>
-                <button class="lens-play-btn" type="button" data-audio-toggle aria-label="Play audio description">
+              <div class="lens-audio-player-visual">
+                <span class="lens-play-btn-visual">
                   <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-                </button>
-                <div class="lens-waveform" aria-hidden="true">
+                </span>
+                <div class="lens-waveform">
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                 </div>
-                <button class="lens-stop-btn" type="button" data-audio-stop aria-label="Stop audio description">
+                <span class="lens-stop-btn-visual">
                   <svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>
-                </button>
-                <audio preload="metadata" data-hero-audio>
-                  <source src="audio/hero-visual-description.mp3" type="audio/mpeg">
-                </audio>
+                </span>
               </div>
 
               <p class="lens-context">You're standing before a towering blue wall that pulses with electric intensity against the sky.</p>
@@ -153,6 +153,31 @@
                 <span class="audio-badge">▶ Neural Narration</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Real, keyboard-accessible audio player rendered outside the decorative scene -->
+        <div class="hero-audio-controls" data-hero-audio-player>
+          <p class="hero-audio-label">Hear a sample Gestalt narration</p>
+          <div class="hero-audio-row">
+            <button class="lens-play-btn" type="button" data-audio-toggle aria-label="Play sample audio description">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <button class="lens-stop-btn" type="button" data-audio-stop aria-label="Stop audio description">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>
+            </button>
+            <span class="lens-time" aria-live="off">0:00 / 2:45</span>
+            <button class="hero-transcript-toggle" type="button"
+                    aria-expanded="false" aria-controls="hero-audio-transcript">
+              Read transcript
+            </button>
+          </div>
+          <audio preload="metadata" data-hero-audio>
+            <source src="audio/hero-visual-description.mp3" type="audio/mpeg">
+          </audio>
+          <span class="audio-badge" aria-hidden="true">▶ Neural Narration</span>
+          <div id="hero-audio-transcript" class="hero-audio-transcript" hidden>
+            <p>You're standing before a towering blue wall that pulses with electric intensity against the sky. The paint is laid on in heavy vertical strokes, so thick it catches the afternoon light like plates of armor. Closer in, the blue fractures into a dozen shades — cobalt, ultramarine, the deep slate of a winter bay — each one bleeding into the next where the artist dragged a wide brush across the still-wet surface. Along the lower third, a band of rust-orange breaks through, as if the wall underneath were remembering an older colour it used to wear. The mural is titled <em>Persistence</em>, painted by contemporary artist Jason Andrew Turner.</p>
           </div>
         </div>
       </div>
@@ -382,6 +407,7 @@
   <!-- ============================================
        FOOTER
        ============================================ -->
+  </main>
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">

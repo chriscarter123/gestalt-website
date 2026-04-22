@@ -7,6 +7,7 @@
   <title>Terms of Use — Gestalt</title>
   <meta name="description" content="Terms of Use for Gestalt's augmented reality and accessibility services.">
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal,.reveal-stagger > *{opacity:1 !important;transform:none !important;}</style></noscript>
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M15 15 L15 3 A12 12 0 0 0 3 15 Z' fill='%231A1E24'/%3E%3Cpath d='M17 15 L29 15 A12 12 0 0 0 17 3 Z' fill='%2314B860'/%3E%3Cpath d='M17 17 L17 29 A12 12 0 0 0 29 17 Z' fill='%231A1E24'/%3E%3Cpath d='M15 17 L3 17 A12 12 0 0 0 15 29 Z' fill='%2314B860'/%3E%3C/svg%3E">
   <style>
@@ -90,6 +91,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Background Ambience & Grid -->
   <div class="ambient-glow" aria-hidden="true"></div>
@@ -121,18 +123,19 @@
           </svg>
         </span>
       </a>
-      <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </nav>
   </div>
 
-  <div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Main navigation" aria-hidden="true">
     <a href="how-it-works.html">How It Works</a>
     <a href="for-visitors.html">For Visitors</a>
     <a href="for-institutions.html">For Institutions</a>
     <a href="contact.html">Schedule a Demo</a>
   </div>
+  <main id="main" tabindex="-1">
 
   <!-- HERO -->
   <section class="internal-hero">
@@ -236,6 +239,7 @@
   </section>
 
   <!-- FOOTER -->
+  </main>
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
