@@ -3,9 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestalt — AI-Powered Art Discovery</title>
-  <meta name="description" content="Gestalt uses AI visual recognition, GPS proximity, and QR scanning to transform how you experience art in museums and city streets.">
+  <title>ADA Compliance Software for Museums | Gestalt</title>
+  <meta name="description" content="Gestalt helps museums meet ADA accessibility requirements with AI audio descriptions, compliance scoring, audit logs, and accessible visitor delivery.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gestalt.gallery/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ADA Compliance Software for Museums | Gestalt">
+  <meta property="og:description" content="Gestalt helps museums meet ADA accessibility requirements with AI audio descriptions, compliance scoring, audit logs, and accessible visitor delivery.">
+  <meta property="og:url" content="https://gestalt.gallery/">
+  <meta property="og:site_name" content="Gestalt">
+  <meta property="og:image" content="https://gestalt.gallery/images/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ADA Compliance Software for Museums | Gestalt">
+  <meta name="twitter:description" content="Gestalt helps museums meet ADA accessibility requirements with AI audio descriptions, compliance scoring, audit logs, and accessible visitor delivery.">
+  <meta name="twitter:image" content="https://gestalt.gallery/images/hero.png">
   <link rel="icon" type="image/svg+xml" href="images/gestalt-icon.svg">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Gestalt",
+          "url": "https://gestalt.gallery/",
+          "logo": "https://gestalt.gallery/images/gestalt-logo.svg",
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "email": "hello@gestalt.gallery",
+              "url": "https://gestalt.gallery/contact.html"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "Gestalt",
+          "url": "https://gestalt.gallery/"
+        }
+      ]
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -39,7 +77,7 @@
       </ul>
 
       <a href="contact.html" class="btn-primary desktop-only">
-        Schedule Demo
+        Schedule a Demo
         <span class="btn-icon">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 12L12 4M12 4H6M12 4v6"/>
@@ -58,7 +96,7 @@
     <a href="how-it-works.html">How It Works</a>
     <a href="for-visitors.html">For Visitors</a>
     <a href="for-institutions.html">For Institutions</a>
-    <a href="contact.html">Schedule Demo</a>
+    <a href="contact.html">Schedule a Demo</a>
   </div>
 
   <!-- ============================================
@@ -84,7 +122,7 @@
 
         <div class="hero-actions reveal">
           <a href="contact.html" class="btn-primary">
-            Explore the Platform
+            Schedule a Demo
             <span class="btn-icon">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -125,25 +163,31 @@
                 <span class="lens-time">0:00 / 2:45</span>
               </div>
 
-              <h3 class="lens-title">The Street Canvas</h3>
-              <p class="lens-artist">Anonymous, Contemporary</p>
+              <h3 class="lens-title">Persistance</h3>
+              <p class="lens-artist">Jason Andrew Turner, Contemporary</p>
 
-              <div class="lens-audio-player">
-                <button class="lens-play-btn">
+              <div class="lens-audio-player" data-hero-audio-player>
+                <button class="lens-play-btn" type="button" data-audio-toggle aria-label="Play audio description">
                   <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
                 </button>
-                <div class="lens-waveform">
+                <div class="lens-waveform" aria-hidden="true">
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                   <span></span><span></span><span></span><span></span>
                 </div>
+                <button class="lens-stop-btn" type="button" data-audio-stop aria-label="Stop audio description">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="7" width="10" height="10" rx="1.5"/></svg>
+                </button>
+                <audio preload="metadata" data-hero-audio>
+                  <source src="audio/hero-visual-description.mp3" type="audio/mpeg">
+                </audio>
               </div>
 
-              <p class="lens-context">This mural explores the chaotic logic of urban texture. The artist challenges the boundaries of public space through aggressive color blocking and staggered geometries.</p>
+              <p class="lens-context">You're standing before a towering blue wall that pulses with electric intensity against the sky.</p>
 
               <div class="lens-footer">
-                <span class="ai-badge">✧ Context by Gemini AI</span>
+                <span class="ai-badge">✧ Context by Gestalt AI</span>
                 <span class="audio-badge">▶ Neural Narration</span>
               </div>
             </div>
@@ -349,19 +393,19 @@
   <section class="cta-section" id="download">
     <div class="container">
       <div class="cta-content">
-        <span class="cta-eyebrow reveal">Coming Soon</span>
+        <span class="cta-eyebrow reveal">Available Now</span>
 
         <h2 class="cta-title reveal">
-          Launching soon<br>to the public.
+          Ready to see<br>what you've been<br>walking past?
         </h2>
 
         <p class="cta-description reveal">
-          We're putting the finishing touches on Gestalt before opening to the public. If you'd like early access, we're accepting a limited number of institutions and visitors into our private beta.
+          Open the web app on any phone browser, or download the native iOS app for push notifications when you walk near outdoor artwork. For museums: Gestalt Institution Management provides ADA compliance scoring, audio description CMS, and visitor analytics in one portal.
         </p>
 
         <div class="cta-actions reveal">
           <a href="contact.html" class="btn-accent">
-            Join the Private Beta
+            Schedule a Demo
             <span class="btn-icon">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -391,41 +435,36 @@
           </a>
         </div>
         <div class="footer-col">
-          <h4>Platform</h4>
+          <h4>Product</h4>
           <ul>
-            <li><a href="index.html#visitor">Visitor Experience</a></li>
-            <li><a href="index.html#curator">Curator Tools</a></li>
-            <li><a href="ar-engine.html">AR Engine</a></li>
-            <li><a href="security.html">Security</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="documentation.html">Documentation</a></li>
-            <li><a href="api-reference.html">API Reference</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="for-visitors.html">For Visitors</a></li>
+            <li><a href="for-institutions.html">For Institutions</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="careers.html">Careers</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Gestalt Technologies, Inc.</span>
-        <span>Built with CLIP, Gemini, and Firebase.</span>
-        <div style="display:flex; gap: var(--space-4);">
-          <a href="privacy.html" style="color: var(--charcoal);">Privacy</a>
-          <a href="terms.html" style="color: var(--charcoal);">Terms</a>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
         </div>
       </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Gestalt. All rights reserved.</span>
+        <span>Built with CLIP, Gemini, and Firebase.</span>
+      </div>
     </div>
+
   </footer>
 
   <script src="script.js"></script>

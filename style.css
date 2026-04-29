@@ -607,52 +607,124 @@ body.loaded .hero-visual {
 
 /* Audio Player inside Lens */
 .lens-audio-player {
+  --progress: 0%;
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  background: rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(90deg, rgba(62, 207, 106, 0.18) 0%, rgba(62, 207, 106, 0.18) var(--progress), rgba(255, 255, 255, 0.08) var(--progress), rgba(255, 255, 255, 0.08) 100%);
   padding: 12px 16px;
   border-radius: var(--radius-pill);
   margin-bottom: var(--space-3);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;
 }
 
-.lens-play-btn {
+.lens-play-btn,
+.lens-stop-btn {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--brand-green);
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(20, 184, 96, 0.4);
   flex-shrink: 0;
+  transition: transform var(--duration-fast) ease, background var(--duration-fast) ease, box-shadow var(--duration-fast) ease, opacity var(--duration-fast) ease;
+}
+
+.lens-play-btn {
+  background: var(--brand-green);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(20, 184, 96, 0.4);
+}
+
+.lens-stop-btn {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.lens-play-btn:hover,
+.lens-stop-btn:hover {
+  transform: scale(1.04);
+}
+
+.lens-play-btn:focus-visible,
+.lens-stop-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 2px;
+}
+
+.lens-stop-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+}
+
+.lens-play-btn svg,
+.lens-stop-btn svg {
+  width: 12px;
+  height: 12px;
 }
 
 .lens-play-btn svg {
-  width: 12px;
-  height: 12px;
   margin-left: 2px;
 }
 
 .lens-waveform {
   display: flex;
   align-items: center;
-  gap: 3px;
+  justify-content: space-between;
+  gap: 6px;
   height: 24px;
+  flex: 1;
+  min-width: 0;
 }
 
 .lens-waveform span {
-  width: 2px;
+  flex: 1 1 0;
+  min-width: 2px;
+  max-width: 4px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 2px;
+  animation: none;
+}
+
+.lens-waveform span:nth-child(1) { height: 7px; }
+.lens-waveform span:nth-child(2) { height: 12px; }
+.lens-waveform span:nth-child(3) { height: 9px; }
+.lens-waveform span:nth-child(4) { height: 16px; }
+.lens-waveform span:nth-child(5) { height: 11px; }
+.lens-waveform span:nth-child(6) { height: 6px; }
+.lens-waveform span:nth-child(7) { height: 13px; }
+.lens-waveform span:nth-child(8) { height: 9px; }
+.lens-waveform span:nth-child(9) { height: 18px; }
+.lens-waveform span:nth-child(10) { height: 10px; }
+.lens-waveform span:nth-child(11) { height: 7px; }
+.lens-waveform span:nth-child(12) { height: 15px; }
+.lens-waveform span:nth-child(13) { height: 8px; }
+.lens-waveform span:nth-child(14) { height: 12px; }
+.lens-waveform span:nth-child(15) { height: 17px; }
+.lens-waveform span:nth-child(16) { height: 9px; }
+
+.lens-audio-player.is-playing {
+  border-color: rgba(62, 207, 106, 0.32);
+}
+
+.lens-audio-player.is-playing .lens-waveform span {
   animation: waveform 1s infinite ease-in-out alternate;
 }
 
-.lens-waveform span:nth-child(even) { animation-duration: 0.8s; animation-direction: alternate-reverse; }
-.lens-waveform span:nth-child(3n) { animation-duration: 1.2s; }
-.lens-waveform span:nth-child(4n) { animation-duration: 0.6s; }
+.lens-audio-player.is-playing .lens-waveform span:nth-child(even) { animation-duration: 0.8s; animation-direction: alternate-reverse; }
+.lens-audio-player.is-playing .lens-waveform span:nth-child(3n) { animation-duration: 1.2s; }
+.lens-audio-player.is-playing .lens-waveform span:nth-child(4n) { animation-duration: 0.6s; }
+
+.lens-audio-player.is-ended .lens-play-btn {
+  background: rgba(212, 175, 55, 0.92);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.35);
+}
 
 @keyframes waveform {
   0% { height: 4px; }

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavScroll();
   initBentoMouseTracking();
+  initHeroAudioPlayer();
 });
 
 /* Trigger hero load animation */
@@ -137,4 +138,97 @@ function initBentoMouseTracking() {
       card.style.setProperty('--mouse-y', y + '%');
     });
   });
+}
+
+function initHeroAudioPlayer() {
+  const player = document.querySelector('[data-hero-audio-player]');
+  if (!player) return;
+
+  const audio = player.querySelector('[data-hero-audio]');
+  const toggleButton = player.querySelector('[data-audio-toggle]');
+  const stopButton = player.querySelector('[data-audio-stop]');
+  const timeLabel = document.querySelector('.lens-time');
+  const audioBadge = document.querySelector('.audio-badge');
+
+  if (!audio || !toggleButton || !stopButton || !timeLabel || !audioBadge) return;
+
+  const icons = {
+    play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5,3 19,12 5,21"></polygon></svg>',
+    pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>',
+    replay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"></path><path d="M3 3v6h6"></path></svg>',
+  };
+
+  function formatTime(seconds) {
+    if (!Number.isFinite(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${String(secs).padStart(2, '0')}`;
+  }
+
+  function syncTime() {
+    const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+    timeLabel.textContent = `${formatTime(audio.currentTime)} / ${formatTime(duration)}`;
+  }
+
+  function syncProgress() {
+    const progress = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    player.style.setProperty('--progress', `${Math.min(progress, 100)}%`);
+  }
+
+  function syncUi() {
+    const isPlaying = !audio.paused && !audio.ended;
+    const isEnded = audio.ended;
+    const hasStarted = audio.currentTime > 0;
+
+    player.classList.toggle('is-playing', isPlaying);
+    player.classList.toggle('is-ended', isEnded);
+
+    if (isEnded) {
+      toggleButton.innerHTML = icons.replay;
+      toggleButton.setAttribute('aria-label', 'Replay audio description');
+      audioBadge.textContent = '↺ Replay narration';
+    } else if (isPlaying) {
+      toggleButton.innerHTML = icons.pause;
+      toggleButton.setAttribute('aria-label', 'Pause audio description');
+      audioBadge.textContent = '❚❚ Narration playing';
+    } else {
+      toggleButton.innerHTML = icons.play;
+      toggleButton.setAttribute('aria-label', hasStarted ? 'Resume audio description' : 'Play audio description');
+      audioBadge.textContent = hasStarted ? '▶ Resume narration' : '▶ Neural Narration';
+    }
+
+    stopButton.disabled = !hasStarted && !isEnded;
+    syncTime();
+    syncProgress();
+  }
+
+  async function togglePlayback() {
+    if (audio.ended) {
+      audio.currentTime = 0;
+    }
+
+    if (audio.paused) {
+      try {
+        await audio.play();
+      } catch (error) {
+        console.error('Unable to play hero audio.', error);
+      }
+      return;
+    }
+
+    audio.pause();
+  }
+
+  toggleButton.addEventListener('click', togglePlayback);
+  stopButton.addEventListener('click', () => {
+    audio.pause();
+    audio.currentTime = 0;
+    syncUi();
+  });
+
+  ['loadedmetadata', 'timeupdate', 'play', 'pause', 'ended'].forEach((eventName) => {
+    audio.addEventListener(eventName, syncUi);
+  });
+
+  syncUi();
 }

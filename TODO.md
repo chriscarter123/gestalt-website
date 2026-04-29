@@ -1,7 +1,7 @@
 # Gestalt Website — TODO
 
 ## Features
-- [ ] **Contact form submission** — Currently uses `onsubmit="event.preventDefault(); alert(...)"`. Wire to a Firebase Cloud Function or email service (SendGrid, Resend) to actually deliver inquiries
+- [x] **Contact form submission** — Wired to `contactForm` Cloud Function (Nodemailer → Namecheap SMTP → hello@gestalt.gallery). Loading/success/error states in-form. Deployed 2026-04-07.
 - [ ] **Careers page — application flow** — "Apply Now" buttons are placeholder links. Connect to an ATS or email endpoint
 
 ## Improvements
