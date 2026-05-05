@@ -26,6 +26,21 @@
         "source": "/website/**",
         "destination": "/:splat",
         "type": 301
+      },
+      {
+        "source": "/m/:path*",
+        "destination": "https://mural.gestalt.gallery/m/:path",
+        "type": 301
+      },
+      {
+        "source": "/nearby",
+        "destination": "https://mural.gestalt.gallery/nearby",
+        "type": 301
+      },
+      {
+        "source": "/saved",
+        "destination": "https://mural.gestalt.gallery/saved",
+        "type": 301
       }
     ],
     "rewrites": [
@@ -45,15 +60,6 @@
           {
             "key": "Cache-Control",
             "value": "public, max-age=86400"
-          }
-        ]
-      },
-      {
-        "source": "**",
-        "headers": [
-          {
-            "key": "Strict-Transport-Security",
-            "value": "max-age=63072000; includeSubDomains; preload"
           }
         ]
       }
