@@ -751,54 +751,6 @@ body.loaded .hero-visual {
 .audio-badge { color: rgba(255, 255, 255, 0.6); }
 
 /* ===================================================================
-   MARQUEE — Kinetic Text Band
-   =================================================================== */
-.marquee-section {
-  padding: var(--space-6) 0;
-  overflow: hidden;
-  border-top: 1px solid var(--light-grey);
-  border-bottom: 1px solid var(--light-grey);
-  background: rgba(255, 255, 255, 0.3);
-  position: relative;
-  z-index: 1;
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 40s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: 0 var(--space-4);
-  white-space: nowrap;
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--mid-grey);
-  letter-spacing: -0.01em;
-}
-
-.marquee-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--brand-green);
-  flex-shrink: 0;
-}
-
-/* ===================================================================
    FEATURES SECTION — Bento Grid
    =================================================================== */
 .features-section {
@@ -985,6 +937,10 @@ body.loaded .hero-visual {
 .section-header {
   max-width: 640px;
   margin-bottom: var(--space-8);
+}
+
+.features > .section-header {
+  padding-left: var(--space-6);
 }
 
 .section-title {
@@ -1493,6 +1449,7 @@ body.loaded .hero-visual {
 }
 
 @media (max-width: 600px) {
+  .features > .section-header { padding-left: var(--space-4); }
   .hero-visual { max-height: 400px; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: var(--space-2); text-align: center; }
