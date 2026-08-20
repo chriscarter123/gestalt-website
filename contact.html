@@ -129,6 +129,34 @@
       min-height: 120px;
     }
 
+    .btn-primary:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    .form-status {
+      display: none;
+      margin-top: var(--space-2);
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(20, 184, 96, 0.1);
+      border: 1px solid rgba(20, 184, 96, 0.3);
+      color: #0c7a40;
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(185, 28, 28, 0.06);
+      border: 1px solid rgba(185, 28, 28, 0.25);
+      color: #b91c1c;
+    }
+
     @media (max-width: 900px) {
       .contact-layout {
         grid-template-columns: 1fr;
@@ -211,26 +239,26 @@
 
       <!-- Right: Form -->
       <div class="contact-form-card">
-        <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! We will be in touch shortly.');">
-          
+        <form id="contact-form">
+
           <div class="form-group">
             <label for="name">Full Name</label>
-            <input type="text" id="name" class="form-control" placeholder="Jane Doe" required>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Jane Doe" autocomplete="name" required>
           </div>
 
           <div class="form-group">
             <label for="email">Work Email</label>
-            <input type="email" id="email" class="form-control" placeholder="jane@museum.org" required>
+            <input type="email" id="email" name="email" class="form-control" placeholder="jane@museum.org" autocomplete="email" required>
           </div>
 
           <div class="form-group">
             <label for="institution">Institution (Optional)</label>
-            <input type="text" id="institution" class="form-control" placeholder="The National Gallery">
+            <input type="text" id="institution" name="institution" class="form-control" placeholder="The National Gallery" autocomplete="organization">
           </div>
 
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" class="form-control" placeholder="How can Gestalt help you?" required></textarea>
+            <textarea id="message" name="message" class="form-control" placeholder="How can Gestalt help you?" required></textarea>
           </div>
 
           <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem;">
@@ -241,6 +269,8 @@
               </svg>
             </span>
           </button>
+
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
 
         </form>
       </div>
@@ -297,6 +327,53 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    (function () {
+      const ENDPOINT = 'https://us-central1-gestalt-17ce0.cloudfunctions.net/contactForm';
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      const button = form.querySelector('button[type="submit"]');
+      const buttonHTML = button.innerHTML;
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        button.disabled = true;
+        button.textContent = 'Sending…';
+        status.className = 'form-status';
+        status.textContent = '';
+
+        try {
+          const res = await fetch(ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: form.name.value,
+              email: form.email.value,
+              institution: form.institution.value,
+              message: form.message.value,
+            }),
+          });
+          const data = await res.json().catch(() => ({}));
+
+          if (res.ok && data.success) {
+            form.reset();
+            status.className = 'form-status success';
+            status.textContent = 'Thanks for reaching out! We’ll be in touch shortly.';
+          } else {
+            status.className = 'form-status error';
+            status.textContent = data.error || 'Something went wrong. Please try again, or email hello@gestalt.gallery.';
+          }
+        } catch (err) {
+          status.className = 'form-status error';
+          status.textContent = 'Couldn’t reach the server. Please try again, or email hello@gestalt.gallery.';
+        } finally {
+          button.disabled = false;
+          button.innerHTML = buttonHTML;
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>

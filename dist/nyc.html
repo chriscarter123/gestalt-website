@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!-- ============================================================================
+     NYC TRAIL — live marketing page (gestalt.gallery/nyc.html)
+     · Trail CTAs point to https://gestalt.gallery/nyc (confirmed URL). That
+       path must serve the live NYC trail/map for the buttons to resolve.
+     · Stops 01-03 use CC-licensed Wikimedia Commons photos (credited in the
+       footer); Audubon (stop 04) keeps a gradient placeholder until a licensed
+       photo exists. The murals remain their artists' copyright — clear usage
+       rights before treating these photos as final.
+     · Artwork facts (years, cross-streets) are from public record — verify.
+     ============================================================================ -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Hear the Walls — New York City's Mural Trail | Gestalt Lite</title>
+  <meta name="description" content="Walk New York City's mural trail and hear each wall told by the people who made it. A free, self-guided audio tour across the five boroughs. No app, no signup. Free between matches this summer — every stop in English and Spanish.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gestalt.gallery/nyc.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hear the Walls — New York City's Mural Trail | Gestalt Lite">
+  <meta property="og:description" content="Walk New York City's mural trail and hear each wall told by the people who made it. A free, self-guided audio tour across the five boroughs. No app, no signup. Free between matches this summer — every stop in English and Spanish.">
+  <meta property="og:url" content="https://gestalt.gallery/nyc.html">
+  <meta property="og:site_name" content="Gestalt">
+  <meta name="theme-color" content="#f6f4ee">
+  <link rel="icon" type="image/svg+xml" href="images/gestalt-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="journey.css">
+  <style>
+    /* NYC mural photos — sourced from Wikimedia Commons (credited in footer).
+       object-position centers each artwork in the 4/5 frame. Swap for licensed
+       high-res photography before treating as final. */
+    .art-photo.pos-crack { object-position: 50% 46%; }
+    .art-photo.pos-houston { object-position: 50% 50%; }
+    .art-photo.pos-bushwick { object-position: 50% 42%; }
+    /* Audubon Mural Project has no freely-licensed photo on Commons — keep the
+       abstract gradient placeholder until a licensed photo is available. */
+    .stop-art .art { position: absolute; inset: 0; }
+    .stop-art .art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255,255,255,0.14), transparent 45%), linear-gradient(0deg, rgba(20,19,15,0.18), transparent 35%); }
+    .art-audubon .art { background: radial-gradient(46% 38% at 52% 30%, rgba(242,201,46,0.9), transparent 62%), linear-gradient(180deg, #8cc3ec 0 42%, #2f8a5b); }
+    /* Footer photo credits */
+    .credits { display: block !important; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .credits p { font-family: var(--font-mono); font-size: 10.5px; line-height: 1.7; letter-spacing: 0.02em; color: rgba(255,255,255,0.42); max-width: none; }
+    .credits em { font-style: italic; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============================================
+       NAV — fixed, transparent until scroll
+       ============================================ -->
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="images/gestalt-icon.svg" alt=""><b>Gestalt <span class="lite">Lite</span></b></a>
+      <a class="nav-open" href="https://gestalt.gallery/nyc">Open the trail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============================================
+         HERO — "Hear the walls."
+         ============================================ -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap">
+        <div class="hero-inner">
+          <span class="eyebrow dotted"><span class="dot"></span>New York City · A free walking tour</span>
+          <h1 id="hero-h">Hear the <span class="accent">walls</span>.</h1>
+          <p class="lede">The most famous public murals across the five boroughs, told aloud by the artists and neighbors who made them. Open the map, press play, keep walking. No app, no signup, no cost.</p>
+          <div class="hero-cta">
+            <a class="btn btn-night" href="#walk">Begin the walk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn-out" href="https://gestalt.gallery/nyc">Open the map</a>
+          </div>
+          <a class="hero-note" href="#matchday">Here for the matches this summer? The trail fits between kickoffs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true"><span>Scroll to walk</span><span class="bar"></span></div>
+    </section>
+
+    <!-- ============================================
+         PREMISE — why the walk exists + mini how
+         ============================================ -->
+    <section class="section premise" aria-labelledby="prem-h">
+      <div class="wrap">
+        <div class="pgrid">
+          <div class="reveal">
+            <span class="eyebrow">Why walk</span>
+            <h2 id="prem-h" style="margin-top:14px;">A mural says everything to the people who made it, and nothing to the person walking past.</h2>
+            <p>No guide, no app, no plaque deep enough. So the history, the artist, the reason it covers a whole wall, all of it stays on the wall. This walk changes that. Famous walls in every borough, each with a voice.</p>
+          </div>
+          <div class="howmini reveal">
+            <div class="hm"><span class="n">01</span><h3>Open</h3><p>One link in your browser. The map finds the closest wall. No app to install.</p></div>
+            <div class="hm"><span class="n">02</span><h3>Listen</h3><p>The story plays in one tap, in English or Spanish, read aloud.</p></div>
+            <div class="hm"><span class="n">03</span><h3>Walk</h3><p>The map shows the next wall and the distance to reach it.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         THE WALK — sticky rail + four stops
+         ============================================ -->
+    <section class="section walk" id="walk" aria-labelledby="walk-h">
+      <div class="wrap">
+        <div class="walk-intro reveal">
+          <span class="eyebrow" style="justify-content:center;width:100%;">The walk</span>
+          <h2 class="display" id="walk-h" style="font-size:clamp(30px,4vw,50px);margin-top:12px;">Four stops to start. <span class="accent">Six</span> more on the trail.</h2>
+        </div>
+        <div class="walk-grid">
+          <aside class="rail" aria-hidden="true">
+            <div class="rtitle">On the walk</div>
+            <div class="rprog"><span id="rail-cur">01</span><span class="of"> / 04</span></div>
+            <div class="rnow" id="rail-now">Crack is Wack</div>
+            <div class="rline" id="rline">
+              <div class="rdot active" data-stop="s-crack"><span class="d"></span><span class="rl">Crack is Wack</span></div>
+              <div class="rdot" data-stop="s-houston"><span class="d"></span><span class="rl">Houston Bowery Wall</span></div>
+              <div class="rdot" data-stop="s-bushwick"><span class="d"></span><span class="rl">The Bushwick Collective</span></div>
+              <div class="rdot" data-stop="s-audubon"><span class="d"></span><span class="rl">Audubon Mural Project</span></div>
+            </div>
+          </aside>
+          <div>
+            <div class="stops" id="stops">
+
+              <!-- Stop 01 — Crack is Wack -->
+              <article class="stop" id="s-crack" data-stop-n="01" data-stop-title="Crack is Wack">
+                <div class="stop-art">
+                  <span class="badge">Stop 01 · Harlem</span>
+                  <img class="art-photo pos-crack" src="images/murals/nyc-crack.jpg" alt="Crack is Wack — Keith Haring's orange mural covered in black figures and lettering, on a handball-court wall beside the Harlem River Drive" loading="lazy" decoding="async">
+                </div>
+                <div class="stop-body">
+                  <span class="seyebrow">1986 · Harlem, Manhattan</span>
+                  <h3>Crack is Wack</h3>
+                  <p class="smeta"><b>Keith Haring</b> · Harlem River Drive at 128th Street</p>
+                  <p class="sstory">Day-glo orange behind black figures twisting in alarm, two words repeating like a warning. Haring's handball-court mural from the height of the crack epidemic.</p>
+                  <div class="jnarr" data-pl data-narration="crack">
+                    <div class="jplayer">
+                      <button class="jp-btn" type="button" data-pl-btn aria-label="Play narration"><svg viewBox="0 0 24 24" data-pl-icon aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                      <div class="jp-main">
+                        <div class="jp-row">
+                          <div class="jp-scrub" data-pl-scrub><div class="jp-fill" data-pl-fill></div></div>
+                          <span class="jp-time" data-pl-time>0:00 / 0:00</span>
+                        </div>
+                        <div class="jp-bottom">
+                          <span class="jp-label" data-pl-label>Listen</span>
+                          <button class="jp-trtoggle" type="button" data-pl-trtoggle aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z M14 2v4a2 2 0 0 0 2 2h4 M16 13H8 M16 17H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-pl-trlabeltoggle>Read transcript</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jp-transcript" data-pl-transcript><span data-pl-trtext></span></div>
+                  </div>
+                  <p class="snext">Next · Houston Bowery Wall <span class="walkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" stroke-linejoin="round"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" stroke-linejoin="round"/><path d="M16 17h4M4 13h4" stroke-linecap="round"/></svg>subway south</span></p>
+                </div>
+              </article>
+
+              <!-- Stop 02 — Houston Bowery Wall -->
+              <article class="stop" id="s-houston" data-stop-n="02" data-stop-title="Houston Bowery Wall">
+                <div class="stop-art">
+                  <span class="badge">Stop 02 · NoHo</span>
+                  <img class="art-photo pos-houston" src="images/murals/nyc-houston.png" alt="The Houston Bowery Wall — a bright geometric mural by Maya Hayuk filling the wall at East Houston Street and the Bowery" loading="lazy" decoding="async">
+                </div>
+                <div class="stop-body">
+                  <span class="seyebrow">Since 1982 · E. Houston &amp; Bowery</span>
+                  <h3>Houston Bowery Wall</h3>
+                  <p class="smeta"><b>Keith Haring &amp; a rotating roster</b> · E. Houston Street &amp; Bowery</p>
+                  <p class="sstory">The most-painted wall in New York. Haring covered it in 1982; since 2008 a different major artist has repainted it every few months.</p>
+                  <div class="jnarr" data-pl data-narration="houston">
+                    <div class="jplayer">
+                      <button class="jp-btn" type="button" data-pl-btn aria-label="Play narration"><svg viewBox="0 0 24 24" data-pl-icon aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                      <div class="jp-main">
+                        <div class="jp-row">
+                          <div class="jp-scrub" data-pl-scrub><div class="jp-fill" data-pl-fill></div></div>
+                          <span class="jp-time" data-pl-time>0:00 / 0:00</span>
+                        </div>
+                        <div class="jp-bottom">
+                          <span class="jp-label" data-pl-label>Listen</span>
+                          <button class="jp-trtoggle" type="button" data-pl-trtoggle aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z M14 2v4a2 2 0 0 0 2 2h4 M16 13H8 M16 17H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-pl-trlabeltoggle>Read transcript</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jp-transcript" data-pl-transcript><span data-pl-trtext></span></div>
+                  </div>
+                  <p class="snext">Next · The Bushwick Collective <span class="walkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" stroke-linejoin="round"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" stroke-linejoin="round"/><path d="M16 17h4M4 13h4" stroke-linecap="round"/></svg>L to Brooklyn</span></p>
+                </div>
+              </article>
+
+              <!-- Stop 03 — The Bushwick Collective -->
+              <article class="stop" id="s-bushwick" data-stop-n="03" data-stop-title="The Bushwick Collective">
+                <div class="stop-art">
+                  <span class="badge">Stop 03 · Bushwick, Brooklyn</span>
+                  <img class="art-photo pos-bushwick" src="images/murals/nyc-bushwick.jpg" alt="A vivid multicolored street-art mural on a warehouse wall in the Bushwick Collective, Brooklyn" loading="lazy" decoding="async">
+                </div>
+                <div class="stop-body">
+                  <span class="seyebrow">Since 2011 · Bushwick, Brooklyn</span>
+                  <h3>The Bushwick Collective</h3>
+                  <p class="smeta"><b>Joe Ficalora &amp; a global roster</b> · Troutman St &amp; St. Nicholas Ave</p>
+                  <p class="sstory">Warehouse walls carrying hundreds of murals by artists from around the world — an open-air gallery that never stops changing.</p>
+                  <div class="jnarr" data-pl data-narration="bushwick">
+                    <div class="jplayer">
+                      <button class="jp-btn" type="button" data-pl-btn aria-label="Play narration"><svg viewBox="0 0 24 24" data-pl-icon aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                      <div class="jp-main">
+                        <div class="jp-row">
+                          <div class="jp-scrub" data-pl-scrub><div class="jp-fill" data-pl-fill></div></div>
+                          <span class="jp-time" data-pl-time>0:00 / 0:00</span>
+                        </div>
+                        <div class="jp-bottom">
+                          <span class="jp-label" data-pl-label>Listen</span>
+                          <button class="jp-trtoggle" type="button" data-pl-trtoggle aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z M14 2v4a2 2 0 0 0 2 2h4 M16 13H8 M16 17H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-pl-trlabeltoggle>Read transcript</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jp-transcript" data-pl-transcript><span data-pl-trtext></span></div>
+                  </div>
+                  <p class="snext">Next · Audubon Mural Project <span class="walkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" stroke-linejoin="round"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" stroke-linejoin="round"/><path d="M16 17h4M4 13h4" stroke-linecap="round"/></svg>back to Manhattan</span></p>
+                </div>
+              </article>
+
+              <!-- Stop 04 — Audubon Mural Project -->
+              <article class="stop" id="s-audubon" data-stop-n="04" data-stop-title="Audubon Mural Project">
+                <div class="stop-art art-audubon">
+                  <span class="badge">Stop 04 · Hamilton Heights</span>
+                  <div class="art" aria-hidden="true"></div>
+                </div>
+                <div class="stop-body">
+                  <span class="seyebrow">Since 2014 · Hamilton Heights, Manhattan</span>
+                  <h3>Audubon Mural Project</h3>
+                  <p class="smeta"><b>National Audubon Society &amp; many artists</b> · Broadway, 130s–160s</p>
+                  <p class="sstory">Storefront gates and walls across the neighborhood carry murals of birds — hundreds of species threatened by a warming climate.</p>
+                  <div class="jnarr" data-pl data-narration="audubon">
+                    <div class="jplayer">
+                      <button class="jp-btn" type="button" data-pl-btn aria-label="Play narration"><svg viewBox="0 0 24 24" data-pl-icon aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                      <div class="jp-main">
+                        <div class="jp-row">
+                          <div class="jp-scrub" data-pl-scrub><div class="jp-fill" data-pl-fill></div></div>
+                          <span class="jp-time" data-pl-time>0:00 / 0:00</span>
+                        </div>
+                        <div class="jp-bottom">
+                          <span class="jp-label" data-pl-label>Listen</span>
+                          <button class="jp-trtoggle" type="button" data-pl-trtoggle aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z M14 2v4a2 2 0 0 0 2 2h4 M16 13H8 M16 17H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-pl-trlabeltoggle>Read transcript</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jp-transcript" data-pl-transcript><span data-pl-trtext></span></div>
+                  </div>
+                  <p class="snext">Then · six more on the trail <span class="walkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" stroke-linejoin="round"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" stroke-linejoin="round"/><path d="M16 17h4M4 13h4" stroke-linecap="round"/></svg>keep walking</span></p>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- Six more on the trail -->
+            <div class="rest reveal">
+              <h3>Six more on the trail</h3>
+              <p class="resub">The walk keeps going, across all five boroughs. Each opens the same way: tap, and listen.</p>
+              <div class="restgrid">
+                <a class="restrow" href="https://gestalt.gallery/nyc"><span class="rn">05</span><span><span class="rt">Audrey of Mulberry</span><br><span class="ra">Tristan Eaton</span></span><span class="rh">Little Italy</span></a>
+                <a class="restrow" href="https://gestalt.gallery/nyc"><span class="rn">06</span><span><span class="rt">Welling Court Mural Project</span><br><span class="ra">A global roster</span></span><span class="rh">Astoria, Queens</span></a>
+                <a class="restrow" href="https://gestalt.gallery/nyc"><span class="rn">07</span><span><span class="rt">Tats Cru Murals</span><br><span class="ra">Tats Cru</span></span><span class="rh">South Bronx</span></a>
+                <a class="restrow" href="https://gestalt.gallery/nyc"><span class="rn">08</span><span><span class="rt">Coney Art Walls</span><br><span class="ra">A curated roster</span></span><span class="rh">Coney Island, Brooklyn</span></a>
+                <a class="restrow" href="https://gestalt.gallery/nyc"><span class="rn">09</span><span><span class="rt">Stop Telling Women to Smile</span><br><span class="ra">Tatyana Fazlalizadeh</span></span><span class="rh">Bedford–Stuyvesant</span></a>
+                <a class="restrow" href="https://gestalt.gallery/nyc"><span class="rn">10</span><span><span class="rt">Graffiti Hall of Fame</span><br><span class="ra">A rotating roster</span></span><span class="rh">East Harlem</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         MATCH DAYS — for summer visitors
+         ============================================ -->
+    <section class="section matchday" id="matchday" aria-labelledby="matchday-h">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">This summer · Match days &amp; off days</span>
+          <h2 class="display" id="matchday-h" style="font-size:clamp(30px,4vw,50px);margin-top:12px;">Here for the matches? <span class="accent">So are the walls.</span></h2>
+          <p class="lede" style="margin-top:18px;max-width:52ch;">New York is hosting the world this summer. Between kickoffs, the trail is the city's best free hour — no ticket, no app, and every stop plays in English y en español.</p>
+        </div>
+        <div class="mroutes reveal-stagger">
+          <article class="mcard">
+            <h3>From Midtown, ride uptown</h3>
+            <p>The A, B, C, and D trains run to 125th Street in Harlem. From there it's a short walk toward the river to <strong>Crack is Wack</strong>, Keith Haring's 1986 wall.</p>
+          </article>
+          <article class="mcard">
+            <h3>From Brooklyn, take the L</h3>
+            <p>The L runs straight to Bushwick. Step off at Jefferson Street and <strong>The Bushwick Collective</strong>'s walls start a block away.</p>
+          </article>
+        </div>
+        <div class="mcta reveal">
+          <a class="btn btn-green" href="https://gestalt.gallery/nyc">Open the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <p class="mmicro">Free either way. The closest wall is one button away.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         INTERLUDE — the technology, quietly
+         ============================================ -->
+    <section class="section interlude" aria-labelledby="int-h">
+      <div class="wrap">
+        <span class="eyebrow green" style="justify-content:center;width:100%;">The technology, quietly</span>
+        <h2 id="int-h" style="margin-top:16px;">All of this runs in a browser the moment you open the map. <span class="accent">No app between you and the art.</span></h2>
+        <div class="ichips">
+          <span class="ichip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" stroke-linejoin="round"/></svg>Tap to audio in seconds</span>
+          <span class="ichip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-linecap="round"/></svg>English &amp; Español</span>
+          <span class="ichip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>WCAG 2.1 AA, screen-reader ready</span>
+          <span class="ichip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z" stroke-linejoin="round"/></svg>No account, no trackers</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FUNNEL — open the map
+         ============================================ -->
+    <section class="section funnel" aria-labelledby="funnel-h">
+      <div class="wrap">
+        <span class="eyebrow dotted" style="justify-content:center;width:100%;"><span class="dot"></span>Your turn</span>
+        <h2 id="funnel-h" style="margin-top:16px;">Start where you're <span class="accent">standing</span>.</h2>
+        <p class="lede">Open the map and the closest wall is one button away. Or point your phone's camera at the code below to take the trail with you.</p>
+        <div class="funnel-card">
+          <div class="qr"><img src="images/qr-nyc.svg" alt="QR code to gestalt.gallery/nyc" width="132" height="132"></div>
+          <div class="fcb">
+            <b>Take the trail with you</b>
+            <p>Drops you onto the New York trail near you. Free, no app, no signup.</p>
+            <span class="u">gestalt.gallery/nyc</span>
+          </div>
+        </div>
+        <div class="funnel-actions">
+          <a class="btn btn-green" href="https://gestalt.gallery/nyc">Open the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CITIES — for cities & cultural institutions
+         ============================================ -->
+    <section class="section cities" id="cities" aria-labelledby="cities-h">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">For cities &amp; cultural institutions</span>
+          <h2 class="display" id="cities-h" style="font-size:clamp(32px,4.4vw,54px);margin-top:12px;">Every city has walls worth <span class="accent">hearing</span>.</h2>
+          <p class="lede" style="margin-top:18px;max-width:60ch;">Philadelphia was the first walk; New York is next. Bring Gestalt Lite to your galleries, your public art, or your whole city. Send the artwork list. We narrate it, generate the codes, and hand you the evidence.</p>
+        </div>
+        <div class="cities-grid">
+          <div class="reveal">
+            <div class="cval"><span class="cvic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 3h6M9 21h6M3 9v6M21 9v6" stroke-linecap="round"/></svg></span><div><h3>We generate the codes</h3><p>Send your artwork list. Your collection is narrated and coded by the weekend.</p></div></div>
+            <div class="cval"><span class="cvic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Measurable engagement</h3><p>Plays, time-to-audio, and who walked to a second work. Evidence, not intentions.</p></div></div>
+            <div class="cval"><span class="cvic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Accessibility, met</h3><p>WCAG 2.1 AA and curator audio meet your public-art commitments the day you launch.</p></div></div>
+            <div class="cval"><span class="cvic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></span><div><h3>Your own data layer</h3><p>Narrate once. The same accessible layer powers the web today and richer experiences next.</p></div></div>
+          </div>
+          <form class="cform reveal" id="pilot-form">
+            <div class="ct">Start a pilot conversation</div>
+            <div class="cftwo">
+              <div class="cfrow"><label for="j-name">Name</label><input id="j-name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div>
+              <div class="cfrow"><label for="j-org">Organization</label><input id="j-org" name="organization" type="text" placeholder="Gallery, program, or office" autocomplete="organization"></div>
+            </div>
+            <div class="cfrow"><label for="j-email">Email</label><input id="j-email" name="email" type="email" placeholder="you@org.org" autocomplete="email" required></div>
+            <div class="cfrow"><label for="j-what">What would you narrate? (optional)</label><input id="j-what" name="what" type="text" placeholder="A mural, a collection, a corridor…"></div>
+            <button class="cs" type="submit">Start a pilot conversation</button>
+            <p class="cn" data-form-note>Nothing is gated behind this form. The trail is free either way.</p>
+            <p class="cm">Or email <a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="foot">
+    <div class="wrap">
+      <div>
+        <a class="brand" href="#top"><img src="images/gestalt-icon.svg" alt=""><b>Gestalt Lite</b></a>
+        <div class="place">Made In Philadelphia by Chris Carter</div>
+      </div>
+      <nav class="flinks" aria-label="Footer">
+        <a href="https://gestalt.gallery/nyc">Open the trail</a>
+        <a href="#walk">The walk</a>
+        <a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a>
+      </nav>
+    </div>
+    <div class="wrap credits">
+      <p>Mural photos via Wikimedia Commons — <em>Crack Is Wack</em> photo by edwardhblake (CC BY 2.0); Houston Bowery Wall (artwork © Maya Hayuk) photo by Martha Cooper (CC BY-SA 4.0); Bushwick Collective photo by Kidfly182 (CC BY-SA 4.0). Murals are the copyrighted work of their artists.</p>
+    </div>
+  </footer>
+
+  <script src="nyc.js"></script>
+</body>
+</html>

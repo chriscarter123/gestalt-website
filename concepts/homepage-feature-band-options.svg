@@ -1,0 +1,165 @@
+<svg width="1800" height="1350" viewBox="0 0 1800 1350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1800" y2="1350" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F5EE"/>
+      <stop offset="1" stop-color="#F3F0E7"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(310 210) rotate(31) scale(360 250)">
+      <stop stop-color="#D4AF37" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1450 270) rotate(12) scale(390 300)">
+      <stop stop-color="#14B860" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#14B860" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(960 1070) rotate(0) scale(440 260)">
+      <stop stop-color="#214F94" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#214F94" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#111827" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .serif { font-family: Georgia, 'Times New Roman', serif; }
+      .sans { font-family: Arial, Helvetica, sans-serif; }
+      .title { font-size: 74px; font-weight: 700; fill: #111827; }
+      .subtitle { font-size: 28px; fill: #5B6472; }
+      .card-label { font-size: 22px; font-weight: 700; fill: #B37A2A; letter-spacing: 0.08em; text-transform: uppercase; }
+      .card-title { font-size: 44px; font-weight: 700; fill: #111827; }
+      .body { font-size: 24px; fill: #647083; }
+      .small { font-size: 22px; fill: #6B7280; }
+      .small-strong { font-size: 22px; font-weight: 700; fill: #111827; }
+      .tiny { font-size: 18px; fill: #8B93A1; }
+      .white { fill: #FFFFFF; }
+      .muted-light { fill: #D6DBE5; }
+      .line { stroke: #E8E1D3; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1350" fill="url(#bg)"/>
+  <rect width="1800" height="1350" fill="url(#glow1)"/>
+  <rect width="1800" height="1350" fill="url(#glow2)"/>
+  <rect width="1800" height="1350" fill="url(#glow3)"/>
+
+  <g opacity="0.55">
+    <path d="M120 0V1350M240 0V1350M360 0V1350M480 0V1350M600 0V1350M720 0V1350M840 0V1350M960 0V1350M1080 0V1350M1200 0V1350M1320 0V1350M1440 0V1350M1560 0V1350M1680 0V1350" stroke="#E9E3D7"/>
+    <path d="M0 120H1800M0 240H1800M0 360H1800M0 480H1800M0 600H1800M0 720H1800M0 840H1800M0 960H1800M0 1080H1800M0 1200H1800" stroke="#E9E3D7"/>
+  </g>
+
+  <text x="120" y="110" class="serif title">Homepage Feature Band Alternatives</text>
+  <text x="120" y="168" class="sans subtitle">Concept board for replacing the scrolling capabilities marquee on gestalt.gallery</text>
+
+  <!-- Card 1 -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="260" width="720" height="500" rx="34" fill="#FFFFFF" stroke="#EDE6D8" stroke-width="2"/>
+  </g>
+  <text x="156" y="308" class="sans card-label">Option 1</text>
+  <text x="156" y="360" class="serif card-title">Capability Rail</text>
+
+  <g>
+    <rect x="156" y="430" width="148" height="180" rx="26" fill="#FAF8F2" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="180" cy="455" r="10" fill="#14B860"/>
+    <text x="178" y="500" class="sans small-strong">AI Audio</text>
+    <text x="178" y="530" class="sans small-strong">Descriptions</text>
+    <text x="178" y="580" class="sans tiny">Drafts in</text>
+    <text x="178" y="605" class="sans tiny">seconds</text>
+  </g>
+  <g>
+    <rect x="324" y="430" width="148" height="180" rx="26" fill="#FAF8F2" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="348" cy="455" r="10" fill="#D4AF37"/>
+    <text x="346" y="500" class="sans small-strong">Compliance</text>
+    <text x="346" y="530" class="sans small-strong">Scorecards</text>
+    <text x="346" y="580" class="sans tiny">Track collection</text>
+    <text x="346" y="605" class="sans tiny">coverage</text>
+  </g>
+  <g>
+    <rect x="492" y="430" width="148" height="180" rx="26" fill="#FAF8F2" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="516" cy="455" r="10" fill="#214F94"/>
+    <text x="514" y="500" class="sans small-strong">Audit Logs</text>
+    <text x="514" y="580" class="sans tiny">Document</text>
+    <text x="514" y="605" class="sans tiny">approvals</text>
+  </g>
+  <g>
+    <rect x="660" y="430" width="148" height="180" rx="26" fill="#FAF8F2" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="684" cy="455" r="10" fill="#14B860"/>
+    <text x="682" y="500" class="sans small-strong">Visitor</text>
+    <text x="682" y="530" class="sans small-strong">Delivery</text>
+    <text x="682" y="580" class="sans tiny">Runs on guest</text>
+    <text x="682" y="605" class="sans tiny">phones</text>
+  </g>
+  <text x="156" y="710" class="sans small">Premium, readable, and strongest for product positioning.</text>
+
+  <!-- Card 2 -->
+  <g filter="url(#shadow)">
+    <rect x="960" y="260" width="720" height="500" rx="34" fill="#FFFFFF" stroke="#EDE6D8" stroke-width="2"/>
+  </g>
+  <text x="996" y="308" class="sans card-label">Option 2</text>
+  <text x="996" y="360" class="serif card-title">Audience Split</text>
+  <rect x="996" y="430" width="302" height="240" rx="30" fill="#101828"/>
+  <rect x="1342" y="430" width="302" height="240" rx="30" fill="#F8F5EE" stroke="#E8E1D3" stroke-width="2"/>
+  <text x="1030" y="480" class="sans small-strong white">For Institutions</text>
+  <text x="1030" y="536" class="sans body muted-light">ADA scorecards</text>
+  <text x="1030" y="576" class="sans body muted-light">Audit logs</text>
+  <text x="1030" y="616" class="sans body muted-light">Grant-ready reports</text>
+  <text x="1376" y="480" class="sans small-strong">For Visitors</text>
+  <text x="1376" y="536" class="sans body">Audio descriptions</text>
+  <text x="1376" y="576" class="sans body">Recognition</text>
+  <text x="1376" y="616" class="sans body">Accessible wayfinding</text>
+  <text x="996" y="710" class="sans small">Clear audience separation and faster story comprehension.</text>
+
+  <!-- Card 3 -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="820" width="720" height="400" rx="34" fill="#FFFFFF" stroke="#EDE6D8" stroke-width="2"/>
+  </g>
+  <text x="156" y="868" class="sans card-label">Option 3</text>
+  <text x="156" y="920" class="serif card-title">Metric Strip</text>
+  <rect x="156" y="980" width="648" height="138" rx="69" fill="#FFFDF7" stroke="#E8E1D3" stroke-width="2"/>
+  <line x1="318" y1="1010" x2="318" y2="1088" class="line"/>
+  <line x1="480" y1="1010" x2="480" y2="1088" class="line"/>
+  <line x1="642" y1="1010" x2="642" y2="1088" class="line"/>
+  <text x="184" y="1036" class="sans small-strong">48 hours</text>
+  <text x="184" y="1074" class="sans tiny">to launch</text>
+  <text x="346" y="1036" class="sans small-strong">No hardware</text>
+  <text x="346" y="1074" class="sans tiny">required</text>
+  <text x="508" y="1036" class="sans small-strong">Audit logs</text>
+  <text x="508" y="1074" class="sans tiny">built in</text>
+  <text x="670" y="1036" class="sans small-strong">AI descriptions</text>
+  <text x="670" y="1074" class="sans tiny">at scale</text>
+  <text x="156" y="1174" class="sans small">Best for credibility, proof, and investor-friendly messaging.</text>
+
+  <!-- Card 4 -->
+  <g filter="url(#shadow)">
+    <rect x="960" y="820" width="720" height="400" rx="34" fill="#FFFFFF" stroke="#EDE6D8" stroke-width="2"/>
+  </g>
+  <text x="996" y="868" class="sans card-label">Option 4</text>
+  <text x="996" y="920" class="serif card-title">Workflow Cards</text>
+  <g>
+    <rect x="996" y="980" width="190" height="170" rx="26" fill="#FAF8F2" stroke="#E8E1D3" stroke-width="2"/>
+    <text x="1022" y="1015" class="sans card-label">01</text>
+    <text x="1022" y="1060" class="sans small-strong">Generate</text>
+    <text x="1022" y="1100" class="sans tiny">Create audio</text>
+    <text x="1022" y="1124" class="sans tiny">description drafts</text>
+    <text x="1022" y="1148" class="sans tiny">from collection data.</text>
+  </g>
+  <g>
+    <rect x="1225" y="980" width="190" height="170" rx="26" fill="#FAF8F2" stroke="#E8E1D3" stroke-width="2"/>
+    <text x="1251" y="1015" class="sans card-label">02</text>
+    <text x="1251" y="1060" class="sans small-strong">Review</text>
+    <text x="1251" y="1100" class="sans tiny">Curators edit</text>
+    <text x="1251" y="1124" class="sans tiny">and approve in</text>
+    <text x="1251" y="1148" class="sans tiny">one workflow.</text>
+  </g>
+  <g>
+    <rect x="1454" y="980" width="190" height="170" rx="26" fill="#FAF8F2" stroke="#E8E1D3" stroke-width="2"/>
+    <text x="1480" y="1015" class="sans card-label">03</text>
+    <text x="1480" y="1060" class="sans small-strong">Deliver</text>
+    <text x="1480" y="1100" class="sans tiny">Visitors access</text>
+    <text x="1480" y="1124" class="sans tiny">content on their</text>
+    <text x="1480" y="1148" class="sans tiny">own phones.</text>
+  </g>
+  <path d="M1188 1065H1210" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round"/>
+  <path d="M1417 1065H1439" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round"/>
+  <path d="M1210 1065L1198 1057V1073L1210 1065Z" fill="#9CA3AF" transform="rotate(180 1204 1065)"/>
+  <path d="M1439 1065L1427 1057V1073L1439 1065Z" fill="#9CA3AF" transform="rotate(180 1433 1065)"/>
+  <text x="996" y="1174" class="sans small">Best if you want the section to explain the product flow.</text>
+</svg>

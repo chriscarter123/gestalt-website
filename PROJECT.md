@@ -103,6 +103,14 @@ gestalt-website/
 ### `security.html` — Security
 - Security and compliance details for institutional partners
 
+### `journey.html` — Gestalt Lite: Philadelphia Mural Trail
+- Standalone scrollytelling funnel page for Gestalt Lite (free, self-guided mural audio tour)
+- Built from the "Gestalt Lite" design handoff (Direction C — Journey); warm parchment surface, own stylesheet (`journey.css`) and script (`journey.js`), not style.css
+- Sections: fixed nav, hero ("Take the *walk*."), premise + 3-step mini how, The Walk (sticky progress rail + 4 mural stops with Web-Speech narration players), five-more list, dark tech interlude, QR funnel (static SVG QR → mural.gestalt.gallery/nearby), cities/institutions pitch + pilot form (composes prefilled email to hello@gestalt.gallery), footer
+- Content matches the live trail's nine murals. Featured stops: Untitled (Najee S.), Common Threads, We The Youth, Philadelphia Muses — all with real photography pulled from the live product's data (Mural Arts CDN, self-hosted in `images/murals/`). Rest list: Water Gives Life, Pride and Progress, The Atlas of Tomorrow, Building the City, Finding Home
+- Photos are capped at the sizes the product serves (500–1600px); muses narration adapted from the product's curator text
+- Narration is Web Speech API — replace with real curator audio
+
 ### `privacy.html` — Privacy Policy
 - Full privacy policy (Gestalt Technologies, subsidiary of Omi Labs, LLC)
 - Effective April 7, 2026
@@ -196,6 +204,11 @@ Instant preview always available at: **gestalt-17ce0.web.app**
 - Bento cards: glassmorphic with gold hover glow + mouse tracking
 - Updated deploy.sh path from `Gestalt Website` to `gestalt-website`, added mural.jpg + images/ copy
 - Deployed to gestalt-17ce0.web.app
+
+### Session 5 — 2026-06-10
+- Built `journey.html` + `journey.css` + `journey.js` from the "Gestalt Lite" design handoff (Journey — Philadelphia Mural Trail, Direction C)
+- Pre-generated static QR SVG (`images/qr-nearby.svg`) encoding mural.gestalt.gallery/nearby
+- Added journey.html to sitemap.xml; copied all new files into dist/
 
 ### Session 4 — 2026-04-07
 - Built 6 new pages: `documentation.html`, `api-reference.html`, `case-studies.html`, `blog.html`, `ar-engine.html`, `security.html`

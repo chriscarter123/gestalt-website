@@ -7,6 +7,14 @@
       "runtimeArgs": ["-m", "http.server", "3002"],
       "port": 3002,
       "cwd": "/Users/christophercarter/Desktop/gestalt-website"
+    },
+    {
+      "name": "gestalt-brand-landing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--no-open"],
+      "port": 5199,
+      "autoPort": true,
+      "cwd": "concepts/gestalt-brand/website"
     }
   ]
 }

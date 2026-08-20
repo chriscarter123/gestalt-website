@@ -1,0 +1,174 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   The Gestalt Lens — brand kit §16.4
+
+   Reserved for panels sitting over imagery or camera feed. Two departures
+   from the skill's default glass, both deliberate:
+
+   1. Light tier. The skill assumes rgba(18,19,25,.46) over dark footage;
+      here the panel is a pale frosted surface so charcoal type keeps its
+      17:1 contrast.
+
+   2. A solid scrim underneath the blur. §16.4 requires it: backdrop-filter
+      alone gives unpredictable contrast because what's behind it changes
+      as the video scrubs. The opaque base guarantees legibility regardless
+      of the frame beneath.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.glass {
+  position: relative;
+  overflow: hidden;
+  /* Solid base ≥55% — the contrast guarantee, not decoration */
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid color-mix(in srgb, var(--line-strong) 70%, transparent);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.06), 0 24px 64px rgba(17, 24, 39, 0.06);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+/* Faint top-left sheen — reads as glass, not as a gradient */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.55),
+    transparent 42%,
+    rgba(var(--accent-rgb), 0.035)
+  );
+  pointer-events: none;
+}
+
+.glass > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover lift, only on pointer devices with motion allowed */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .feature.glass:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(17, 24, 39, 0.1);
+  }
+}
+
+/* ═══ Buttons — the gestalt.gallery system, ported ══════════════════════
+   Adopted from the live site so the two properties read as one product:
+   pill radius (100px), spring easing, a 1px lift on hover and a press on
+   active, a gold-tinted edge on secondary hover, and a circular icon well
+   carrying an arrow on primary actions.
+
+   ONE DELIBERATE SUBSTITUTION. The live site's .btn-accent fills with
+   brand green #14B860 under a white label — that measures 2.6:1 and
+   fails AA outright. This page keeps green-deep #0C7A3E (5.4:1): same
+   shape, same motion, legible label. On a page arguing for accessibility
+   the button has to pass, so the form is copied and the colour is not.
+   (Brand kit §16.3 — this is the whole reason green-deep exists.)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s3);
+  min-height: 44px; /* §16.3 touch target floor */
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 100px; /* pill, per the live site */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.02);
+  transition: transform var(--dur-fast) var(--ease-spring),
+    background var(--dur-fast) var(--ease-spring),
+    border-color var(--dur-fast) var(--ease-spring),
+    box-shadow var(--dur-fast) var(--ease-spring);
+}
+
+.glass-btn:hover {
+  background: var(--surface-2);
+  /* The live site's ghost signature: the edge warms to gold on hover */
+  border-color: rgba(122, 96, 16, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.05);
+}
+
+.glass-btn:active {
+  transform: translateY(1px);
+}
+
+.glass-btn--primary {
+  /* Tighter right padding: the icon well carries that side */
+  padding: 0.6rem 0.7rem 0.6rem 1.2rem;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fcfcfc;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(12, 122, 62, 0.18);
+}
+
+.glass-btn--primary:hover {
+  /* Darkens rather than lightens — lightening would drop below 4.5:1 */
+  background: #0a6b36;
+  border-color: #0a6b36;
+  color: #fcfcfc;
+  box-shadow: 0 6px 16px rgba(12, 122, 62, 0.26);
+}
+
+/* The circular well that holds the arrow */
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background var(--dur-fast) var(--ease-spring);
+}
+
+.glass-btn--primary:hover .btn-icon {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.btn-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.glass-btn[aria-disabled="true"],
+.glass-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav__cta {
+  /* 44px floor (§16.3) — the nav CTA is a real tap target like any other */
+  min-height: 44px;
+  padding: 0.5rem 0.55rem 0.5rem 1.1rem;
+  font-size: 0.88rem;
+}
+
+.nav__cta .btn-icon {
+  width: 24px;
+  height: 24px;
+}
+.nav__cta .btn-icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-btn:hover,
+  .feature.glass:hover {
+    transform: none;
+  }
+}

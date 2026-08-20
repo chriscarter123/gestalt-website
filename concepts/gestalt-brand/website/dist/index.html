@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestalt · Public art, out loud</title>
+    <meta
+      name="description"
+      content="Gestalt gives Philadelphia's murals and public art a spoken description anyone can play. For blind and low vision neighbors, for visitors who don't read English, and for anyone who wants to take the work in. A public project by designer Chris Carter."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Hero subhead + three-up actions, added with the
+         "Art belongs to everyone" headline. Kept here so the change is
+         self-contained if the main stylesheet isn't edited. */
+      /* Comp 6a lead paragraph: Outfit 500 19px/1.6 charcoal, 640px measure,
+         18px to the secondary paragraph beneath */
+      .hero__deck {
+        font-family: "Outfit", system-ui, sans-serif;
+        font-weight: 500;
+        font-size: 1.1875rem;
+        line-height: 1.6;
+        color: #111827;
+        max-width: 640px;
+        margin: 0 0 18px;
+      }
+      /* In-copy link to the institutions page: keeps the deck's weight,
+         green with a hairline underline so it reads as a link, not a slogan */
+      .hero__deck-link {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+        transition: color var(--dur-fast) var(--ease-spring);
+      }
+      .hero__deck-link:hover {
+        color: #0a6b36;
+      }
+      .hero__actions {
+        flex-wrap: wrap;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/main-C4_UXVaP.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/ScrollTrigger-Dsoi3EwP.js">
+    <link rel="stylesheet" crossorigin href="./assets/ScrollTrigger-BbrPootT.css">
+  </head>
+
+  <body>
+    <!-- Preloader: the mark pulses through its quadrants while bg.mp4 buffers.
+         Hidden by main.js on canplay / error / 3.5s cap, whichever is first. -->
+    <div class="loader" id="loader" role="status" aria-label="Loading Gestalt">
+      <svg class="loader__mark" viewBox="0 0 200 200" width="72" height="72" focusable="false" aria-hidden="true">
+        <path class="loader__q loader__q--1" d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827" />
+        <g transform="translate(105,0)"><path class="loader__q loader__q--2" d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860" /></g>
+        <g transform="translate(105,105)"><path class="loader__q loader__q--3" d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827" /></g>
+        <g transform="translate(0,105)"><path class="loader__q loader__q--4" d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860" /></g>
+      </svg>
+    </div>
+
+    <a class="skip-link" href="#home">Skip to main content</a>
+
+    <!-- Background layer stack: scrubbed video (z0), pale scrim (z1), content (z10) -->
+
+    <video
+      id="bgv"
+      class="bg-video"
+      aria-hidden="true"
+      tabindex="-1"
+      muted
+      playsinline
+      preload="auto"
+      poster="./img/poster.svg"
+    >
+      <source src="./bg.mp4" type="video/mp4" />
+    </video>
+
+    <div class="bg-fallback" aria-hidden="true"></div>
+    <div class="bg-scrim" aria-hidden="true"></div>
+
+    <header class="nav" role="banner">
+      <a class="nav__logo" href="#home">
+        <span class="nav__mark" aria-hidden="true">
+          <!-- The Gestalt mark, carried over from gestalt.gallery: four
+               quadrants, each rounded on a different corner so the grid
+               reads as a quarter-turn rotation. -->
+          <svg viewBox="0 0 200 200" width="24" height="24" focusable="false">
+            <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827" />
+            <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860" /></g>
+            <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860" /></g>
+            <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827" /></g>
+          </svg>
+        </span>
+        <span class="nav__word">Gestalt</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a class="nav__pagelink" href="./index.html" aria-current="page">Home</a>
+        <a href="#listen">Listen Now</a>
+        <a href="#showcase">About Lite</a>
+        <a class="nav__pagelink" href="./for-institutions.html">For Institutions</a>
+        <a class="glass-btn glass-btn--primary nav__cta" href="https://mural.gestalt.gallery/nearby" target="_blank" rel="noopener">
+          Launch Lite
+          <span class="btn-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </span>
+        </a>
+      </nav>
+    </header>
+
+    <main id="page" class="page">
+      <!-- 1 · Hero -->
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <div class="hero__inner">
+          <h1 id="hero-title" class="hero__title reveal">
+            <span class="hero__title-utility">A public <strong>utility</strong></span>
+            <span class="hero__title-beauty">for the <em>beauty</em> around us.</span>
+          </h1>
+          <p class="hero__deck reveal">
+            Art belongs to everyone. We're making it accessible. Gestalt is an
+            <a class="hero__deck-link" href="./for-institutions.html">Accessibility Platform</a>
+            that takes an innovative approach to extending culture and fine art
+            to all.
+          </p>
+          <p class="hero__lede reveal">
+            Explore your city. Gestalt will let you know when you're near
+            participating artwork, so you can hear a visually rich description.
+          </p>
+          <div class="hero__actions reveal">
+            <a class="glass-btn glass-btn--primary" href="#listen">
+              Play a description
+              <span class="btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+              </span>
+            </a>
+            <a class="glass-btn" href="https://mural.gestalt.gallery/" target="_blank" rel="noopener">View the Gestalt Lite web app</a>
+            <a class="glass-btn" href="#showcase">Who it's for</a>
+          </div>
+        </div>
+
+        <!-- Decorative scroll-driven phone; these screens are presented with
+             full alt text in the Hear-it section below -->
+        <div class="hero__phone" aria-hidden="true">
+          <div class="phone__frame">
+            <div class="phone__screens" id="hero-screens">
+              <img src="./img/app/app-preferences.png" alt="" />
+              <img src="./img/app/app-onboarding.png" alt="" />
+              <img src="./img/app/app-listen.png" alt="" />
+              <img src="./img/app/app-nearby.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__scroll" aria-hidden="true">
+          <span></span>
+        </div>
+      </section>
+
+      <!-- 2 · Premise (pinned word reveal) -->
+      <section id="impact" class="impact" aria-labelledby="impact-head">
+        <div class="impact__pin">
+          <h2 id="impact-head" class="impact__head">
+            <span class="impact__line impact__line--setup">
+              <span class="word">Access</span>
+              <span class="word">is</span>
+              <span class="word">not</span>
+            </span>
+            <span class="impact__line impact__line--generosity">
+              <span class="word">generosity.</span>
+            </span>
+            <span class="impact__line impact__line--turn">
+              <span class="word">It</span>
+              <span class="word">is</span>
+              <span class="word">the</span>
+              <span class="word word--removal">removal</span>
+              <span class="word">of</span>
+              <span class="word">a</span>
+              <span class="word word--barrier">barrier</span>
+            </span>
+            <span class="impact__line impact__line--close">
+              <span class="word">that</span>
+              <span class="word">should</span>
+              <span class="word">not</span>
+              <span class="word">have</span>
+              <span class="word">existed.</span>
+            </span>
+          </h2>
+        </div>
+      </section>
+
+      <!-- 3 · Showcase: what art does to a person -->
+      <section id="showcase" class="showcase" aria-labelledby="showcase-head">
+        <div class="showcase__pin">
+          <div class="showcase__grid">
+            <div class="showcase__copy reveal">
+              <div class="section-head">
+                <h2 id="showcase-head">We, as a society, have work to do.</h2>
+              </div>
+              <p>
+                The modern world fails so many. With all of the convenience,
+                access, and opportunity, there has been little progress in
+                digital accessibility.
+              </p>
+              <p>
+                Even less in exploring how technological advances could work in
+                concert with the analog world, as it stands.
+              </p>
+              <p>
+                Gestalt is a long-term project from Omi Labs (Oro, Omi) focused
+                on developing new products and services in this space.
+              </p>
+            </div>
+
+            <div class="showcase__audiences">
+              <p class="label">Gestalt is for</p>
+              <div class="workflow__track" id="workflow-track">
+                <article class="glass workflow-card">
+                  <p class="workflow-card__index">01</p>
+                  <h3 class="feature__title">Blind and low vision Philadelphians</h3>
+                  <p>
+                    The city's public art on your own terms, described the moment
+                    you stand in front of it. No help required, no one to ask.
+                  </p>
+                </article>
+                <article class="glass workflow-card">
+                  <p class="workflow-card__index">02</p>
+                  <h3 class="feature__title">Neighbors who don't read English</h3>
+                  <p>
+                    The same wall, explained in a language you actually read, so
+                    the city's walls speak to the whole city, not part of it.
+                  </p>
+                </article>
+                <article class="glass workflow-card">
+                  <p class="workflow-card__index">03</p>
+                  <h3 class="feature__title">The city and its institutions</h3>
+                  <p>
+                    A live, honest picture of what's described and what isn't. The
+                    ADA accountability a public collection owes, ready the morning
+                    of the meeting.
+                  </p>
+                </article>
+                <article class="glass workflow-card">
+                  <p class="workflow-card__index">04</p>
+                  <h3 class="feature__title">Artists and Mural Arts partners</h3>
+                  <p>
+                    Every description carries the artist's name and points people
+                    back to the work. The wall stays the artist's; Gestalt makes
+                    sure more of the city arrives at it.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 · Listen: the live Persistence demo -->
+      <section id="listen" class="listen" aria-labelledby="listen-head">
+        <div class="section-head">
+          <h2 id="listen-head" class="reveal">What a visitor hears.</h2>
+          <p class="listen__intro reveal">
+            <em>Persistence</em>, a mural by Jason Andrew Turner: a towering blue
+            wall, a figure in a red dress scattered with white dots. A generic
+            caption would stop at blue wall. Press play and hear what a describer
+            wrote for the person standing in front of it. No front desk, no
+            borrowed device.
+          </p>
+        </div>
+        <div class="listen__grid">
+          <figure class="listen__visual reveal">
+            <img
+              src="./img/mural.jpg"
+              alt="Persistence, a mural by Jason Andrew Turner: against a towering
+                   bright blue wall, a figure with dark curled hair wears a red
+                   dress patterned with white polka dots."
+            />
+            <figcaption class="listen__chip">
+              <span class="listen__dot" aria-hidden="true"></span> Artwork identified
+            </figcaption>
+          </figure>
+
+          <div class="glass listen__card reveal" data-audio-player>
+            <h3 class="listen__title">Persistence</h3>
+            <p class="listen__artist">Jason Andrew Turner, Contemporary</p>
+            <p class="listen__quote">
+              &ldquo;You&rsquo;re standing before a towering blue wall that pulses
+              with electric intensity against the sky.&rdquo;
+            </p>
+
+            <div class="listen__player">
+              <button
+                class="listen__play"
+                type="button"
+                data-audio-toggle
+                aria-label="Play audio description"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <polygon points="5,3 19,12 5,21" />
+                </svg>
+              </button>
+              <div class="listen__progress" aria-hidden="true"></div>
+              <button
+                class="listen__stop"
+                type="button"
+                data-audio-stop
+                aria-label="Stop audio description"
+                disabled
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <rect x="7" y="7" width="10" height="10" rx="1.5" />
+                </svg>
+              </button>
+              <audio preload="metadata" data-audio>
+                <source src="./audio/hero-visual-description.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+
+            <div class="listen__meta">
+              <span class="listen__badge" data-audio-badge>▶ Audio description</span>
+              <span class="listen__time" data-audio-time>0:00 / 0:00</span>
+            </div>
+            <p class="listen__provenance">
+              Context by Gestalt, reviewed by a human describer
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 · Demo: the Philadelphia mural tour — full-bleed painted color field -->
+      <section id="demo" class="mural" aria-labelledby="demo-head">
+        <!-- Decorative painted field: abstract mural-palette blocks, no meaning -->
+        <div class="mural__field" aria-hidden="true">
+          <span class="mural__block mural__block--green"></span>
+          <span class="mural__block mural__block--gold"></span>
+          <span class="mural__block mural__block--terra"></span>
+          <span class="mural__block mural__block--cobalt"></span>
+          <span class="mural__block mural__block--lime"></span>
+          <span class="mural__block mural__block--cream"></span>
+          <span class="mural__block mural__block--ochre"></span>
+          <span class="mural__block mural__block--dusk"></span>
+          <span class="mural__seam mural__seam--1"></span>
+          <span class="mural__seam mural__seam--2"></span>
+        </div>
+
+        <!-- Copy sits on a solid painted band so text keeps its contrast floor -->
+        <div class="mural__panel reveal">
+          <p class="mural__eyebrow">Gestalt Nearby</p>
+          <h2 id="demo-head" class="mural__title">Take the Philadelphia mural tour.</h2>
+          <p class="mural__lede">
+            Stand in front of any wall in the city and hear what it holds. Gestalt
+            Nearby finds the murals around you and describes each one out loud,
+            right where you're standing — the whole city, one wall at a time.
+          </p>
+
+          <p class="mural__free">
+            <span class="mural__free-word">Free</span>
+            <span class="mural__free-note">Always, for everyone on the street. No account, nothing to install.</span>
+          </p>
+
+          <div class="mural__actions">
+            <a class="glass-btn glass-btn--primary mural__cta" href="https://mural.gestalt.gallery/nearby" target="_blank" rel="noopener">
+              Start the mural tour
+              <span class="btn-icon" aria-hidden="true">
+                <!-- Diagonal arrow: the live site's convention for leaving the page -->
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 12L12 4M12 4H6M12 4v6" />
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          <p class="mural__fine">
+            Free to use, no account needed. Bring headphones and good walking shoes.
+          </p>
+        </div>
+      </section>
+
+      <!-- 8 · Institutions: compact preview of the ADA compliance platform -->
+      <section id="institutions" class="inst" aria-labelledby="inst-head">
+        <div class="inst__grid">
+          <div class="inst__copy reveal">
+            <p class="label">For institutions</p>
+            <h2 id="inst-head">The same work, on the <em>record</em>.</h2>
+            <p class="inst__lede">
+              Museums face the same backlog, at collection scale. Gestalt helps
+              them generate, review, and deliver accessible experiences in days
+              rather than years, and keeps a live view of how far along they are.
+            </p>
+
+            <dl class="inst__stats">
+              <div>
+                <dt>2&ndash;3%</dt>
+                <dd>of museum collections have audio descriptions</dd>
+              </div>
+              <div>
+                <dt>$50&ndash;150</dt>
+                <dd>cost per description when written by hand</dd>
+              </div>
+            </dl>
+
+            <a class="glass-btn glass-btn--primary inst__cta" href="https://gestalt.gallery/for-institutions.html">
+              See the institution platform
+              <span class="btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          <figure class="inst__shot reveal">
+            <img
+              src="./img/dashboard-screenshot.png"
+              alt="Gestalt institution dashboard showing an ADA accessibility
+                   scorecard with 73% audio description coverage, gallery
+                   breakdown by floor, and language demand analytics."
+              width="1226"
+              height="654"
+              loading="lazy"
+            />
+            <figcaption>
+              Compliance scorecards, collection coverage, and visitor analytics
+              in one place.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <p class="footer__big">Every artwork has a voice.</p>
+        <div class="footer__cols">
+          <div>
+            <p class="label">Explore</p>
+            <a href="#listen">Listen Now</a>
+            <a href="#showcase">About Lite</a>
+            <a href="#demo">Take the tour</a>
+          </div>
+          <div>
+            <p class="label">Accessibility</p>
+            <a href="mailto:access@gestalt.gallery">Report a barrier</a>
+          </div>
+          <div>
+            <p class="label">Contact</p>
+            <a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a>
+            <a href="https://chriscarter.work" target="_blank" rel="noopener">chriscarter.work</a>
+            <p class="footer__note">Philadelphia, PA</p>
+          </div>
+        </div>
+        <p class="footer__sig">
+          <span>Gestalt</span>
+          <span>© 2026 Gestalt Technologies, Inc.</span>
+        </p>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -8,6 +8,56 @@
     ],
     "redirects": [
       {
+        "source": "/about.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/careers.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/for-visitors.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/how-it-works.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/blog.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/case-studies.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/documentation.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/api-reference.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/ar-engine.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
+        "source": "/security.html",
+        "destination": "/",
+        "type": 301
+      },
+      {
         "source": "/institutions",
         "destination": "/institution/",
         "type": 301
@@ -44,6 +94,10 @@
       }
     ],
     "rewrites": [
+      {
+        "source": "/nyc",
+        "destination": "/nyc.html"
+      },
       {
         "source": "/admin/**",
         "destination": "/admin/index.html"
