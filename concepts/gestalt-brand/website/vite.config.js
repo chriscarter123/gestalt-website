@@ -12,6 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         institutions: resolve(__dirname, "for-institutions.html"),
+        contact: resolve(__dirname, "contact.html"),
       },
     },
   },

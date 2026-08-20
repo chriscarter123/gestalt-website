@@ -20,21 +20,7 @@
   <body>
     <a class="skip-link" href="#home">Skip to main content</a>
 
-    <!-- Same background layer stack as the landing page: scrubbed video (z0),
-         pale scrim (z1), content (z10) -->
-
-    <video
-      id="bgv"
-      class="bg-video"
-      aria-hidden="true"
-      tabindex="-1"
-      muted
-      playsinline
-      preload="auto"
-      poster="./img/poster.svg"
-    >
-      <source src="./bg.mp4" type="video/mp4" />
-    </video>
+    <!-- Background: pale static field (z0) + scrim (z1); no video on this page -->
 
     <div class="bg-fallback" aria-hidden="true"></div>
     <div class="bg-scrim" aria-hidden="true"></div>
@@ -56,7 +42,7 @@
         <a href="./index.html#listen">Listen Now</a>
         <a href="./index.html#showcase">About</a>
         <a class="nav__pagelink" href="./for-institutions.html" aria-current="page">For Institutions</a>
-        <a class="glass-btn glass-btn--primary nav__cta" href="https://gestalt.gallery/contact.html">
+        <a class="glass-btn glass-btn--primary nav__cta" href="./contact.html">
           Schedule a demo
           <span class="btn-icon" aria-hidden="true">
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -82,7 +68,7 @@
           significant effort.
         </p>
         <div class="phero__actions reveal">
-          <a class="glass-btn glass-btn--primary" href="https://gestalt.gallery/contact.html">
+          <a class="glass-btn glass-btn--primary" href="./contact.html">
             Schedule a demo
             <span class="btn-icon" aria-hidden="true">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -298,7 +284,7 @@
             Schedule a demo to see how Gestalt can help your institution move
             from accessibility backlog to documented compliance.
           </p>
-          <a class="glass-btn glass-btn--primary pcta__btn" href="https://gestalt.gallery/contact.html">
+          <a class="glass-btn glass-btn--primary pcta__btn" href="./contact.html">
             Schedule a demo
             <span class="btn-icon" aria-hidden="true">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -324,7 +310,7 @@
             <p class="label">Institutions</p>
             <a href="#process">How it works</a>
             <a href="#plans">Plans</a>
-            <a href="https://gestalt.gallery/contact.html">Schedule a demo</a>
+            <a href="./contact.html">Schedule a demo</a>
           </div>
           <div>
             <p class="label">Accessibility</p>

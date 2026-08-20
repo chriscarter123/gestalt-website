@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   Gestalt — Contact page
+   Layout for the two-column contact section and the form. Tokens, nav,
+   footer, glass, and background layers come from style.css / glass.css.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.contact {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  padding-top: 20vh;
+  padding-bottom: var(--s7);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+/* Headline rides the comp-6a treatment. The handoff's flush-width rule
+   would push seven tracked letters to ~1.5x the serif line, so this page
+   keeps the homepage's caps-to-serif ratio instead — same voice, sane
+   scale for a one-word caps line. */
+.contact .hero__title-utility {
+  font-size: 0.9446em;
+}
+
+.contact__lede {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 40ch;
+  margin: 0 0 var(--s5);
+}
+
+.contact__methods {
+  display: grid;
+  gap: var(--s4);
+  margin: 0;
+  padding-top: var(--s4);
+  border-top: 1px solid var(--line);
+}
+
+.contact__methods dt {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.contact__methods dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.contact__methods a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.contact__methods a:hover {
+  color: #0a6b36;
+}
+
+/* ── The form card ─────────────────────────────────────────────────────── */
+
+.contact__card {
+  padding: var(--s5);
+  border-radius: var(--radius-lg);
+}
+
+.form-group {
+  margin-bottom: var(--s4);
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.6);
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--text);
+  transition: border-color var(--dur-fast) var(--ease-spring),
+    box-shadow var(--dur-fast) var(--ease-spring),
+    background var(--dur-fast) var(--ease-spring);
+}
+
+/* Focus is a brand asset (§16.2): same ring as every other control */
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--focus-ring);
+  background: #ffffff;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact__submit {
+  width: 100%;
+  justify-content: center;
+}
+
+.contact__submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.form-status {
+  display: none;
+  margin-top: var(--s3);
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.form-status.success {
+  display: block;
+  background: rgba(12, 122, 62, 0.08);
+  border: 1px solid rgba(12, 122, 62, 0.3);
+  color: var(--accent);
+}
+
+.form-status.error {
+  display: block;
+  background: rgba(185, 28, 28, 0.06);
+  border: 1px solid rgba(185, 28, 28, 0.25);
+  color: #b91c1c; /* 5.9:1 on museum white */
+}
+
+@media (max-width: 900px) {
+  .contact {
+    padding-top: 16vh;
+  }
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
