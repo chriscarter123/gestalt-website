@@ -436,23 +436,12 @@ p {
   padding: var(--s7) clamp(1.25rem, 5vw, 4rem);
 }
 
-/* Expressive setting: the sentence moves through four typographic voices —
-   a quiet tracked-caps setup, "generosity." landing huge in italic gold,
-   the turn in full serif with "removal" in green, and a struck-through
-   "barrier" so the type performs the removal it describes. Every word
-   stays a .word span, so the scroll reveal walks it unchanged. */
 .impact__head {
-  display: grid;
-  gap: 0.4em;
-  max-width: 24ch;
   font-size: clamp(2rem, 5.4vw, 3.6rem);
-  line-height: 1.1;
-}
-
-.impact__line {
+  line-height: 1.18;
+  max-width: 30ch;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
   gap: 0 0.28em;
 }
 
@@ -461,52 +450,8 @@ p {
   will-change: opacity, transform, filter;
 }
 
-/* 1 · "Access is not" — the hero's utility voice: light, tracked, waiting */
-.impact__line--setup {
-  font-family: var(--font);
-  font-weight: 300;
-  font-size: 0.42em;
-  letter-spacing: 0.157em;
-  text-transform: uppercase;
-  color: var(--text);
-}
-
-/* 2 · "generosity." — the word it is not, oversized and set aside in the
-   brand's italic gold */
-.impact__line--generosity {
-  font-size: 1.65em;
-  line-height: 1;
-}
-.impact__line--generosity .word {
-  font-style: italic;
-  color: #d4af37;
-  letter-spacing: -0.02em;
-}
-
-/* 3 · "It is the removal of a barrier" — the turn, in the full serif voice */
-.impact__line--turn {
-  font-size: 0.82em;
-  color: var(--text);
-}
-.word--removal {
-  font-style: italic;
+.word--accent {
   color: var(--accent);
-}
-/* The type does what the sentence says: the barrier is struck through */
-.word--barrier {
-  text-decoration: line-through;
-  text-decoration-color: var(--accent);
-  text-decoration-thickness: 0.06em;
-}
-
-/* 4 · "that should not have existed." — the quiet verdict */
-.impact__line--close {
-  font-family: var(--font);
-  font-weight: 300;
-  font-size: 0.42em;
-  letter-spacing: 0.157em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
 /* ═══ 3.5 · Listen — demo card ported from the gestalt.gallery hero ════ */
