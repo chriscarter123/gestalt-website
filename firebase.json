@@ -88,6 +88,11 @@
         "type": 301
       },
       {
+        "source": "/designphilly/",
+        "destination": "/designphilly",
+        "type": 301
+      },
+      {
         "source": "/nearby",
         "destination": "https://mural.gestalt.gallery/nearby",
         "type": 301
@@ -99,6 +104,14 @@
       }
     ],
     "rewrites": [
+      {
+        "source": "/scorecard",
+        "destination": "/scorecard.html"
+      },
+      {
+        "source": "/designphilly",
+        "destination": "/designphilly.html"
+      },
       {
         "source": "/nyc",
         "destination": "/nyc.html"

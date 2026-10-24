@@ -13,6 +13,8 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         institutions: resolve(__dirname, "for-institutions.html"),
         contact: resolve(__dirname, "contact.html"),
+        designphilly: resolve(__dirname, "designphilly.html"),
+        scorecard: resolve(__dirname, "scorecard.html"),
       },
     },
   },
