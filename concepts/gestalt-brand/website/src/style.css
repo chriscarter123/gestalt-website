@@ -1,0 +1,1393 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   Gestalt — scroll-driven landing page
+   Tokens derived from copy/brand-kit.md §6.1 (light tier) and §7 (type)
+
+   LIGHT TIER, deliberately. The brand kit names Museum White as the
+   brand's home; the dark tier is scoped to AR chrome and low-light
+   gallery mode (§6.2), not campaign surfaces. Charcoal on a pale scrim
+   reaches 17.29:1 — far better than white-on-video, and it needs no
+   dark tint fighting the footage.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* — Palette (brand kit §6.1) — */
+  --bg: #fcfcfc;
+  --surface: #ffffff;
+  --surface-2: #f4f5f6;
+  --text: #111827;
+  --muted: #4b5563; /* charcoal-60 · 7.37:1 on white */
+  --accent: #0c7a3e; /* green-deep · 5.29:1 on white — text + button fills */
+  --accent-fill: #14b860; /* brand green · fills only, charcoal label */
+  --accent-rgb: 12, 122, 62;
+  --gold: #7a6010; /* gold-deep · 5.83:1 on white */
+  --line: rgba(17, 24, 39, 0.09);
+  --line-strong: rgba(17, 24, 39, 0.16);
+
+  /* — Type (brand kit §7) — */
+  --font: "Outfit", "Inter", system-ui, -apple-system, sans-serif;
+  --font-head: "Newsreader", "Playfair Display", Georgia, serif;
+
+  /* — Motion (brand kit §12) — */
+  --dur: 0.35s;
+  --ease: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Interface easing carried over from gestalt.gallery */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.15s;
+
+  /* — Spacing (brand kit §16.1) — */
+  --s3: 16px;
+  --s4: 24px;
+  --s5: 40px;
+  --s6: 64px;
+  --s7: 104px;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --focus-ring: 0 0 0 3px rgba(12, 122, 62, 0.45);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Lenis drives scrolling; native smooth-scroll would fight it */
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Focus is a brand asset (§16.2) — never removed, only restyled */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* ═══ Preloader ════════════════════════════════════════════════════════
+   Shown while the 39MB scroll video buffers. The quadrants pulse in the
+   mark's quarter-turn order; main.js lifts the overlay on canplay, on
+   error, or at a 3.5s cap — the page can never be trapped behind it. */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s var(--ease-spring), visibility 0s 0.5s;
+}
+
+.loader--done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader__q {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: loader-pulse 1.2s var(--ease-spring) infinite;
+}
+
+/* Quarter-turn rhythm: TL → TR → BR → BL, matching the mark's rotation */
+.loader__q--2 { animation-delay: 0.15s; }
+.loader__q--3 { animation-delay: 0.3s; }
+.loader__q--4 { animation-delay: 0.45s; }
+
+@keyframes loader-pulse {
+  0%, 60%, 100% { opacity: 0.28; transform: scale(0.94); }
+  22% { opacity: 1; transform: scale(1); }
+}
+
+/* Under reduced motion the global kill-switch stops the pulse; the mark
+   simply holds static until the overlay lifts. */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 12px 20px;
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 500;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* ═══ Background layer stack ═══════════════════════════════════════════ */
+
+.bg-video,
+.bg-fallback {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Shown when bg.mp4 is absent — a calm pale field rather than a black hole.
+   Replaced automatically once the video loads (see main.js). */
+.bg-fallback {
+  background:
+    radial-gradient(120% 90% at 15% 20%, #ffffff 0%, rgba(255, 255, 255, 0) 55%),
+    radial-gradient(100% 80% at 85% 75%, rgba(12, 122, 62, 0.05) 0%, rgba(12, 122, 62, 0) 60%),
+    linear-gradient(160deg, #fbfbfc 0%, #f1f2f4 48%, #e9eaed 100%);
+}
+
+body.has-video .bg-fallback {
+  display: none;
+}
+
+/* Readability wash — pale, not a dark tint. Keeps charcoal type legible
+   over bright high-key footage without dimming the plate. */
+.bg-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(252, 252, 252, 0.82) 0%, rgba(252, 252, 252, 0.62) 40%, rgba(252, 252, 252, 0.86) 100%),
+    radial-gradient(90% 70% at 30% 40%, rgba(252, 252, 252, 0.35) 0%, rgba(252, 252, 252, 0.7) 100%);
+}
+
+/* ═══ Nav ══════════════════════════════════════════════════════════════ */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s4) clamp(1.25rem, 5vw, 4rem);
+  background: rgba(252, 252, 252, 0.72);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem; /* matches gestalt.gallery's .nav-brand */
+  color: var(--text);
+}
+
+.nav__mark {
+  display: grid;
+  place-items: center;
+  color: var(--text);
+}
+
+/* Wordmark, matched to gestalt.gallery exactly: Playfair Display 700 at
+   1.3rem, -0.01em. This is the one place Playfair appears — the rest of
+   the page stays on Newsreader. */
+.nav__word {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.nav__links a:not(.nav__cta) {
+  color: var(--muted);
+  font-size: 15px;
+  transition: color var(--dur) var(--ease);
+}
+.nav__links a:not(.nav__cta):hover {
+  color: var(--text);
+}
+
+/* ═══ Page + shared ════════════════════════════════════════════════════ */
+
+.page {
+  position: relative;
+  z-index: 10;
+}
+
+section {
+  padding: var(--s7) clamp(1.25rem, 5vw, 4rem);
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--s3);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 4vw, 2.45rem);
+  line-height: 1.2;
+  max-width: 22ch;
+}
+
+/* The one licensed flourish (§7.3): a single italic serif verb in deep gold */
+em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 68ch; /* §7.3 measure cap */
+}
+
+.section-head {
+  margin-bottom: var(--s6);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+/* ═══ 1 · Hero ═════════════════════════════════════════════════════════ */
+
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: clamp(2rem, 5vw, 6rem);
+  align-content: center;
+  align-items: start;
+  padding-top: 22vh;
+  padding-bottom: 14vh;
+}
+
+/* The scroll-driven phone, top right beside the hero copy */
+.hero__phone {
+  width: clamp(230px, 22vw, 300px);
+  justify-self: end;
+  margin-top: -8vh;
+}
+
+.hero__phone .phone__screens {
+  position: relative;
+  aspect-ratio: 375 / 812;
+  border-radius: inherit;
+}
+
+.hero__phone .phone__screens img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.hero__phone .phone__screens img:first-child {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero__phone {
+    display: none;
+  }
+}
+
+/* Comp 6a (design handoff): a light, wide-tracked uppercase sans line over
+   a serif sentence, both lines tuned to run flush left AND right at
+   reference scale (78px sans / 84px serif, 0.157em tracking). The h1
+   carries the serif line's size; the sans line rides an em ratio of it so
+   the flush-width relationship survives the responsive clamp. */
+.hero__title {
+  /* 5.25rem = the comp's 84px serif line */
+  font-size: clamp(2.5rem, 5.8vw, 5.25rem);
+  margin-bottom: 40px;
+  max-width: none;
+}
+
+.hero__title-utility {
+  display: block;
+  font-family: var(--font);
+  font-weight: 300;
+  /* Comp reference is 78px vs 84px (0.9286em); nudged up a hair so both
+     lines measure flush in the browser, per the handoff's width rule */
+  font-size: 0.9697em; /* retuned flush after bolding "utility" (measured at 1440) */
+  line-height: 1.1;
+  letter-spacing: 0.157em;
+  text-transform: uppercase;
+}
+
+/* "utility" carries the weight; 600 is the heaviest Outfit cut this page
+   loads, and against the line's 300 it reads as a full bold jump */
+.hero__title-utility strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hero__title-beauty {
+  display: block;
+  margin-top: 0.12em; /* 10px at reference scale */
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: #374151; /* gray-700 per comp */
+}
+
+/* The signature italic-gold word — comp specifies accent gold #D4AF37 */
+.hero__title-beauty em {
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #d4af37;
+}
+
+.hero__lede {
+  font-size: 1rem;
+  color: #6b7280; /* gray-500 per comp */
+  max-width: 580px;
+  margin-bottom: var(--s5);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: var(--s5);
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 60px;
+  background: var(--line-strong);
+  overflow: hidden;
+}
+.hero__scroll span {
+  display: block;
+  width: 100%;
+  height: 40%;
+  background: var(--accent);
+  animation: scrollHint 2.4s var(--ease) infinite;
+}
+@keyframes scrollHint {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(250%); }
+}
+
+/* ═══ 2 · Impact (pinned) ══════════════════════════════════════════════ */
+
+.impact {
+  padding: 0;
+}
+
+.impact__pin {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  padding: var(--s7) clamp(1.25rem, 5vw, 4rem);
+}
+
+.impact__head {
+  font-size: clamp(2rem, 5.4vw, 3.6rem);
+  line-height: 1.18;
+  max-width: 30ch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.28em;
+}
+
+.impact__head .word {
+  display: inline-block;
+  will-change: opacity, transform, filter;
+}
+
+.word--accent {
+  color: var(--accent);
+}
+
+/* ═══ 3.5 · Listen — demo card ported from the gestalt.gallery hero ════ */
+
+.listen__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  max-width: 1080px;
+}
+
+.listen__visual {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.08), 0 24px 64px rgba(17, 24, 39, 0.1);
+}
+
+.listen__visual img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* The AR lens chip — the one place the dark tier appears on this page,
+   because it reproduces app chrome (§6.2 scopes dark to AR overlay) */
+.listen__chip {
+  position: absolute;
+  top: var(--s3);
+  left: var(--s3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fcfcfc;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.listen__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-fill);
+}
+
+.listen__intro {
+  margin-top: var(--s4);
+  max-width: 62ch;
+  color: var(--muted);
+}
+
+/* The closing is the section's punchline — serif, a step up in size,
+   full charcoal so it lands harder than the muted intro */
+.listen__closing {
+  margin: var(--s5) 0 0;
+  max-width: 46ch;
+  font-family: var(--font-head);
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  line-height: 1.45;
+}
+
+.listen__card {
+  padding: var(--s5);
+  border-radius: var(--radius-lg);
+}
+
+.listen__title {
+  font-size: clamp(1.7rem, 3vw, 2.1rem);
+  line-height: 1.15;
+}
+
+.listen__artist {
+  margin: 4px 0 var(--s3);
+  font-style: italic;
+  font-family: var(--font-head);
+  color: var(--gold);
+}
+
+.listen__quote {
+  color: var(--muted);
+  margin-bottom: var(--s4);
+}
+
+.listen__player {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  margin-bottom: var(--s3);
+}
+
+.listen__play,
+.listen__stop {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px; /* §16.3 touch target floor */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.listen__play {
+  border: none;
+  background: var(--accent);
+  color: #fcfcfc;
+}
+
+.listen__play:hover {
+  background: #0a6b36; /* darken, never lighten (§16.3) */
+}
+
+.listen__stop {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+}
+
+.listen__stop:hover:not(:disabled) {
+  border-color: var(--text);
+}
+
+.listen__stop:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.listen__play svg,
+.listen__stop svg {
+  width: 18px;
+  height: 18px;
+}
+
+.listen__progress {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.listen__progress::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: var(--progress, 0%);
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width 0.2s linear;
+}
+
+.listen__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s3);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.listen__badge {
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.listen__time {
+  font-variant-numeric: tabular-nums;
+}
+
+.listen__provenance {
+  margin: var(--s3) 0 0;
+  padding-top: var(--s3);
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* — The app, in matte white iPhones — */
+
+.listen__phones {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 230px));
+  justify-content: start;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: var(--s6);
+  max-width: 1080px;
+}
+
+.phone {
+  margin: 0;
+}
+
+/* The middle phone sits a step higher — gallery rhythm, not a grid */
+@media (min-width: 901px) {
+  .phone--raised {
+    transform: translateY(-20px);
+  }
+}
+
+/* Matte white body: warm off-white, soft edge light, no gloss */
+.phone__frame {
+  position: relative;
+  padding: 10px;
+  /* Roughly 11% of device width, matching real hardware — anything rounder
+     reads as a toy */
+  border-radius: clamp(24px, 2.6vw, 34px);
+  background: linear-gradient(165deg, #fbfaf7 0%, #efede9 55%, #e6e4df 100%);
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(17, 24, 39, 0.06),
+    0 2px 6px rgba(17, 24, 39, 0.08),
+    0 28px 56px rgba(17, 24, 39, 0.16);
+}
+
+.phone__frame img,
+.phone__frame .phone__screens {
+  width: 100%;
+  border-radius: clamp(17px, 1.9vw, 26px);
+  overflow: hidden;
+  border: 1px solid rgba(17, 24, 39, 0.35); /* the screen's black seam */
+}
+
+.phone__frame .phone__screens img {
+  border: none;
+  border-radius: 0;
+}
+
+.phone figcaption {
+  margin-top: var(--s3);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ═══ 3.75 · The maker (lives in the old #specs slot) ══════════════════ */
+
+.specs__maker {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 68ch;
+}
+
+/* ═══ 3 · Showcase ═════════════════════════════════════════════════════ */
+
+.showcase__grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.showcase__copy p {
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+/* The showcase head rides one unbroken line; the global 22ch cap would
+   fold it just before the period */
+.showcase__copy h2 {
+  max-width: none;
+}
+
+/* The audience gallery, moved here from the old standalone section: the
+   argument holds still on the left while the people it serves cycle on the
+   right. Pinned, so one scroll gesture walks all four. */
+
+.showcase__pin {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+}
+
+.showcase__audiences {
+  border-top: 1px solid var(--line);
+  padding-top: var(--s4);
+}
+
+.showcase__audiences .label {
+  margin-bottom: var(--s4);
+}
+
+.workflow__track {
+  position: relative;
+  min-height: 330px;
+  overflow: hidden;
+}
+
+/* Out-specified past .glass (skill gotcha 4) */
+.showcase .workflow-card {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  padding: var(--s4);
+  border-radius: var(--radius-md);
+  will-change: opacity, transform, filter;
+}
+
+.workflow-card__index {
+  font-family: var(--font-head);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.workflow-card p:last-child {
+  color: var(--muted);
+  font-size: 0.97rem;
+  margin: 0;
+}
+
+/* ═══ 4 · Features ═════════════════════════════════════════════════════ */
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: var(--s4);
+}
+
+.feature {
+  padding: var(--s5) var(--s4) var(--s4);
+  border-radius: var(--radius-md);
+}
+
+.feature__title {
+  font-size: 1.28rem;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  color: var(--muted);
+  font-size: 0.97rem;
+  margin: 0;
+}
+
+/* ═══ 6 · Specs ════════════════════════════════════════════════════════ */
+
+.specs__table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.spec {
+  padding: var(--s4) var(--s4) var(--s4) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.spec__key {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.spec__value {
+  font-family: var(--font-head);
+  font-size: 1.85rem;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.spec__note {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ═══ 7 · Closing — full-bleed painted color field ═════════════════════
+   The final beat of the page owns the viewport: a mural-palette color
+   field that runs edge to edge with no card, no max-width, no contained
+   panel. Copy rides a single solid painted band so it always clears its
+   contrast floor; every colour block is decorative and aria-hidden.
+
+   Mural palette (abstract — evokes public paint, not any real wall):     */
+.mural {
+  /* Break out of the shared section padding and run full width */
+  padding: 0;
+  width: 100%;
+  min-height: 100svh;
+  position: relative;
+  display: grid;
+  /* Copy column on the left, painted field fills the rest */
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  isolation: isolate;
+  overflow: hidden;
+
+  --m-green: #0c7a3e; /* brand green-deep */
+  --m-lime: #14b860; /* brand green */
+  --m-gold: #7a6010; /* gold-deep */
+  --m-ochre: #c9992f; /* warm ochre */
+  --m-terra: #b04a2f; /* terracotta */
+  --m-cobalt: #244c86; /* cobalt */
+  --m-cream: #f1e7d0; /* limewash cream */
+  --m-dusk: #2b2a3a; /* near-ink dusk */
+}
+
+/* ── The painted field: abstract blocks tiling the right half ────────── */
+.mural__field {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  min-height: 100svh;
+}
+
+.mural__block {
+  display: block;
+  /* Painted, matte — no rounding, blocks meet at hard seams */
+  will-change: transform;
+}
+
+.mural__block--green {
+  grid-column: 1 / 4;
+  grid-row: 1 / 4;
+  background: var(--m-green);
+}
+.mural__block--gold {
+  grid-column: 4 / 7;
+  grid-row: 1 / 3;
+  background: var(--m-ochre);
+}
+.mural__block--terra {
+  grid-column: 4 / 6;
+  grid-row: 3 / 5;
+  background: var(--m-terra);
+}
+.mural__block--cobalt {
+  grid-column: 6 / 7;
+  grid-row: 3 / 6;
+  background: var(--m-cobalt);
+}
+.mural__block--lime {
+  grid-column: 1 / 3;
+  grid-row: 4 / 7;
+  background: var(--m-lime);
+}
+.mural__block--cream {
+  grid-column: 3 / 5;
+  grid-row: 5 / 7;
+  background: var(--m-cream);
+}
+.mural__block--ochre {
+  grid-column: 4 / 5;
+  grid-row: 3 / 4;
+  background: var(--m-gold);
+}
+.mural__block--dusk {
+  grid-column: 5 / 6;
+  grid-row: 5 / 7;
+  background: var(--m-dusk);
+}
+
+/* Two thin painted seams drift across the field to keep it alive */
+.mural__seam {
+  position: absolute;
+  background: rgba(252, 250, 244, 0.5);
+  mix-blend-mode: soft-light;
+}
+.mural__seam--1 {
+  top: 0;
+  bottom: 0;
+  left: 33.33%;
+  width: 3px;
+  animation: mural-drift-y 26s var(--ease-spring) infinite alternate;
+}
+.mural__seam--2 {
+  left: 0;
+  right: 0;
+  top: 66.66%;
+  height: 3px;
+  animation: mural-drift-x 32s var(--ease-spring) infinite alternate;
+}
+
+@keyframes mural-drift-y {
+  to {
+    transform: translateX(14%);
+  }
+}
+@keyframes mural-drift-x {
+  to {
+    transform: translateY(-10%);
+  }
+}
+
+/* ── The copy band: itself one of the painted fields (deep green) ────── */
+.mural__panel {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s3);
+  min-height: 100svh;
+  /* Flush to the page edges — a color band, not a floated card.
+     Inline padding matches the shared section rule so the copy sits on the
+     same left rule as every other section. */
+  padding: var(--s6) clamp(1.25rem, 5vw, 4rem);
+  background: var(--m-green);
+  color: #fdfcf8;
+}
+
+.mural__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d8f0e2; /* 8.9:1 on green-deep */
+  margin: 0 0 var(--s3);
+}
+
+.mural__title {
+  font-family: var(--font-head);
+  font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: #ffffff;
+  max-width: 16ch;
+}
+
+.mural__lede {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.55;
+  color: #eaf5ee; /* 12:1 on green-deep */
+  max-width: 46ch;
+  margin: var(--s3) 0 0;
+}
+
+/* The free-and-no-account fact, given weight as a display line */
+.mural__free {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  flex-wrap: wrap;
+  margin: var(--s4) 0 0;
+  padding-top: var(--s4);
+  border-top: 1px solid rgba(253, 252, 248, 0.28);
+}
+.mural__free-word {
+  font-family: var(--font-head);
+  font-size: clamp(2.4rem, 4vw, 3rem);
+  line-height: 1;
+  color: #ffe08a; /* warm gold on green — decorative accent, paired with text */
+}
+.mural__free-note {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #eaf5ee;
+  max-width: 30ch;
+}
+
+.mural__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: var(--s5) 0 0;
+}
+
+/* CTA keeps the brand pill + circular arrow badge, tuned to read on green */
+.glass-btn.mural__cta {
+  background: #fdfcf8;
+  border-color: #fdfcf8;
+  color: #0a5c2f; /* green-deep-plus on cream · > 7:1 */
+  box-shadow: 0 6px 20px rgba(6, 40, 22, 0.35);
+}
+.glass-btn.mural__cta:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #084a26;
+  box-shadow: 0 10px 26px rgba(6, 40, 22, 0.42);
+}
+.glass-btn.mural__cta .btn-icon {
+  background: rgba(12, 122, 62, 0.16);
+}
+.glass-btn.mural__cta:hover .btn-icon {
+  background: rgba(12, 122, 62, 0.24);
+}
+
+.mural__fine {
+  font-size: 0.85rem;
+  color: #d8f0e2;
+  margin: var(--s4) 0 0;
+}
+
+/* ── Stack on narrow screens: copy band first, painted field beneath ─── */
+@media (max-width: 900px) {
+  .mural {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 42svh;
+  }
+  .mural__panel {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: auto;
+    padding: var(--s6) var(--s4);
+  }
+  .mural__field {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 42svh;
+  }
+  .mural__title {
+    max-width: 20ch;
+  }
+}
+
+/* ═══ 8 · Institutions ═════════════════════════════════════════════════
+   Deliberately compact and light-tier: it is a pointer to another page,
+   not a pitch, so it must not compete with the painted section above it. */
+
+.inst {
+  padding: var(--s7) clamp(1.25rem, 5vw, 4rem);
+}
+
+/* No max-width or auto-centering here: the section's own padding is the
+   left rule, so the copy lines up with every other section on the page. */
+.inst__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+/* Heading inherits the global h2 scale — same size as the other sections */
+.inst__copy h2 {
+  max-width: 16ch;
+  margin-bottom: var(--s3);
+}
+
+.inst__lede {
+  font-size: 1.05rem; /* matches .showcase__copy p */
+  color: var(--muted);
+  max-width: 46ch;
+  margin-bottom: var(--s4);
+}
+
+.inst__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+  margin: 0 0 var(--s5);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--line);
+}
+.inst__stats div {
+  display: grid;
+  gap: 4px;
+}
+.inst__stats dt {
+  font-family: var(--font-head);
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  line-height: 1;
+  color: var(--accent);
+}
+.inst__stats dd {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.inst__cta {
+  gap: 10px;
+}
+
+/* Screen sits in the same matte device treatment as the app phones */
+.inst__shot {
+  margin: 0;
+}
+.inst__shot img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.05), 0 24px 56px rgba(17, 24, 39, 0.12);
+}
+.inst__shot figcaption {
+  margin-top: var(--s3);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 46ch;
+}
+
+@media (max-width: 900px) {
+  .inst__grid {
+    grid-template-columns: 1fr;
+  }
+  .inst__shot {
+    order: -1;
+  }
+}
+
+/* ═══ Footer ═══════════════════════════════════════════════════════════ */
+
+/* No dissolve above the footer: the painted section is full-bleed and ends
+   on a hard edge, so the footer butts straight up against it. The old
+   gradient (and the margin it faded across) belonged to a pale section. */
+.footer {
+  position: relative;
+  z-index: 10;
+  padding: 14vh clamp(1.25rem, 5vw, 4rem) 6vh;
+  background: var(--text);
+  color: var(--bg);
+}
+
+.footer__big {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  line-height: 1.1;
+  margin: 0 0 var(--s7);
+  max-width: 20ch;
+}
+
+.footer .label {
+  color: rgba(252, 252, 252, 0.6);
+}
+
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--s5);
+  padding-bottom: var(--s6);
+  border-bottom: 1px solid rgba(252, 252, 252, 0.14);
+}
+
+.footer__cols a {
+  display: block;
+  color: rgba(252, 252, 252, 0.86);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  transition: color var(--dur) var(--ease);
+}
+.footer__cols a:hover {
+  color: #fff;
+}
+
+.footer__note {
+  color: rgba(252, 252, 252, 0.55);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.footer__sig {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s3);
+  padding-top: var(--s4);
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(252, 252, 252, 0.55);
+  max-width: none;
+}
+.footer__sig span:first-child {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  color: var(--bg);
+}
+
+/* ═══ Responsive ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .showcase__grid,
+  .listen__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Phones become a swipeable row rather than a mile of stacked screens */
+  .listen__phones {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--s3);
+  }
+  .phone {
+    flex: 0 0 min(68%, 260px);
+    scroll-snap-align: center;
+  }
+  /* In-page anchors collapse on small screens; real page links (Home,
+     For Institutions) stay, since they're the only way between pages */
+  .nav__links a:not(.nav__cta):not(.nav__pagelink) {
+    display: none;
+  }
+  .nav__links {
+    gap: clamp(0.75rem, 3vw, 1.5rem);
+  }
+  .nav__links .nav__pagelink {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}
+
+/* Phone tier: the mark alone carries the brand so the page links and CTA
+   fit on one uncrowded row. 44px touch floor holds (§16.3). */
+@media (max-width: 560px) {
+  .nav {
+    padding: 12px var(--s3);
+  }
+  .nav__word {
+    display: none;
+  }
+  .nav__links {
+    gap: 0.85rem;
+  }
+  .nav__links .nav__pagelink {
+    font-size: 13px;
+  }
+  .nav__cta {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.9rem;
+  }
+  .nav__cta .btn-icon {
+    display: none;
+  }
+}
+
+/* Scroll-scrubbed video is too heavy for touch devices, and iOS Safari
+   throttles currentTime seeks — the effect degrades to a slideshow.
+   Fall back to the static field. Gated on touch alone, not width: a
+   narrow desktop window scrubs fine and should keep the video. */
+@media (hover: none) {
+  .bg-video {
+    display: none;
+  }
+  body.has-video .bg-fallback {
+    display: block;
+  }
+}
+
+@media (hover: none), (max-width: 768px) {
+  section {
+    padding: var(--s6) var(--s4);
+  }
+
+  .impact__pin,
+  .showcase__pin {
+    min-height: auto;
+    padding: var(--s6) var(--s4);
+  }
+
+  /* Pinned gallery becomes a plain vertical stack */
+  .workflow__track {
+    min-height: 0;
+    overflow: visible;
+  }
+  .showcase .workflow-card {
+    position: static;
+    width: 100%;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    margin-bottom: var(--s4);
+  }
+
+  .impact__head .word {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
+/* ═══ Reduced motion (brand kit §12 — required, not optional) ═══════════
+   Scroll-tied motion is exactly the pattern that triggers vestibular
+   symptoms. Everything collapses to static. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .bg-video {
+    display: none;
+  }
+  body.has-video .bg-fallback {
+    display: block;
+  }
+
+  .reveal,
+  .impact__head .word,
+  .showcase .workflow-card {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .showcase .workflow-card {
+    position: static;
+    width: 100%;
+    margin-bottom: var(--s4);
+  }
+  .workflow__track {
+    min-height: 0;
+    overflow: visible;
+  }
+  .showcase__pin,
+  .impact__pin {
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+}

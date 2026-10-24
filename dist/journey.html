@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Take the Walk — Philadelphia's Mural Trail | Gestalt Lite</title>
+  <meta name="description" content="Walk Philadelphia's mural trail and hear each wall told by the people who made it. A free, self-guided audio tour. No app, no signup. Free between matches this summer — every stop in English and Spanish.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gestalt.gallery/journey.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Take the Walk — Philadelphia's Mural Trail | Gestalt Lite">
+  <meta property="og:description" content="Walk Philadelphia's mural trail and hear each wall told by the people who made it. A free, self-guided audio tour. No app, no signup. Free between matches this summer — every stop in English and Spanish.">
+  <meta property="og:url" content="https://gestalt.gallery/journey.html">
+  <meta property="og:site_name" content="Gestalt">
+  <meta name="theme-color" content="#f6f4ee">
+  <link rel="icon" type="image/svg+xml" href="images/gestalt-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="journey.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============================================
+       NAV — fixed, transparent until scroll
+       ============================================ -->
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="images/gestalt-icon.svg" alt=""><b>Gestalt <span class="lite">Lite</span></b></a>
+      <a class="nav-open" href="https://mural.gestalt.gallery/nearby">Open the trail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============================================
+         HERO — "Take the walk."
+         ============================================ -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="wrap">
+        <div class="hero-inner">
+          <span class="eyebrow dotted"><span class="dot"></span>Philadelphia · A free walking tour</span>
+          <h1 id="hero-h">Take the <span class="accent">walk</span>.</h1>
+          <p class="lede">Eleven of Philadelphia's most famous murals, told aloud by the artists and neighbors who made them. Open the map, press play, keep walking. No app, no signup, no cost.</p>
+          <div class="hero-cta">
+            <a class="btn btn-night" href="#walk">Begin the walk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn-out" href="https://mural.gestalt.gallery/nearby">Open the map</a>
+          </div>
+          <a class="hero-note" href="#matchday">Here for the matches this summer? The trail fits between kickoffs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true"><span>Scroll to walk</span><span class="bar"></span></div>
+    </section>
+
+    <!-- ============================================
+         PREMISE — why the walk exists + mini how
+         ============================================ -->
+    <section class="section premise" aria-labelledby="prem-h">
+      <div class="wrap">
+        <div class="pgrid">
+          <div class="reveal">
+            <span class="eyebrow">Why walk</span>
+            <h2 id="prem-h" style="margin-top:14px;">A mural says everything to the people who made it, and nothing to the person walking past.</h2>
+            <p>No guide, no app, no plaque deep enough. So the history, the artist, the reason it is six stories tall, all of it stays on the wall. This walk changes that. Eleven walls, each with a voice.</p>
+          </div>
+          <div class="howmini reveal">
+            <div class="hm"><span class="n">01</span><h3>Open</h3><p>One link in your browser. The map finds the closest wall. No app to install.</p></div>
+            <div class="hm"><span class="n">02</span><h3>Listen</h3><p>The story plays in one tap, in English or Spanish, read aloud.</p></div>
+            <div class="hm"><span class="n">03</span><h3>Walk</h3><p>The map shows the next wall and the distance to reach it.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         THE WALK — sticky rail + four stops
+         ============================================ -->
+    <section class="section walk" id="walk" aria-labelledby="walk-h">
+      <div class="wrap">
+        <div class="walk-intro reveal">
+          <span class="eyebrow" style="justify-content:center;width:100%;">The walk</span>
+          <h2 class="display" id="walk-h" style="font-size:clamp(30px,4vw,50px);margin-top:12px;">Four stops to start. <span class="accent">Seven</span> more on the trail.</h2>
+        </div>
+        <div class="walk-grid">
+          <aside class="rail" aria-hidden="true">
+            <div class="rtitle">On the walk</div>
+            <div class="rprog"><span id="rail-cur">01</span><span class="of"> / 04</span></div>
+            <div class="rnow" id="rail-now">Untitled (Najee S.)</div>
+            <div class="rline" id="rline">
+              <div class="rdot active" data-stop="s-najee"><span class="d"></span><span class="rl">Untitled (Najee S.)</span></div>
+              <div class="rdot" data-stop="s-common"><span class="d"></span><span class="rl">Common Threads</span></div>
+              <div class="rdot" data-stop="s-youth"><span class="d"></span><span class="rl">We The Youth</span></div>
+              <div class="rdot" data-stop="s-muses"><span class="d"></span><span class="rl">Philadelphia Muses</span></div>
+            </div>
+          </aside>
+          <div>
+            <div class="stops" id="stops">
+
+              <!-- Stop 01 — Untitled (Najee S.) -->
+              <article class="stop" id="s-najee" data-stop-n="01" data-stop-title="Untitled (Najee S.)">
+                <div class="stop-art">
+                  <span class="badge">Stop 01 · Center City</span>
+                  <img class="art-photo pos-najee" src="images/murals/najee.jpg" alt="Untitled (Najee S.) — a young woman in a black-and-white patterned coat and mustard hat, painted six stories tall on an electric-blue wall above Sansom Street" loading="lazy" decoding="async">
+                </div>
+                <div class="stop-body">
+                  <span class="seyebrow">2019 · 6 stories tall</span>
+                  <h3>Untitled (Najee S.)</h3>
+                  <p class="smeta"><b>Amy Sherald</b> · 1108 Sansom Street</p>
+                  <p class="sstory">Six stories of a North Philly teenager in Sherald's grayscale, against electric blue. By the artist of Michelle Obama's portrait.</p>
+                  <div class="jnarr" data-pl data-narration="najee">
+                    <div class="jplayer">
+                      <button class="jp-btn" type="button" data-pl-btn aria-label="Play narration"><svg viewBox="0 0 24 24" data-pl-icon aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                      <div class="jp-main">
+                        <div class="jp-row">
+                          <div class="jp-scrub" data-pl-scrub><div class="jp-fill" data-pl-fill></div></div>
+                          <span class="jp-time" data-pl-time>0:00 / 0:00</span>
+                        </div>
+                        <div class="jp-bottom">
+                          <span class="jp-label" data-pl-label>Listen</span>
+                          <button class="jp-trtoggle" type="button" data-pl-trtoggle aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z M14 2v4a2 2 0 0 0 2 2h4 M16 13H8 M16 17H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-pl-trlabeltoggle>Read transcript</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jp-transcript" data-pl-transcript><span data-pl-trtext></span></div>
+                  </div>
+                  <p class="snext">Next · Common Threads <span class="walkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" stroke-linejoin="round"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" stroke-linejoin="round"/><path d="M16 17h4M4 13h4" stroke-linecap="round"/></svg>22 min walk</span></p>
+                </div>
+              </article>
+
+              <!-- Stop 02 — Common Threads -->
+              <article class="stop" id="s-common" data-stop-n="02" data-stop-title="Common Threads">
+                <div class="stop-art">
+                  <span class="badge">Stop 02 · Spring Garden</span>
+                  <img class="art-photo" src="images/murals/common-threads.jpg" alt="Common Threads — eight stories of classical figurines and Philadelphia teenagers painted across a brick building at Broad and Spring Garden" loading="lazy" decoding="async">
+                </div>
+                <div class="stop-body">
+                  <span class="seyebrow">1998 · 8 stories tall</span>
+                  <h3>Common Threads</h3>
+                  <p class="smeta"><b>Meg Saligman</b> · Broad &amp; Spring Garden</p>
+                  <p class="sstory">Eight stories tall. Classical figurines meet Philadelphia high-schoolers; the girl at its heart became known as the Mona Lisa on Broad Street.</p>
+                  <div class="jnarr" data-pl data-narration="common">
+                    <div class="jplayer">
+                      <button class="jp-btn" type="button" data-pl-btn aria-label="Play narration"><svg viewBox="0 0 24 24" data-pl-icon aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                      <div class="jp-main">
+                        <div class="jp-row">
+                          <div class="jp-scrub" data-pl-scrub><div class="jp-fill" data-pl-fill></div></div>
+                          <span class="jp-time" data-pl-time>0:00 / 0:00</span>
+                        </div>
+                        <div class="jp-bottom">
+                          <span class="jp-label" data-pl-label>Listen</span>
+                          <button class="jp-trtoggle" type="button" data-pl-trtoggle aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z M14 2v4a2 2 0 0 0 2 2h4 M16 13H8 M16 17H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-pl-trlabeltoggle>Read transcript</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jp-transcript" data-pl-transcript><span data-pl-trtext></span></div>
+                  </div>
+                  <p class="snext">Next · We The Youth <span class="walkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" stroke-linejoin="round"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" stroke-linejoin="round"/><path d="M16 17h4M4 13h4" stroke-linecap="round"/></svg>45 min walk</span></p>
+                </div>
+              </article>
+
+              <!-- Stop 03 — We The Youth -->
+              <article class="stop" id="s-youth" data-stop-n="03" data-stop-title="We The Youth">
+                <div class="stop-art">
+                  <span class="badge">Stop 03 · Point Breeze</span>
+                  <img class="art-photo pos-youth" src="images/murals/we-the-youth.jpg" alt="We The Youth — Keith Haring's bold red, yellow, and blue dancing figures covering the side of a Point Breeze rowhome" loading="lazy" decoding="async">
+                </div>
+                <div class="stop-body">
+                  <span class="seyebrow">1987 · 2 stories tall</span>
+                  <h3>We The Youth</h3>
+                  <p class="smeta"><b>Keith Haring</b> · 22nd &amp; Ellsworth</p>
+                  <p class="sstory">Haring's only collaborative public mural still intact on its original wall, restored and radiant.</p>
+                  <div class="jnarr" data-pl data-narration="youth">
+                    <div class="jplayer">
+                      <button class="jp-btn" type="button" data-pl-btn aria-label="Play narration"><svg viewBox="0 0 24 24" data-pl-icon aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                      <div class="jp-main">
+                        <div class="jp-row">
+                          <div class="jp-scrub" data-pl-scrub><div class="jp-fill" data-pl-fill></div></div>
+                          <span class="jp-time" data-pl-time>0:00 / 0:00</span>
+                        </div>
+                        <div class="jp-bottom">
+                          <span class="jp-label" data-pl-label>Listen</span>
+                          <button class="jp-trtoggle" type="button" data-pl-trtoggle aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z M14 2v4a2 2 0 0 0 2 2h4 M16 13H8 M16 17H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-pl-trlabeltoggle>Read transcript</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jp-transcript" data-pl-transcript><span data-pl-trtext></span></div>
+                  </div>
+                  <p class="snext">Next · Philadelphia Muses <span class="walkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" stroke-linejoin="round"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" stroke-linejoin="round"/><path d="M16 17h4M4 13h4" stroke-linecap="round"/></svg>30 min walk</span></p>
+                </div>
+              </article>
+
+              <!-- Stop 04 — Philadelphia Muses -->
+              <article class="stop" id="s-muses" data-stop-n="04" data-stop-title="Philadelphia Muses">
+                <div class="stop-art">
+                  <span class="badge">Stop 04 · Gayborhood</span>
+                  <img class="art-photo pos-muses" src="images/murals/philadelphia-muses.jpg" alt="Philadelphia Muses — nine muses reimagined as contemporary Philadelphia artists, gathered around a machine spinning out spheres, five stories tall at 13th and Locust" loading="lazy" decoding="async">
+                </div>
+                <div class="stop-body">
+                  <span class="seyebrow">1999 · 5 stories tall</span>
+                  <h3>Philadelphia Muses</h3>
+                  <p class="smeta"><b>Meg Saligman</b> · 13th &amp; Locust</p>
+                  <p class="sstory">Nine muses modeled on real Philadelphians — a contemporary ode to where inspiration actually comes from.</p>
+                  <div class="jnarr" data-pl data-narration="muses">
+                    <div class="jplayer">
+                      <button class="jp-btn" type="button" data-pl-btn aria-label="Play narration"><svg viewBox="0 0 24 24" data-pl-icon aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                      <div class="jp-main">
+                        <div class="jp-row">
+                          <div class="jp-scrub" data-pl-scrub><div class="jp-fill" data-pl-fill></div></div>
+                          <span class="jp-time" data-pl-time>0:00 / 0:00</span>
+                        </div>
+                        <div class="jp-bottom">
+                          <span class="jp-label" data-pl-label>Listen</span>
+                          <button class="jp-trtoggle" type="button" data-pl-trtoggle aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z M14 2v4a2 2 0 0 0 2 2h4 M16 13H8 M16 17H8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-pl-trlabeltoggle>Read transcript</span></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="jp-transcript" data-pl-transcript><span data-pl-trtext></span></div>
+                  </div>
+                  <p class="snext">Then · seven more on the trail <span class="walkn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" stroke-linejoin="round"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" stroke-linejoin="round"/><path d="M16 17h4M4 13h4" stroke-linecap="round"/></svg>keep walking</span></p>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- Seven more on the trail -->
+            <div class="rest reveal">
+              <h3>Seven more on the trail</h3>
+              <p class="resub">The walk keeps going. Each opens the same way: tap, and listen.</p>
+              <div class="restgrid">
+                <a class="restrow" href="https://mural.gestalt.gallery/nearby"><span class="rn">05</span><span><span class="rt">Water Gives Life</span><br><span class="ra">Eurhi Jones &amp; David McShane</span></span><span class="rh">Center City</span></a>
+                <a class="restrow" href="https://mural.gestalt.gallery/nearby"><span class="rn">06</span><span><span class="rt">Pride and Progress</span><br><span class="ra">Ann Northrup</span></span><span class="rh">Washington Square West</span></a>
+                <a class="restrow" href="https://mural.gestalt.gallery/nearby"><span class="rn">07</span><span><span class="rt">The Atlas of Tomorrow</span><br><span class="ra">Candy Chang</span></span><span class="rh">South Street</span></a>
+                <a class="restrow" href="https://mural.gestalt.gallery/nearby"><span class="rn">08</span><span><span class="rt">Building the City</span><br><span class="ra">Michael Webb</span></span><span class="rh">Midtown Village</span></a>
+                <a class="restrow" href="https://mural.gestalt.gallery/nearby"><span class="rn">09</span><span><span class="rt">Finding Home</span><br><span class="ra">Kathryn Pannepacker &amp; Josh Sarantitis</span></span><span class="rh">Market East</span></a>
+                <a class="restrow" href="https://mural.gestalt.gallery/nearby"><span class="rn">10</span><span><span class="rt">Equilibrium</span><br><span class="ra">Eric Okdeh</span></span><span class="rh">Bella Vista</span></a>
+                <a class="restrow" href="https://mural.gestalt.gallery/nearby"><span class="rn">11</span><span><span class="rt">The Roots Mural</span><br><span class="ra">Roberto Lugo</span></span><span class="rh">South Street</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         MATCH DAYS — for summer visitors
+         ============================================ -->
+    <section class="section matchday" id="matchday" aria-labelledby="matchday-h">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">This summer · Match days &amp; off days</span>
+          <h2 class="display" id="matchday-h" style="font-size:clamp(30px,4vw,50px);margin-top:12px;">Here for the matches? <span class="accent">So are the walls.</span></h2>
+          <p class="lede" style="margin-top:18px;max-width:52ch;">Philadelphia is hosting the world this summer. Between kickoffs, the trail is the city's best free hour — no ticket, no app, and every stop plays in English y en español.</p>
+        </div>
+        <div class="mroutes reveal-stagger">
+          <article class="mcard">
+            <h3>From the festival at Lemon Hill</h3>
+            <p>The walk into Center City passes <strong>Common Threads</strong> at Broad &amp; Spring Garden — eight stories tall and impossible to miss. Press play as you pass it.</p>
+          </article>
+          <article class="mcard">
+            <h3>From the Broad Street Line</h3>
+            <p>The B runs straight up Broad. Hop off at Walnut–Locust and you're two blocks from <strong>Philadelphia Muses</strong> and the six-story Sherald on Sansom Street.</p>
+          </article>
+        </div>
+        <div class="mcta reveal">
+          <a class="btn btn-green" href="https://mural.gestalt.gallery/nearby">Open the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <p class="mmicro">Free either way. The closest mural is one button away.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         INTERLUDE — the technology, quietly
+         ============================================ -->
+    <section class="section interlude" aria-labelledby="int-h">
+      <div class="wrap">
+        <span class="eyebrow green" style="justify-content:center;width:100%;">The technology, quietly</span>
+        <h2 id="int-h" style="margin-top:16px;">All of this runs in a browser the moment you open the map. <span class="accent">No app between you and the art.</span></h2>
+        <div class="ichips">
+          <span class="ichip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" stroke-linejoin="round"/></svg>Tap to audio in seconds</span>
+          <span class="ichip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-linecap="round"/></svg>English &amp; Español</span>
+          <span class="ichip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>WCAG 2.1 AA, screen-reader ready</span>
+          <span class="ichip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z" stroke-linejoin="round"/></svg>No account, no trackers</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FUNNEL — open the map
+         ============================================ -->
+    <section class="section funnel" aria-labelledby="funnel-h">
+      <div class="wrap">
+        <span class="eyebrow dotted" style="justify-content:center;width:100%;"><span class="dot"></span>Your turn</span>
+        <h2 id="funnel-h" style="margin-top:16px;">Start where you're <span class="accent">standing</span>.</h2>
+        <p class="lede">Open the map and the closest mural is one button away. Or point your phone's camera at the code below to take the trail with you.</p>
+        <div class="funnel-card">
+          <div class="qr"><img src="images/qr-nearby.svg" alt="QR code to mural.gestalt.gallery/nearby" width="132" height="132"></div>
+          <div class="fcb">
+            <b>Take the trail with you</b>
+            <p>Drops you onto the trail near you. Free, no app, no signup.</p>
+            <span class="u">mural.gestalt.gallery/nearby</span>
+          </div>
+        </div>
+        <div class="funnel-actions">
+          <a class="btn btn-green" href="https://mural.gestalt.gallery/nearby">Open the map <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         CITIES — for cities & cultural institutions
+         ============================================ -->
+    <section class="section cities" id="cities" aria-labelledby="cities-h">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">For cities &amp; cultural institutions</span>
+          <h2 class="display" id="cities-h" style="font-size:clamp(32px,4.4vw,54px);margin-top:12px;">Every city has walls worth <span class="accent">hearing</span>.</h2>
+          <p class="lede" style="margin-top:18px;max-width:60ch;">Philadelphia is the first walk. Bring Gestalt Lite to your galleries, your public art, or your whole city. Send the artwork list. We narrate it, generate the codes, and hand you the evidence.</p>
+        </div>
+        <div class="cities-grid">
+          <div class="reveal">
+            <div class="cval"><span class="cvic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 3h6M9 21h6M3 9v6M21 9v6" stroke-linecap="round"/></svg></span><div><h3>We generate the codes</h3><p>Send your artwork list. Your collection is narrated and coded by the weekend.</p></div></div>
+            <div class="cval"><span class="cvic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Measurable engagement</h3><p>Plays, time-to-audio, and who walked to a second work. Evidence, not intentions.</p></div></div>
+            <div class="cval"><span class="cvic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Accessibility, met</h3><p>WCAG 2.1 AA and curator audio meet your public-art commitments the day you launch.</p></div></div>
+            <div class="cval"><span class="cvic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></span><div><h3>Your own data layer</h3><p>Narrate once. The same accessible layer powers the web today and richer experiences next.</p></div></div>
+          </div>
+          <form class="cform reveal" id="pilot-form">
+            <div class="ct">Start a pilot conversation</div>
+            <div class="cftwo">
+              <div class="cfrow"><label for="j-name">Name</label><input id="j-name" name="name" type="text" placeholder="Your name" autocomplete="name" required></div>
+              <div class="cfrow"><label for="j-org">Organization</label><input id="j-org" name="organization" type="text" placeholder="Gallery, program, or office" autocomplete="organization"></div>
+            </div>
+            <div class="cfrow"><label for="j-email">Email</label><input id="j-email" name="email" type="email" placeholder="you@org.org" autocomplete="email" required></div>
+            <div class="cfrow"><label for="j-what">What would you narrate? (optional)</label><input id="j-what" name="what" type="text" placeholder="A mural, a collection, a corridor…"></div>
+            <button class="cs" type="submit">Start a pilot conversation</button>
+            <p class="cn" data-form-note>Nothing is gated behind this form. The trail is free either way.</p>
+            <p class="cm">Or email <a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="foot">
+    <div class="wrap">
+      <div>
+        <a class="brand" href="#top"><img src="images/gestalt-icon.svg" alt=""><b>Gestalt Lite</b></a>
+        <div class="place">Made In Philadelphia by Chris Carter</div>
+      </div>
+      <nav class="flinks" aria-label="Footer">
+        <a href="https://mural.gestalt.gallery/nearby">Open the trail</a>
+        <a href="#walk">The walk</a>
+        <a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="journey.js"></script>
+</body>
+</html>

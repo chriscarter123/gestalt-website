@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestalt · ADA compliance infrastructure for museums</title>
+    <meta
+      name="description"
+      content="Generate audio descriptions, track accessibility risk, manage audit logs, and deliver compliant visitor experiences with Gestalt's museum ADA compliance platform."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#home">Skip to main content</a>
+
+    <!-- Background: pale static field (z0) + scrim (z1); no video on this page -->
+
+    <div class="bg-fallback" aria-hidden="true"></div>
+    <div class="bg-scrim" aria-hidden="true"></div>
+
+    <header class="nav" role="banner">
+      <a class="nav__logo" href="./index.html" aria-label="Gestalt home">
+        <span class="nav__mark" aria-hidden="true">
+          <svg viewBox="0 0 200 200" width="24" height="24" focusable="false">
+            <path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#111827" />
+            <g transform="translate(105,0)"><path d="M 28 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 0 95 L 0 28 Q 0 0 28 0 Z" fill="#14B860" /></g>
+            <g transform="translate(0,105)"><path d="M 28 0 L 95 0 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 28 Q 0 0 28 0 Z" fill="#14B860" /></g>
+            <g transform="translate(105,105)"><path d="M 0 0 L 67 0 Q 95 0 95 28 L 95 67 Q 95 95 67 95 L 28 95 Q 0 95 0 67 L 0 0 Z" fill="#111827" /></g>
+          </svg>
+        </span>
+        <span class="nav__word">Gestalt</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a class="nav__pagelink" href="./index.html">Home</a>
+        <a href="./index.html#listen">Listen Now</a>
+        <a href="./index.html#showcase">About</a>
+        <a class="nav__pagelink" href="./for-institutions.html" aria-current="page">For Institutions</a>
+        <a class="glass-btn glass-btn--primary nav__cta" href="./contact.html">
+          Schedule a demo
+          <span class="btn-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </span>
+        </a>
+      </nav>
+    </header>
+
+    <main id="page" class="page">
+      <!-- 1 · Page hero -->
+      <section id="home" class="phero" aria-labelledby="phero-title">
+        <h1 id="phero-title" class="hero__title reveal">
+          <span class="hero__title-utility">ADA <strong>compliance</strong></span>
+          <span class="hero__title-beauty"><em>infrastructure</em> for museums.</span>
+        </h1>
+        <p class="phero__lede reveal">
+          Gestalt helps museums generate, review, and deliver accessible
+          experiences in days, not years. From AI audio descriptions to
+          compliance analytics, audit logs, and visitor delivery on guests' own
+          phones, we give institutions a turnkey path to accessibility without
+          significant effort.
+        </p>
+        <div class="phero__actions reveal">
+          <a class="glass-btn glass-btn--primary" href="./contact.html">
+            Schedule a demo
+            <span class="btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </span>
+          </a>
+          <a class="glass-btn" href="#process">How it works</a>
+        </div>
+      </section>
+
+      <!-- 2 · The dashboard, in the same matte treatment as the landing page -->
+      <section class="shot" aria-label="The Gestalt institution dashboard">
+        <figure class="inst__shot reveal">
+          <img
+            src="./img/dashboard-screenshot.png"
+            alt="Gestalt institution dashboard showing ADA accessibility
+                 scorecard with 73% audio description coverage, gallery
+                 breakdown by floor, and language demand analytics."
+            width="1226"
+            height="654"
+          />
+          <figcaption>
+            The Gestalt institution dashboard — compliance scorecards,
+            collection coverage, and visitor analytics in one place.
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- 3 · The pressure -->
+      <section id="urgent" class="urgent" aria-labelledby="urgent-head">
+        <div class="section-head">
+          <h2 id="urgent-head" class="reveal">Why compliance has become <em>urgent</em></h2>
+        </div>
+
+        <dl class="inst__stats reveal">
+          <div>
+            <dt>2&ndash;3%</dt>
+            <dd>of museum collections have audio descriptions</dd>
+          </div>
+          <div>
+            <dt>$50&ndash;150</dt>
+            <dd>cost per description when written by hand</dd>
+          </div>
+        </dl>
+
+        <p class="body-lede reveal">
+          Museums are under growing pressure to improve accessibility, but the
+          traditional process does not scale. Writing descriptions one by one,
+          coordinating review, recording narration, and updating content across
+          changing exhibitions creates a backlog that most institutions never
+          fully clear. Gestalt turns that backlog into an operational workflow
+          your team can actually maintain.
+        </p>
+      </section>
+
+      <!-- 4 · The workflow, as a numbered editorial rail -->
+      <section id="process" class="process" aria-labelledby="process-head">
+        <div class="section-head">
+          <h2 id="process-head" class="reveal">From collection upload to <em>compliant delivery</em></h2>
+        </div>
+
+        <ol class="steps reveal">
+          <li class="step">
+            <p class="step__index">01</p>
+            <div class="step__body">
+              <h3 class="feature__title">Upload your collection</h3>
+              <p>
+                Import artwork records by CSV or API. Gestalt uses your existing
+                titles, artists, dates, and curatorial notes to create a
+                structured accessibility workflow around the collection you
+                already manage.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <p class="step__index">02</p>
+            <div class="step__body">
+              <h3 class="feature__title">Generate descriptions at scale</h3>
+              <p>
+                Gestalt creates accessibility-ready audio description drafts in
+                seconds, giving your team a fast starting point for every work
+                instead of months of manual writing.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <p class="step__index">03</p>
+            <div class="step__body">
+              <h3 class="feature__title">Review with your team</h3>
+              <p>
+                Curators and staff review, edit, and approve content in a
+                purpose-built CMS. Keep institutional voice, maintain quality
+                control, and document who approved what.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <p class="step__index">04</p>
+            <div class="step__body">
+              <h3 class="feature__title">Publish, score, and document</h3>
+              <p>
+                Deliver descriptions to visitors on their own phones while
+                tracking accessibility coverage, audit history, and reporting
+                outputs for leadership, grants, and compliance reviews.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- 5 · Reporting -->
+      <section id="platform" class="platform" aria-labelledby="platform-head">
+        <div class="section-head">
+          <h2 id="platform-head" class="reveal">ADA-ready, <em>grant-ready</em></h2>
+          <p class="body-lede reveal">
+            Gestalt gives your institution a live view of accessibility
+            progress. See which works are covered, where gaps remain, and how
+            your collection is trending over time.
+          </p>
+        </div>
+
+        <div class="features__grid reveal">
+          <div class="feature glass">
+            <h3 class="feature__title">Compliance scorecards</h3>
+            <p>
+              Track description status across the full collection with live
+              visibility into what is complete, in review, pending, or still
+              missing.
+            </p>
+          </div>
+          <div class="feature glass">
+            <h3 class="feature__title">Grant-ready documentation</h3>
+            <p>
+              Generate exportable reports for accessibility audits, funder
+              updates, and internal reporting without assembling evidence
+              manually.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 · No hardware -->
+      <section id="delivery" class="delivery" aria-labelledby="delivery-head">
+        <div class="section-head">
+          <h2 id="delivery-head" class="reveal">Works on visitors' <em>own phones</em></h2>
+        </div>
+        <p class="pull reveal">
+          Forget device rentals, beacon installations, and charging stations.
+          Gestalt runs on the smartphone visitors already carry, reducing
+          deployment friction while keeping accessibility delivery simple for
+          staff and dependable for guests.
+        </p>
+      </section>
+
+      <!-- 7 · Beyond the museum walls -->
+      <section id="scope" class="scope" aria-labelledby="scope-head">
+        <div class="section-head">
+          <h2 id="scope-head" class="reveal">One platform for galleries, campuses, and <em>public art</em></h2>
+        </div>
+        <p class="body-lede reveal">
+          Gestalt is built for museums first, but it also supports sculpture
+          trails, campus collections, mural programs, and public art
+          commissions. If your institution manages art in physical space,
+          Gestalt helps structure and deliver accessibility across it.
+        </p>
+      </section>
+
+      <!-- 8 · Tiers -->
+      <section id="plans" class="plans" aria-labelledby="plans-head">
+        <div class="section-head">
+          <h2 id="plans-head" class="reveal">Built for institutions of <em>every size</em></h2>
+        </div>
+
+        <div class="features__grid reveal">
+          <div class="feature glass">
+            <h3 class="feature__title">Gallery Lite</h3>
+            <p>
+              For small galleries and emerging spaces. Up to 100 works, basic
+              analytics, self-service onboarding.
+            </p>
+          </div>
+          <div class="feature glass">
+            <h3 class="feature__title">Institution</h3>
+            <p>
+              For mid-size museums. Unlimited works, curatorial CMS, compliance
+              reporting, dedicated onboarding.
+            </p>
+          </div>
+          <div class="feature glass">
+            <h3 class="feature__title">Enterprise</h3>
+            <p>
+              For major museums and city-wide programs. Multi-venue support, API
+              access, custom integrations, white-label options.
+            </p>
+          </div>
+          <div class="feature plan--featured">
+            <h3 class="feature__title">Talk to us</h3>
+            <p>
+              Every institution is different. Let's figure out what works for
+              yours.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 · Closing band — the page's one full-bleed painted surface -->
+      <section class="pcta" aria-labelledby="pcta-head">
+        <div class="pcta__inner reveal">
+          <p class="pcta__eyebrow">Schedule a demo</p>
+          <h2 id="pcta-head" class="pcta__title">See Gestalt in action.</h2>
+          <p class="pcta__lede">
+            Schedule a demo to see how Gestalt can help your institution move
+            from accessibility backlog to documented compliance.
+          </p>
+          <a class="glass-btn glass-btn--primary pcta__btn" href="./contact.html">
+            Schedule a demo
+            <span class="btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <p class="footer__big">Every artwork has a voice.</p>
+        <form class="signup" data-signup="visitor" novalidate>
+          <label class="signup__label" for="signup-email">Get new murals as they go live.</label>
+          <div class="signup__row">
+            <input class="signup__input" id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+            <button class="glass-btn glass-btn--primary signup__button" type="submit">Sign up</button>
+          </div>
+          <div class="signup__trap" aria-hidden="true">
+            <label for="signup-website">Leave this field empty</label>
+            <input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <p class="signup__status" data-signup-status role="status" aria-live="polite"></p>
+        </form>
+        <div class="footer__cols">
+          <div>
+            <p class="label">Explore</p>
+            <a href="./index.html#listen">Listen Now</a>
+            <a href="./index.html#showcase">About</a>
+            <a href="./index.html#demo">Take the tour</a>
+          </div>
+          <div>
+            <p class="label">Institutions</p>
+            <a href="#process">How it works</a>
+            <a href="#plans">Plans</a>
+            <a href="./contact.html">Schedule a demo</a>
+          </div>
+          <div>
+            <p class="label">Accessibility</p>
+            <a href="mailto:access@gestalt.gallery">Report a barrier</a>
+          </div>
+          <div>
+            <p class="label">Contact</p>
+            <a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a>
+            <a href="https://chriscarter.work" target="_blank" rel="noopener">chriscarter.work</a>
+            <p class="footer__note">Philadelphia, PA</p>
+          </div>
+        </div>
+        <p class="footer__sig">
+          <span>Gestalt</span>
+          <span>© 2026 Gestalt Technologies, Inc.</span>
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/institutions.js"></script>
+  </body>
+</html>

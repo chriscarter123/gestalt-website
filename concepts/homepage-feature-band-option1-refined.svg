@@ -1,0 +1,103 @@
+<svg width="1800" height="1100" viewBox="0 0 1800 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1800" y2="1100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F5EE"/>
+      <stop offset="1" stop-color="#F2EFE7"/>
+    </linearGradient>
+    <radialGradient id="glowGold" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(370 210) rotate(22) scale(360 260)">
+      <stop stop-color="#D4AF37" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowGreen" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1390 220) rotate(-12) scale(420 280)">
+      <stop stop-color="#14B860" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#14B860" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#111827" flood-opacity="0.10"/>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#111827" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .serif { font-family: Georgia, 'Times New Roman', serif; }
+      .sans { font-family: Arial, Helvetica, sans-serif; }
+      .eyebrow { font-size: 22px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; fill: #B07B2C; }
+      .display { font-size: 78px; font-weight: 700; fill: #111827; }
+      .body { font-size: 30px; fill: #5B6472; }
+      .pillText { font-size: 22px; font-weight: 700; fill: #111827; }
+      .pillSub { font-size: 18px; fill: #707887; }
+      .smallStrong { font-size: 20px; font-weight: 700; fill: #111827; }
+      .small { font-size: 18px; fill: #707887; }
+      .note { font-size: 24px; fill: #6B7280; }
+      .caption { font-size: 20px; fill: #8A92A0; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1100" fill="url(#bg)"/>
+  <rect width="1800" height="1100" fill="url(#glowGold)"/>
+  <rect width="1800" height="1100" fill="url(#glowGreen)"/>
+
+  <g opacity="0.55">
+    <path d="M120 0V1100M240 0V1100M360 0V1100M480 0V1100M600 0V1100M720 0V1100M840 0V1100M960 0V1100M1080 0V1100M1200 0V1100M1320 0V1100M1440 0V1100M1560 0V1100M1680 0V1100" stroke="#E8E1D4"/>
+    <path d="M0 120H1800M0 240H1800M0 360H1800M0 480H1800M0 600H1800M0 720H1800M0 840H1800M0 960H1800" stroke="#E8E1D4"/>
+  </g>
+
+  <text x="120" y="100" class="sans eyebrow">Refined Direction</text>
+  <text x="120" y="180" class="serif display">Capability Rail</text>
+  <text x="120" y="236" class="sans body">A static, high-clarity product band that feels premium and immediately readable for museum buyers.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="320" width="1560" height="300" rx="42" fill="#FFFFFF" stroke="#EDE6D8" stroke-width="2"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="170" y="380" width="1460" height="180" rx="90" fill="#FCFAF5" stroke="#ECE4D5" stroke-width="2"/>
+  </g>
+
+  <!-- pills -->
+  <g>
+    <rect x="205" y="404" width="250" height="132" rx="30" fill="#FFFFFF" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="236" cy="435" r="11" fill="#14B860"/>
+    <text x="230" y="470" class="sans pillText">AI Audio Descriptions</text>
+    <text x="230" y="505" class="sans pillSub">Generate accessibility-ready drafts in seconds</text>
+  </g>
+  <g>
+    <rect x="480" y="404" width="250" height="132" rx="30" fill="#FFFFFF" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="511" cy="435" r="11" fill="#D4AF37"/>
+    <text x="505" y="470" class="sans pillText">Compliance Scorecards</text>
+    <text x="505" y="505" class="sans pillSub">Track collection coverage and accessibility gaps</text>
+  </g>
+  <g>
+    <rect x="755" y="404" width="250" height="132" rx="30" fill="#FFFFFF" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="786" cy="435" r="11" fill="#214F94"/>
+    <text x="780" y="470" class="sans pillText">Audit Logs</text>
+    <text x="780" y="505" class="sans pillSub">Document review history for compliance reporting</text>
+  </g>
+  <g>
+    <rect x="1030" y="404" width="250" height="132" rx="30" fill="#FFFFFF" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="1061" cy="435" r="11" fill="#14B860"/>
+    <text x="1055" y="470" class="sans pillText">Visitor Delivery</text>
+    <text x="1055" y="505" class="sans pillSub">Run on guests’ own phones with no hardware</text>
+  </g>
+  <g>
+    <rect x="1305" y="404" width="250" height="132" rx="30" fill="#FFFFFF" stroke="#E8E1D3" stroke-width="2"/>
+    <circle cx="1336" cy="435" r="11" fill="#D4AF37"/>
+    <text x="1330" y="470" class="sans pillText">Grant-Ready Reports</text>
+    <text x="1330" y="505" class="sans pillSub">Export documentation for boards and funders</text>
+  </g>
+
+  <!-- below-band explanation -->
+  <g>
+    <text x="120" y="720" class="sans eyebrow">Why This Direction Works</text>
+    <text x="120" y="790" class="sans smallStrong">1. It slows the page down in a good way.</text>
+    <text x="120" y="824" class="sans note">Instead of a fast-moving ticker, the visitor gets a crisp snapshot of what the product actually does.</text>
+
+    <text x="120" y="890" class="sans smallStrong">2. It gives equal weight to the most valuable differentiators.</text>
+    <text x="120" y="924" class="sans note">The rail highlights compliance, delivery, and reporting without burying them inside a decorative motion pattern.</text>
+
+    <text x="120" y="990" class="sans smallStrong">3. It transitions naturally into the larger features section below.</text>
+    <text x="120" y="1024" class="sans note">The band acts like a premium summary, then the bento grid can expand each idea in more detail.</text>
+  </g>
+
+  <text x="120" y="1070" class="sans caption">Recommended next step: if you like this direction, I can make a second refined concept that pushes it even closer to the final homepage section styling.</text>
+</svg>

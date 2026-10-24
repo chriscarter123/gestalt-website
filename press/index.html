@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Gestalt Lite — Press Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FCFCFC; --charcoal:#111827; --gold:#B8941F; --gold-soft:#D4AF37;
+    --green:#14B860; --rule:rgba(17,24,39,.12); --rule-soft:rgba(17,24,39,.07);
+    --serif:'Newsreader',Georgia,serif; --sans:'Outfit',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--white); color:var(--charcoal); font-family:var(--sans);
+    font-weight:300; line-height:1.65; font-size:17px;
+    background-image:
+      linear-gradient(rgba(17,24,39,.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(17,24,39,.025) 1px,transparent 1px);
+    background-size:48px 48px;
+  }
+  .page{max-width:50rem;margin:0 auto;padding:4rem 1.5rem 6rem}
+
+  /* Masthead */
+  .masthead{border-bottom:1px solid var(--charcoal);padding-bottom:2.25rem;margin-bottom:3.5rem}
+  .kicker{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--gold);margin-bottom:1.25rem}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,7vw,3.6rem);line-height:1.05;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--gold)}
+  .dek{margin-top:1.1rem;font-size:1.1rem;max-width:38rem;opacity:.85}
+  .masthead-meta{margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.6rem 2rem;font-size:.85rem;letter-spacing:.04em}
+  .masthead-meta a{color:var(--charcoal);text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px}
+
+  /* Wall-label section headers */
+  section{margin-bottom:3.75rem}
+  .label{
+    display:inline-block;border:1px solid var(--rule);background:rgba(252,252,252,.8);
+    padding:.45rem .9rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:500;margin-bottom:1.4rem;
+  }
+  .label::before{content:"";display:inline-block;width:.45rem;height:.45rem;border-radius:50%;background:var(--gold-soft);margin-right:.6rem;vertical-align:1px}
+
+  h2{font-family:var(--serif);font-weight:500;font-size:1.7rem;line-height:1.2;margin-bottom:.9rem;max-width:30ch}
+  p{max-width:42rem;margin-bottom:1rem}
+  strong{font-weight:500}
+
+  /* Copy-ready boilerplate blocks */
+  .boiler{border-left:2px solid var(--gold-soft);padding:.25rem 0 .25rem 1.4rem;margin:1.4rem 0}
+  .boiler-tag{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;opacity:.55;margin-bottom:.4rem}
+  .boiler p{margin-bottom:0;font-size:1.02rem}
+
+  /* Fact strip */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));border:1px solid var(--rule);background:rgba(252,252,252,.75)}
+  .fact{padding:1.3rem 1.4rem;border-bottom:1px solid var(--rule-soft);border-right:1px solid var(--rule-soft)}
+  .fact b{display:block;font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.15;margin-bottom:.2rem}
+  .fact span{font-size:.85rem;opacity:.7}
+
+  /* Trail table */
+  table{width:100%;border-collapse:collapse;font-size:.95rem}
+  th{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;text-align:left;padding:.6rem .75rem .6rem 0;border-bottom:1px solid var(--charcoal);opacity:.75}
+  td{padding:.7rem .75rem .7rem 0;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  td.mural{font-family:var(--serif);font-size:1.05rem;font-weight:500}
+  td .yr{font-size:.8rem;opacity:.55;font-family:var(--sans);font-weight:300;margin-left:.4rem}
+
+  /* Angles */
+  .angles{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+  .angle{border:1px solid var(--rule);background:rgba(252,252,252,.78);padding:1.4rem 1.5rem}
+  .angle h3{font-family:var(--serif);font-weight:500;font-size:1.18rem;margin-bottom:.45rem}
+  .angle p{font-size:.95rem;margin:0;opacity:.85}
+
+  /* Bio */
+  .bio{display:grid;grid-template-columns:1fr;gap:1.1rem;max-width:42rem}
+
+  /* Photos */
+  .photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:1rem;margin-top:.4rem}
+  .photo{border:1px solid var(--rule);background:rgba(252,252,252,.78)}
+  .photo img{display:block;width:100%;height:11rem;object-fit:cover}
+  .photo figcaption{padding:.65rem .8rem;font-size:.8rem;line-height:1.45;opacity:.8}
+  .credit-note{font-size:.85rem;opacity:.7;margin-top:1rem;max-width:42rem}
+
+  /* Q&A */
+  .qa dt{font-family:var(--serif);font-weight:500;font-size:1.12rem;margin-top:1.3rem}
+  .qa dd{margin-top:.3rem;max-width:42rem}
+
+  /* Contact card */
+  .contact{
+    border:1px solid var(--rule);background:rgba(252,252,252,.82);
+    padding:2rem;display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:flex-start;
+  }
+  .contact h2{margin-bottom:.3rem}
+  .contact .who{font-size:.95rem;opacity:.85}
+  .cta{
+    display:inline-block;background:var(--green);color:var(--white);text-decoration:none;
+    font-weight:500;font-size:.95rem;padding:.8rem 1.5rem;border-radius:8px;
+    transition:transform .35s cubic-bezier(.175,.885,.32,1.275);
+  }
+  .cta:hover{transform:translateY(-2px)}
+  .cta:focus-visible,a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+  footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);font-size:.82rem;opacity:.65;display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between}
+
+  @media (max-width:640px){
+    .angles{grid-template-columns:1fr}
+    body{font-size:16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+    html{scroll-behavior:auto}
+  }
+  @media print{
+    body{background-image:none;font-size:11.5pt}
+    .page{padding:0;max-width:100%}
+    .cta{display:none}
+    section{break-inside:avoid-page;margin-bottom:2rem}
+    .photo img{height:8rem}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <p class="kicker">Press Kit · Updated June 2026</p>
+    <h1>Gestalt Lite<br><em>Philadelphia's mural trail, heard aloud.</em></h1>
+    <p class="dek">A free, self-guided audio walk of eleven Philadelphia murals. Open the trail map in the browser and each wall's story plays aloud — in English or Spanish. No app, no signup, no cost.</p>
+    <div class="masthead-meta">
+      <span><a href="https://mural.gestalt.gallery/nearby">mural.gestalt.gallery/nearby</a></span>
+      <span><a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a></span>
+    </div>
+  </header>
+
+  <section id="boilerplate">
+    <span class="label">Boilerplate — copy-ready</span>
+    <h2>Two versions, ready to paste.</h2>
+    <div class="boiler">
+      <p class="boiler-tag">Short · ~45 words</p>
+      <p>Gestalt Lite is a free, self-guided audio walk of eleven Philadelphia murals. Visitors open the trail map in their phone's browser and hear each wall's story aloud — in English or Spanish, with no app, no signup, and no cost. Live at gestalt.gallery.</p>
+    </div>
+    <div class="boiler">
+      <p class="boiler-tag">Long · ~95 words</p>
+      <p>Gestalt Lite turns Philadelphia's most famous walls into a free audio walking trail. Eleven murals — including Amy Sherald's six-story portrait on Sansom Street, Keith Haring's <em>We The Youth</em>, and Meg Saligman's <em>Common Threads</em> — each plays the story of its wall aloud from a free browser map, in English or Spanish. The experience runs entirely in the browser: no app, no account, no trackers, and it meets WCAG 2.1 AA accessibility standards. Gestalt Lite was designed and built in Philadelphia by Gestalt, which makes audio-first accessibility infrastructure for museums and public art.</p>
+    </div>
+  </section>
+
+  <section id="facts">
+    <span class="label">Fast facts</span>
+    <div class="facts">
+      <div class="fact"><b>Free</b><span>No ticket, no signup, no cost</span></div>
+      <div class="fact"><b>No app</b><span>Runs entirely in the phone's browser</span></div>
+      <div class="fact"><b>11 murals</b><span>Center City to Point Breeze</span></div>
+      <div class="fact"><b>One tap</b><span>From map to audio playing</span></div>
+      <div class="fact"><b>English &amp; Español</b><span>Every stop, both languages</span></div>
+      <div class="fact"><b>WCAG 2.1 AA</b><span>Screen-reader ready, accessibility-first</span></div>
+      <div class="fact"><b>No trackers</b><span>No account required, nothing collected</span></div>
+      <div class="fact"><b>Summer 2026</b><span>Live now, as Philadelphia hosts the world</span></div>
+    </div>
+  </section>
+
+  <section id="story">
+    <span class="label">The story</span>
+    <h2>A mural says everything to the people who made it, and nothing to the person walking past.</h2>
+    <p>Stand in front of one of Philadelphia's great murals and there's no guide, no app worth downloading, no plaque deep enough. The history, the artist, the reason it's six stories tall: all of it stays on the wall.</p>
+    <p>Gestalt Lite changes that with the lightest possible technology. A free map in the phone's browser, one tap, and the story is playing aloud. The pilot trail of eleven murals launched in June 2026, as hundreds of thousands of international visitors arrive in Philadelphia for the summer's matches — many of them Spanish speakers, all of them with hours to fill between kickoffs, and every one of them carrying the only device the trail needs.</p>
+  </section>
+
+  <section id="trail">
+    <span class="label">The trail — eleven stops</span>
+    <table>
+      <thead><tr><th>Mural</th><th>Artist</th><th>Location</th></tr></thead>
+      <tbody>
+        <tr><td class="mural">Untitled (Najee S.)<span class="yr">2019</span></td><td>Amy Sherald</td><td>1108 Sansom Street, Center City</td></tr>
+        <tr><td class="mural">Common Threads<span class="yr">1998</span></td><td>Meg Saligman</td><td>Broad &amp; Spring Garden</td></tr>
+        <tr><td class="mural">We The Youth<span class="yr">1987</span></td><td>Keith Haring</td><td>22nd &amp; Ellsworth, Point Breeze</td></tr>
+        <tr><td class="mural">Philadelphia Muses<span class="yr">1999</span></td><td>Meg Saligman</td><td>13th &amp; Locust, Gayborhood</td></tr>
+        <tr><td class="mural">Water Gives Life</td><td>Eurhi Jones &amp; David McShane</td><td>Center City</td></tr>
+        <tr><td class="mural">Pride and Progress</td><td>Ann Northrup</td><td>Washington Square West</td></tr>
+        <tr><td class="mural">The Atlas of Tomorrow</td><td>Candy Chang</td><td>South Street</td></tr>
+        <tr><td class="mural">Building the City</td><td>Michael Webb</td><td>Midtown Village</td></tr>
+        <tr><td class="mural">Finding Home</td><td>Kathryn Pannepacker &amp; Josh Sarantitis</td><td>Market East</td></tr>
+        <tr><td class="mural">Equilibrium<span class="yr">2022</span></td><td>Eric Okdeh</td><td>7th &amp; Christian, Bella Vista</td></tr>
+        <tr><td class="mural">The Roots Mural</td><td>Roberto Lugo</td><td>South Street</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="angles">
+    <span class="label">Story angles</span>
+    <div class="angles">
+      <div class="angle">
+        <h3>The free hour between matches</h3>
+        <p>Half a million visitors, one trail that costs nothing and starts wherever they're standing. Common Threads sits at Broad &amp; Spring Garden, directly on the walk between Fairmount Park and Center City.</p>
+      </div>
+      <div class="angle">
+        <h3>The city, en español</h3>
+        <p>Every stop plays in Spanish as well as English — built for the international visitors arriving this summer and for Philadelphia's Spanish-speaking residents year-round.</p>
+      </div>
+      <div class="angle">
+        <h3>Public art, finally accessible</h3>
+        <p>Audio-first and WCAG 2.1 AA throughout: the trail makes the city's most famous visual art available to blind and low-vision visitors during the biggest tourism event in Philadelphia's history.</p>
+      </div>
+      <div class="angle">
+        <h3>Built in Philadelphia, in a browser</h3>
+        <p>A solo Philly founder's bet that cities need an audio layer the way websites needed mobile — shipped web-first, with audio playing moments after the map opens and no app store in the way.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="founder">
+    <span class="label">Founder</span>
+    <div class="bio">
+      <h2>Chris Carter, Founder &amp; CEO</h2>
+      <p>Chris Carter is a Philadelphia-based experience designer and design technologist with more than fourteen years in innovation, including design engineering at Capital One and service design for Con Edison's field operations. He founded Gestalt to build audio-first accessibility infrastructure for museums, galleries, and public art — starting with the city he lives in. Gestalt Lite, the company's web-first product, narrates a collection and generates its scannable codes within days of receiving an artwork list.</p>
+      <p>Chris is available for interviews, on-camera walks of the trail, and live demos. <em>(Headshot available on request.)</em></p>
+    </div>
+  </section>
+
+  <section id="photos">
+    <span class="label">Photography</span>
+    <h2>Editorial images</h2>
+    <div class="photos">
+      <figure class="photo">
+        <img src="/images/murals/najee.jpg" alt="Untitled (Najee S.) by Amy Sherald — a six-story grayscale portrait of a young woman against an electric-blue wall above Sansom Street">
+        <figcaption>Untitled (Najee S.), Amy Sherald — Sansom Street</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="/images/murals/common-threads.jpg" alt="Common Threads by Meg Saligman — eight stories of classical figurines and Philadelphia teenagers at Broad and Spring Garden">
+        <figcaption>Common Threads, Meg Saligman — Broad &amp; Spring Garden</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="/images/murals/we-the-youth.jpg" alt="We The Youth by Keith Haring — bold red, yellow, and blue dancing figures on a Point Breeze rowhome">
+        <figcaption>We The Youth, Keith Haring — Point Breeze</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="/images/murals/philadelphia-muses.jpg" alt="Philadelphia Muses by Meg Saligman — nine muses reimagined as contemporary Philadelphians at 13th and Locust">
+        <figcaption>Philadelphia Muses, Meg Saligman — 13th &amp; Locust</figcaption>
+      </figure>
+    </div>
+    <p class="credit-note">High-resolution photography, the full trail route map, product screenshots, and images of the trail experience are available on request at <a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a>. Murals are the copyrighted work of their artists; photo captions should credit the artist named.</p>
+  </section>
+
+  <section id="qa">
+    <span class="label">Quick answers</span>
+    <dl class="qa">
+      <dt>Is it really free?</dt>
+      <dd>Yes — for everyone, indefinitely. Nothing on the trail is gated, and there's no account or signup.</dd>
+      <dt>What do visitors actually do?</dt>
+      <dd>Open mural.gestalt.gallery/nearby in the phone's browser. The map shows the closest of the eleven murals, audio plays in one tap, and the next wall and the walking distance to reach it follow.</dd>
+      <dt>How does Gestalt make money?</dt>
+      <dd>Gestalt Lite is the public face of a product for cities and cultural institutions: send an artwork list, and Gestalt narrates the collection, generates the codes, and reports real engagement — plays, time-to-audio, and how many people walked to a second work.</dd>
+      <dt>What's next?</dt>
+      <dd>More walls and more cities. Philadelphia is the first walk; the same accessible audio layer can cover a gallery, a sculpture garden, or an entire city's public art.</dd>
+    </dl>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <h2>Press contact</h2>
+        <p class="who">Chris Carter, Founder &amp; CEO<br>Gestalt · Philadelphia, PA<br><a href="mailto:hello@gestalt.gallery">hello@gestalt.gallery</a></p>
+      </div>
+      <a class="cta" href="mailto:hello@gestalt.gallery?subject=Press%20inquiry%20—%20Gestalt%20Lite">Email the founder</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Gestalt Lite — Press Kit, June 2026</span>
+    <span>Made in Philadelphia · gestalt.gallery</span>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -408,10 +408,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    HERO — The Gestalt Lens AR Scene
    =================================================================== */
 .hero {
-  min-height: 100dvh;
+  min-height: auto;
   display: flex;
   align-items: center;
-  padding: 9rem 0 6rem;
+  padding: 9rem 0 var(--space-4);
 }
 
 .hero .container {
@@ -929,7 +929,7 @@ body.loaded .hero-visual {
    LEGACY BENTO — Double-Bezel Cards (index.html compatibility)
    =================================================================== */
 .features {
-  padding: var(--space-16) 0 var(--space-12);
+  padding: var(--space-8) 0 var(--space-12);
   position: relative;
   z-index: 1;
 }

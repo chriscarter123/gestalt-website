@@ -1,0 +1,32 @@
+// ─────────────────────────────────────────────────────────────────────────
+// Signups: the website's email capture (footer field, /designphilly,
+// /scorecard). NOT deployed from this repo. gestalt-17ce0's Firestore
+// rules are deployed from the gestalt app repo, and a deploy replaces the
+// whole ruleset, so paste this block into gestalt/firestore.rules inside
+// `match /databases/{database}/documents { ... }` and deploy from there:
+//
+//   firebase deploy --only firestore:rules
+//
+// Anyone may create a signup with exactly these fields; nobody can read,
+// update or delete one from a client. Read them in the Firebase console
+// or with the Admin SDK.
+// ─────────────────────────────────────────────────────────────────────────
+
+    match /signups/{signupId} {
+      allow read, update, delete: if false;
+      allow create: if request.resource.data.keys().hasOnly([
+                          'email', 'type', 'sourcePage', 'utm_source',
+                          'utm_medium', 'utm_campaign', 'createdAt',
+                          'organization', 'name', 'collectionSize'])
+                    && request.resource.data.keys().hasAll([
+                          'email', 'type', 'sourcePage', 'createdAt'])
+                    && request.resource.data.email is string
+                    && request.resource.data.email.size() <= 200
+                    && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+                    && request.resource.data.type in ['visitor', 'scorecard']
+                    && request.resource.data.sourcePage is string
+                    && request.resource.data.sourcePage.size() <= 200
+                    && request.resource.data.createdAt is timestamp
+                    && request.resource.data.createdAt > request.time - duration.value(10, 'm')
+                    && request.resource.data.createdAt < request.time + duration.value(10, 'm');
+    }
