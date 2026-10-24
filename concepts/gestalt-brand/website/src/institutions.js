@@ -9,6 +9,8 @@
 import "./style.css";
 import "./glass.css";
 import "./institutions.css";
+import "./signup.css";
+import "./signup.js";
 
 import Lenis from "lenis";
 import gsap from "gsap";

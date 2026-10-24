@@ -16,10 +16,10 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Outfit:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/contact-ugRV3rZ3.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/ScrollTrigger-DuQaZNRM.js">
-    <link rel="modulepreload" crossorigin href="./assets/institutions-DHAqzFFd.js">
-    <link rel="stylesheet" crossorigin href="./assets/ScrollTrigger-CLO2colb.css">
+    <script type="module" crossorigin src="./assets/contact-DTeYVrBu.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/ScrollTrigger-D_-iR2P3.js">
+    <link rel="modulepreload" crossorigin href="./assets/institutions-CTo7Fp3f.js">
+    <link rel="stylesheet" crossorigin href="./assets/ScrollTrigger-Db2WhJQk.css">
     <link rel="stylesheet" crossorigin href="./assets/institutions-D-K58lCw.css">
     <link rel="stylesheet" crossorigin href="./assets/contact-DtWm5aCZ.css">
   </head>
@@ -143,6 +143,18 @@
     <footer class="footer" role="contentinfo">
       <div class="footer__inner">
         <p class="footer__big">Every artwork has a voice.</p>
+        <form class="signup" data-signup="visitor" novalidate>
+          <label class="signup__label" for="signup-email">Get new murals as they go live.</label>
+          <div class="signup__row">
+            <input class="signup__input" id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+            <button class="glass-btn glass-btn--primary signup__button" type="submit">Sign up</button>
+          </div>
+          <div class="signup__trap" aria-hidden="true">
+            <label for="signup-website">Leave this field empty</label>
+            <input id="signup-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+          <p class="signup__status" data-signup-status role="status" aria-live="polite"></p>
+        </form>
         <div class="footer__cols">
           <div>
             <p class="label">Explore</p>
