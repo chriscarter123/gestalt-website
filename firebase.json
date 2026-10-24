@@ -83,6 +83,11 @@
         "type": 301
       },
       {
+        "source": "/journey.html",
+        "destination": "https://mural.gestalt.gallery/nearby",
+        "type": 301
+      },
+      {
         "source": "/nearby",
         "destination": "https://mural.gestalt.gallery/nearby",
         "type": 301
